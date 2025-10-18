@@ -28,6 +28,25 @@
             max-width: 150px;
             height: auto;
         }
+
+        #togglePassword i {
+            transition: color 0.3s;
+        }
+
+        /* Khi hover vào nút, icon đổi màu */
+        #togglePassword:hover i {
+            color: white;
+            /* đỏ hoặc màu bạn thích */
+        }
+
+        /* Khi password đang hiển thị, icon đổi màu xanh */
+        #togglePassword.active i {
+            color: green;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #ff6f61;
+        }
     </style>
     <script src="../JS/jquery.js"></script>
 </head>
@@ -40,14 +59,19 @@
             <div class="card shadow">
                 <div class="card-body">
                     <h3 class="card-title text-center mb-4">Đăng nhập</h3>
-                    <form action="xuly_dangnhap.php" method="POST">
+                    <form id="loginForm">
                         <div class="mb-3">
                             <label for="username" class="form-label">Tên đăng nhập</label>
                             <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Mật khẩu</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password" required>
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="remember" name="remember">
@@ -56,7 +80,9 @@
                         <button type="submit" class="btn btn-danger w-100">Đăng nhập</button>
                     </form>
                     <p class="text-center mt-3">
-                        <a href="#" class="text-danger">Quên mật khẩu?</a> | <a href="#" class="text-danger">Đăng ký</a>
+                        <a href="/HTML/trangchu.html" class="text-danger">Trang Chủ</a> |
+                        <a href="#" class="text-danger">Quên mật khẩu?</a> |
+                        <a href="./trangdangky.html" class="text-danger">Đăng ký</a>
                     </p>
                 </div>
             </div>
@@ -97,6 +123,38 @@
         </div>
     </div>
 
+    <script>
+        const passwordInput = document.getElementById('password');
+        const toggleBtn = document.getElementById('togglePassword');
+
+        // Toggle hiện/ẩn mật khẩu
+        toggleBtn.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            toggleBtn.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+
+        // Xử lý submit đăng nhập
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Ngăn reload form
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Lấy danh sách user từ localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Kiểm tra user
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                window.location.href = "trangchu.html";
+            } else {
+                alert("Tên đăng nhập hoặc mật khẩu không đúng!");
+            }
+        });
+    </script>
 </body>
+
 
 </html>

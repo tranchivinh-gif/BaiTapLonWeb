@@ -25,6 +25,17 @@ body {
     width: 120px;
 }
 
+.user-cart a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+.user-cart a:hover {
+    color: aqua;
+    transform: scale(1.05);
+}
+
 .search-box input {
     padding: 6px;
     width: 300px;
@@ -41,6 +52,12 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav a:hover {
+    color: aqua;
+    transform: scale(1.05);
 }
 
 .user-cart i {
@@ -51,6 +68,31 @@ body {
 .user-cart a:hover i {
     color: #ffcc99;
     text-shadow: 0 0 8px #ffcc99;
+}
+
+.search-box {
+    /* Chiều rộng mặc định */
+    transition: all 0.3s;
+}
+
+.search-input {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+/* Khi hover vào input */
+.search-input:hover {
+    background-color: aqua;
+    /* Viền vàng */
+    transform: scale(1.05);
+}
+
+/* Khi focus (click vào ô) */
+.search-input:focus {
+    outline: none;
 }
 
 /* SECTION */

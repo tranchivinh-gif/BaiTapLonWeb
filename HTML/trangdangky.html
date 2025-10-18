@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng Ký</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/jquery.js"></script>
+    <style>
+        .logo {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .btn-danger {
+            background-color: #ff6f61;
+        }
+
+        .form-control:focus {
+            border-color: #ff6f61;
+            /* Viền đỏ */
+            box-shadow: 0 0 5px #ff6f61;
+            /* Bóng đỏ xung quanh */
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #ff6f61;
+        }
+
+        .register-form {
+            max-width: 470px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 col-lg-4">
+            <img src="../IMG/logo.png" class="logo d-block mx-auto mb-3" alt="logo">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Đăng ký</h3>
+                    <form id="registerForm">
+
+
+                        <!-- Tên đăng nhập -->
+                        <div class="mb-3">
+                            <label for="regUsername" class="form-label">Tên đăng nhập</label>
+                            <input type="text" class="form-control" id="regUsername" name="username" required>
+                        </div>
+
+                        <!-- Mật khẩu -->
+                        <div class="mb-3">
+                            <label for="regPassword" class="form-label">Mật khẩu</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="regPassword" name="password" required>
+                                <button class="btn btn-outline-secondary" type="button" id="toggleRegPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Xác nhận mật khẩu -->
+                        <div class="mb-3">
+                            <label for="regConfirm" class="form-label">Xác nhận mật khẩu</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="regConfirm" name="confirmPassword"
+                                    required>
+                                <button class="btn btn-outline-secondary" type="button" id="toggleRegConfirm">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger w-100">Đăng ký</button>
+
+                        <p class="text-center mt-3">
+                            <a href="/HTML/trangchu.html" class="text-danger">Trang Chủ</a> |
+                            <a href="./trangdangnhap.html" class="text-danger">Đăng Nhập</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <div class="footer mt-5">
+        <div>
+            <h3>Về Chúng Tôi</h3>
+            <ul>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <ul>
+                <li><a href="#">Trung tâm trợ giúp</a></li>
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p>📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn
+            </p>
+        </div>
+    </div>
+    <script>
+        // Hàm toggle mật khẩu
+        function togglePassword(inputId, btnId) {
+            const input = document.getElementById(inputId);
+            const btn = document.getElementById(btnId);
+            btn.addEventListener('click', function () {
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                btn.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+            });
+        }
+
+        // Gọi toggle cho password và confirm
+        togglePassword('regPassword', 'toggleRegPassword');
+        togglePassword('regConfirm', 'toggleRegConfirm');
+
+        // Xử lý submit form đăng ký
+        const registerForm = document.getElementById('registerForm');
+        registerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('regConfirm').value;
+
+            if (password !== confirm) {
+                alert("Mật khẩu xác nhận không khớp!");
+                return;
+            }
+
+            // Lấy danh sách users từ localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Kiểm tra username đã tồn tại
+            if (users.some(u => u.username === username)) {
+                alert("Tên đăng nhập đã tồn tại!");
+                return;
+            }
+
+            // Thêm user mới
+            users.push({ username: username, password: password });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert("Đăng ký thành công! Bạn có thể sang trang đăng nhập.");
+            // window.location.href = "login.html"; // nếu muốn chuyển trang
+        });
+    </script>
+</body>
+
+</html>
