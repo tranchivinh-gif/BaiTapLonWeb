@@ -2,6 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 /* HEADER */
@@ -67,12 +68,18 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+    width: 100%;
 }
 
 .footer h3 {
     color: #fff;
     font-size: 16px;
     margin-bottom: 10px;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 14px;
 }
 
 .footer ul {

@@ -5,9 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        .text-danger {
+            color: #ff6f61;
+        }
+
+        .btn-danger {
+            background-color: #ff6f61;
+        }
+
+        input.form-control:focus {
+            border-color: #ff6f61;
+            /* Viền đỏ */
+            box-shadow: 0 0 5px #ff6f61;
+            /* Bóng đỏ xung quanh */
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+        }
+    </style>
+    <script src="../JS/jquery.js"></script>
 </head>
 
 <body>
+    <!-- PHẦN ĐĂNG NHẬP -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 col-lg-4">
+            <img src="../IMG/logo.png" class="logo d-block mx-auto mb-3" alt="logo">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Đăng nhập</h3>
+                    <form action="xuly_dangnhap.php" method="POST">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Tên đăng nhập</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                            <label class="form-check-label" for="remember">Ghi nhớ đăng nhập</label>
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100">Đăng nhập</button>
+                    </form>
+                    <p class="text-center mt-3">
+                        <a href="#" class="text-danger">Quên mật khẩu?</a> | <a href="#" class="text-danger">Đăng ký</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer mt-5">
+        <div>
+            <h3>Về Chúng Tôi</h3>
+            <ul>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <ul>
+                <li><a href="#">Trung tâm trợ giúp</a></li>
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p>📞 Hotline: 1900 1234<br>✉️ Email:
+                Tên_Nhà_Sách@bookstore.vn
+            </p>
+        </div>
+    </div>
 
 </body>
 
