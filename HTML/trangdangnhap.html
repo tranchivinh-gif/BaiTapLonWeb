@@ -148,6 +148,7 @@
             const user = users.find(u => u.username === username && u.password === password);
 
             if (user) {
+                localStorage.setItem('dangNhap', JSON.stringify(user));
                 window.location.href = "trangchu.html";
             } else {
                 alert("Tên đăng nhập hoặc mật khẩu không đúng!");
