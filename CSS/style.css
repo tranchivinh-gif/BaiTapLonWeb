@@ -103,11 +103,23 @@ body {
 .dropdown-toggle {
     background-color: transparent;
     border: none;
-    color: #333;
 }
 
 .dropdown-toggle:hover {
-    color: #007bff;
+    color: #d7c738;
+}
+
+.dropdown-menu {
+    background-color: #ff6f61;
+}
+
+
+#chinhsua {
+    background-color: #ff6f61;
+}
+
+#logout:hover {
+    background-color: #ff6f61;
 }
 
 /* SECTION */
