@@ -1,14 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Sách</title>
+    <title>Trang Chi Tiết Sách</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/jquery.js"></script>
 </head>
 
 <body>
-<p>hello</p>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <a href="./trangchu.html">
+                <img src="../IMG/logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." class="search-input">
+        </div>
+        <div class="nav">
+            <a href="./trangsachmoi.html">Sách Mới</a>
+            <a href="./trangbanchay.html">Bán Chạy</a>
+            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+        </div>
+        <div class="user-cart">
+            <a href="./tranggiohang.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+        </div>
+    </div>
+
+    
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            
+            <div class="col-md-4 text-center">
+                <img src="../IMG/sach1.jpg" alt="Bìa sách" class="img-fluid shadow-lg rounded">
+            </div>
+
+        
+            <div class="col-md-8">
+                <h2 class="text-primary mb-3">Tên sách</h2>
+                <p><strong>Tác giả:</strong> Tên tác giả</p>
+                <p><strong>Nhà xuất bản:</strong> ...</p>
+                <p><strong>Thể loại:</strong> ...</p>
+                <p><strong>Số trang:</strong>...</p>
+                <p><strong>Ngày phát hành:</strong>...</p>
+                <p><strong>Giá bán:</strong> <span class="text-danger fw-bold fs-4">...</span></p>
+
+                <p class="mt-3"><strong>Mô tả:</strong> ....</p>
+
+                <button class="btn btn-success mt-3"><i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <!-- Sách tương tự -->
+        <div class="similar-books mt-5">
+            <h3 class="mb-4">📚 Sách tương tự</h3>
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <img src="../IMG/sach2.jpg" alt="Sách 2" class="img-fluid rounded">
+                    <p class="mt-2">Sách 2</p>
+                    <p class="text-danger">giá</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img src="../IMG/sach3.jpg" alt="Sách 3" class="img-fluid rounded">
+                    <p class="mt-2">Sách 3</p>
+                    <p class="text-danger">giá</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img src="../IMG/sach4.jpg" alt="Sách 4" class="img-fluid rounded">
+                    <p class="mt-2">sách 4</p>
+                    <p class="text-danger">giá</p>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img src="../IMG/sach5.jpg" alt="Sách 5" class="img-fluid rounded">
+                    <p class="mt-2">sách 5</p>
+                    <p class="text-danger">giá</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div>
+            <h3>Về Chúng Tôi</h3>
+            <ul>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <ul>
+                <li><a href="#">Trung tâm trợ giúp</a></li>
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn</p>
+        </div>
+    </div>
 </body>
 
 </html>
