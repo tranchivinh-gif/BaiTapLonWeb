@@ -1,14 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/jquery.js"></script>
 </head>
 
 <body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <a href="./trangchu.html">
+                <img src="../IMG/logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm sách, tác giả..." class="search-input">
+        </div>
+        <div class="nav">
+            <a href="./trangsachmoi.html">Sách Mới</a>
+            <a href="./trangbanchay.html">Bán Chạy</a>
+            <a href="./danhmucsanpham.html">Danh Mục</a>
+            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+        </div>
+        <div class="user-cart">
+            <a href="./tranggiohang.html" class="active"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+        </div>
+    </div>
+
+    <!-- NỘI DUNG TRANG GIỎ HÀNG -->
+    <div class="content" style="padding: 40px;">
+        <h1>Giỏ Hàng Của Bạn</h1>
+        <table class="table table-bordered table-striped mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Hình Ảnh</th>
+                    <th>Tên Sách</th>
+                    <th>Đơn Giá</th>
+                    <th>Số Lượng</th>
+                    <th>Thành Tiền</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body" class="text-center">
+                <tr>
+                    <td colspan="6" id="empty-cart" style="color: gray;">🛒 Giỏ hàng của bạn hiện đang trống.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: right; margin-top: 30px;">
+            <h4>Tổng cộng: <span id="cart-total" style="color: red;">0₫</span></h4>
+            <button class="btn btn-success mt-3"><i class="fa-solid fa-credit-card"></i> Thanh Toán</button>
+            <a href="./danhmucsanpham.html" class="btn btn-secondary mt-3"><i class="fa-solid fa-arrow-left"></i> Tiếp tục mua</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div>
+            <h3>Về Chúng Tôi</h3>
+            <ul>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <ul>
+                <li><a href="#">Trung tâm trợ giúp</a></li>
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn</p>
+        </div>
+    </div>
+    <script>
+        // Hàm tải giỏ hàng từ localStorage
+        function loadCart() {
+            const tbody = document.getElementById("cart-body");
+            const emptyMessage = document.getElementById("empty-cart");
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            tbody.innerHTML = ""; // Xóa nội dung cũ
+            let total = 0;
+
+            // Nếu giỏ hàng trống
+            if (cart.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="color: gray;">🛒 Giỏ hàng của bạn hiện đang trống.</td></tr>`;
+                document.getElementById("cart-total").textContent = "0₫";
+                return;
+            }
+
+            // Duyệt qua từng sản phẩm trong giỏ
+            cart.forEach((item, index) => {
+                const priceNum = parseInt(item.price.replace(/\D/g, '')); // chuyển giá sang số
+                const subtotal = priceNum * item.quantity;
+                total += subtotal;
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td><img src="${item.img}" width="70" style="border-radius:5px;"></td>
+                    <td>${item.name}</td>
+                    <td>${item.price}</td>
+                    <td>
+                        <input type="number" min="1" value="${item.quantity}" data-index="${index}" class="form-control form-control-sm text-center">
+                    </td>
+                    <td>${subtotal.toLocaleString()}₫</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" data-index="${index}">
+                            <i class="fa-solid fa-trash"></i> Xóa
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // Cập nhật tổng tiền
+            document.getElementById("cart-total").textContent = total.toLocaleString() + "₫";
+        }
+
+        // Xóa sản phẩm hoặc thay đổi số lượng
+        document.addEventListener("click", (e) => {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            // Khi bấm nút Xóa
+            if (e.target.closest(".btn-danger")) {
+                const index = e.target.closest(".btn-danger").dataset.index;
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            }
+        });
+
+        // Khi thay đổi số lượng
+        document.addEventListener("input", (e) => {
+            if (e.target.tagName === "INPUT" && e.target.type === "number") {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const index = e.target.dataset.index;
+                const newQty = parseInt(e.target.value);
+                if (newQty >= 1) {
+                    cart[index].quantity = newQty;
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    loadCart();
+                }
+            }
+        });
+
+        // Gọi hàm khi tải trang
+        loadCart();
+    </script>
 
 </body>
-
 </html>
