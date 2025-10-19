@@ -85,9 +85,10 @@ body {
 
 /* Khi hover vào input */
 .search-input:hover {
-    background-color: aqua;
+    background-color: rgb(0, 0, 0);
     /* Viền vàng */
     transform: scale(1.05);
+    color: white;
 }
 
 /* Khi focus (click vào ô) */
@@ -106,13 +107,21 @@ body {
 }
 
 .dropdown-toggle:hover {
-    color: #d7c738;
+    color: #000000;
+    background-color: #000000;
+
 }
 
 .dropdown-menu {
     background-color: #ff6f61;
 }
 
+.dropdown-item {
+    transition: none !important;
+    /* Tắt hiệu ứng chuyển động */
+    transform: none !important;
+    /* Đảm bảo không phóng to */
+}
 
 #chinhsua {
     background-color: #ff6f61;
