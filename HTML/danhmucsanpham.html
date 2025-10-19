@@ -8,7 +8,80 @@
     <link rel="stylesheet" href="../CSS/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
     <link rel="stylesheet" href="../CSS/style.css">
-    <script src="../JS/jquery.js"></script>
+    <style>
+        /* --- Giống trang chủ --- */
+        .book-section {
+            margin: 40px 0;
+        }
+
+        .book-section h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-left: 4px solid #ffc107;
+            padding-left: 10px;
+        }
+
+        .book-scroll {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .book-item {
+            flex: 0 0 auto;
+            width: 250px;
+            text-align: center;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.03);
+        }
+
+        .book-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .book-actions {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .btn-add,
+        .btn-detail {
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-add {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-detail {
+            background-color: #17a2b8;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .btn-detail:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,91 +112,20 @@
     <div class="content" style="padding: 40px;">
         <h1>Danh Mục Sản Phẩm</h1>
 
-        <!-- DANH MỤC -->
-        <div class="categories mt-4">
-            <h3>📚 Sách Giáo Khoa</h3>
-            <div class="row">
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card">
-                        <img src="../IMG/sach-giao-khoa-toan-12-tap-1-ket-noi-tri-thuc-voi-cuoc-song.png"
-                            class="card-img-top" alt="Toán 12">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Toán 12</h5>
-                            <p class="card-text text-danger">45.000₫</p>
-                            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-plus"></i> Thêm vào
-                                giỏ</button>
-                        </div>
-                    </div>
-                </div>
+        <!-- DANH MỤC SÁCH -->
+        <div id="sach-giao-khoa" class="book-section">
+            <h2>📚 Sách Giáo Khoa</h2>
+            <div class="book-scroll"></div>
+        </div>
 
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card">
-                        <img src="../IMG/sach-giao-khoa-vat-li-12-ket-noi-tri-thuc-voi-cuoc-song.png"
-                            class="card-img-top" alt="Vật Lý 12">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Vật Lý 12</h5>
-                            <p class="card-text text-danger">40.000₫</p>
-                            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-plus"></i> Thêm vào
-                                giỏ</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="sach-van-hoc" class="book-section">
+            <h2>📖 Sách Văn Học</h2>
+            <div class="book-scroll"></div>
+        </div>
 
-            <h3>📖 Sách Văn Học</h3>
-            <div class="row">
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card">
-                        <img src="../IMG/van-1.jpg" class="card-img-top" alt="Chí Phèo">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Chí Phèo</h5>
-                            <p class="card-text text-danger">90.000₫</p>
-                            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-plus"></i> Thêm vào
-                                giỏ</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card">
-                        <img src="../IMG/image001-1678344452723.jpg" class="card-img-top" alt="Truyện Kiều">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Truyện Kiều</h5>
-                            <p class="card-text text-danger">55.000₫</p>
-                            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-plus"></i> Thêm vào
-                                giỏ</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3>📗 Sách Kỹ Năng</h3>
-            <div class="row">
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card">
-                        <img src="../IMG/Dừng-lựa-chọn-an-nhàn-khi-còn-trẻ.jpeg" class="card-img-top"
-                            alt="Đừng Lựa Chọn An Nhàn Khi Còn Trẻ">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Đừng Lựa Chọn An Nhàn Khi Còn Trẻ</h5>
-                            <p class="card-text text-danger">110.000₫</p>
-                            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-plus"></i> Thêm vào
-                                giỏ</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card">
-                        <img src="../IMG/7h_700x650_bia1.webp" class="card-img-top" alt="7 Thói Quen Hiệu Quả">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">7 Thói Quen Hiệu Quả</h5>
-                            <p class="card-text text-danger">130.000₫</p>
-                            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-plus"></i> Thêm vào
-                                giỏ</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="sach-ky-nang" class="book-section">
+            <h2>📗 Sách Kỹ Năng</h2>
+            <div class="book-scroll"></div>
         </div>
     </div>
 
@@ -158,34 +160,63 @@
             <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn</p>
         </div>
     </div>
-    <script src="../JS/script.js"></script>
+
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
-        // Khi người dùng bấm nút "Thêm vào giỏ"
-        const buttons = document.querySelectorAll('.btn-primary');
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const card = e.target.closest('.card');
-                const name = card.querySelector('.card-title').textContent;
-                const price = card.querySelector('.card-text').textContent;
-                const img = card.querySelector('img').src;
+        // Dữ liệu mẫu
+        const sachGiaoKhoa = [
+            { name: "Toán 12", price: "45.000₫", img: "../IMG/sach-giao-khoa-toan-12-tap-1-ket-noi-tri-thuc-voi-cuoc-song.png" },
+            { name: "Vật Lý 12", price: "40.000₫", img: "../IMG/sach-giao-khoa-vat-li-12-ket-noi-tri-thuc-voi-cuoc-song.png" }
+        ];
 
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const sachVanHoc = [
+            { name: "Chí Phèo", price: "90.000₫", img: "../IMG/van-1.jpg" },
+            { name: "Truyện Kiều", price: "55.000₫", img: "../IMG/image001-1678344452723.jpg" }
+        ];
 
-                // Kiểm tra nếu sản phẩm đã có thì tăng số lượng
-                const existing = cart.find(item => item.name === name);
-                if (existing) {
-                    existing.quantity += 1;
-                } else {
-                    cart.push({ name, price, img, quantity: 1 });
-                }
+        const sachKyNang = [
+            { name: "Đừng Lựa Chọn An Nhàn Khi Còn Trẻ", price: "110.000₫", img: "../IMG/Dừng-lựa-chọn-an-nhàn-khi-còn-trẻ.jpeg" },
+            { name: "7 Thói Quen Hiệu Quả", price: "130.000₫", img: "../IMG/7h_700x650_bia1.webp" }
+        ];
 
-                localStorage.setItem('cart', JSON.stringify(cart));
-                alert(`✅ Đã thêm "${name}" vào giỏ hàng!`);
-            });
-        });
+        // Hàm hiển thị sách
+        function renderBooks(sectionId, data) {
+            const container = document.querySelector(`#${sectionId} .book-scroll`);
+            container.innerHTML = data.map(book => `
+                <div class="book-item">
+                    <img src="${book.img}" alt="${book.name}">
+                    <p class="fw-bold">${book.name}</p>
+                    <p class="text-danger">${book.price}</p>
+                    <div class="book-actions">
+                        <button class="btn-add" onclick="addToCart('${book.name}', '${book.price}', '${book.img}')">🛒</button>
+                        <a href="./chitietsach.html" class="btn-detail" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">Xem</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Gọi hiển thị
+        renderBooks('sach-giao-khoa', sachGiaoKhoa);
+        renderBooks('sach-van-hoc', sachVanHoc);
+        renderBooks('sach-ky-nang', sachKyNang);
+
+        // Thêm sản phẩm vào giỏ hàng
+        function addToCart(name, price, img) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const exist = cart.find(item => item.name === name);
+            if (exist) exist.qty++;
+            else cart.push({ name, price, img, qty: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`✅ Đã thêm "${name}" vào giỏ hàng!`);
+        }
+
+        // Lưu chi tiết sách khi bấm Xem
+        function viewBookDetail(name, price, img) {
+            const bookDetail = { name, price, img };
+            localStorage.setItem('selectedBook', JSON.stringify(bookDetail));
+            window.location.href = './trangchitiet.html';
+        }
     </script>
-
 </body>
 
 </html>
