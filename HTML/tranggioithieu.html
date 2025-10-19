@@ -5,12 +5,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giới Thiệu Thành Viên</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+<style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .text-h1{
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+            text-shadow: 3px 3px orangered;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            width: 90%;
+            max-width: 1000px;
+            
+           
+        }
+
+        .thanhvien {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .thanhvien:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .thanhvien img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid #66a6ff;
+        }
+
+        .thanhvien h3 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .thanhvien p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 30px 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+}
+
+.footer h3 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 8px;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.footer ul li a:hover {
+    color: #ff6f61;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+}
+
+
+        
+    </style>
 </head>
-
-
 <body>
-    <p>hello</p>
+    <header>
+        <div class="header">
+        <div class="logo">
+            <a href="/tranggioithieu.html">
+                <img src="../IMG/logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm sách, tác giả..." class="search-input">
+        </div>
+        <div class="nav">
+            <a href="./trangsachmoi.html">Sách Mới</a>
+            <a href="./trangbanchay.html">Bán Chạy</a>
+            <a href="./danhmucsanpham.html">Danh Mục</a>
+            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+        </div>
+        <div class="user-cart">
+            <a href="./tranggiohang.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+        </div>
+    </div>
+    <div class="text-h1">
+        <h1><b>Nhóm 2 - Giới Thiệu Thành Viên</b></h1>
 
+    </div>
+        
+        
+    </header>
+
+    <div class="container">
+        <div class="thanhvien">
+            <img src="../IMG/avatar-nam.jpg" alt="Thanh viên 1">
+            <h3>Trần Chí Vĩnh</h3>
+            <p>Trưởng nhóm</p>
+            <p>Mssv: 23662901</p>
+           
+        </div>
+
+        <div class="thanhvien">
+            <img src="../IMG/avatar-nam.jpg" alt="Thanh viên 2">
+            <h3>Nguyễn Tấn Hoàng Vũ</h3>
+            <p>Thành viên</p>
+            <p>Mssv: 23657941</p>
+
+        </div>
+
+        <div class="thanhvien">
+            <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 3">
+            <h3>Trần Như Ý</h3>
+            <p>Thành viên</p>
+            <p>Mssv: 23655891</p>
+        
+        </div>
+
+        <div class="thanhvien">
+            <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 4">
+            <h3>Phạm Nguyễn Xuân Thanh</h3>
+            <p>Thành viên</p>
+            <p>Mssv: 23659911</p>
+      
+        </div>
+        <div class="thanhvien">
+            <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 5">
+            <h3>Phùng Võ Việt Tường Vi</h3>
+            <p>Thành viên</p>
+      
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+        <div>
+            <h3>Về Chúng Tôi</h3>
+            <ul>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <ul>
+                <li><a href="#">Trung tâm trợ giúp</a></li>
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn
+            </p>
+        </div>
+    </div>
+    </footer>
 </body>
-
 </html>
