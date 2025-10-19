@@ -8,6 +8,133 @@
     <link rel="stylesheet" href="../CSS/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
     <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        /* --- PHẦN MỚI THÊM --- */
+        .book-section {
+            margin: 40px 0;
+        }
+
+        .book-section h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-left: 4px solid #ffc107;
+            padding-left: 10px;
+        }
+
+        .book-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+        }
+
+        .book-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .book-scroll::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+
+        .book-item {
+            flex: 0 0 auto;
+            width: 350px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+        }
+
+        .book-item img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .book-item p {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .book-item {
+            flex: 0 0 auto;
+            width: 250px;
+            text-align: center;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .book-item:hover {
+            transform: scale(1.03);
+            transition: 0.3s;
+        }
+
+        .book-price {
+            margin: 5px 0;
+        }
+
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .quantity-control button {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .quantity-control input {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .book-actions {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-add,
+        .btn-detail {
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-add {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-detail {
+            background-color: #17a2b8;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .btn-detail:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,7 +164,28 @@
     <!-- NỘI DUNG TRANG -->
     <div class="content">
         <h1>Chào mừng bạn đến với BookStore</h1>
-        <p>Chỗ này loading...</p>
+        <p>Chào mừng đến với Shop sách Nhóm 2</p>
+        <!-- Các khu vực sách -->
+        <div id="sach-moi" class="book-section">
+            <h2>Sách Mới Phát Hành</h2>
+            <div class="book-scroll"></div>
+        </div>
+
+        <div id="sach-ban-chay" class="book-section">
+            <h2>Sách Bán Chạy</h2>
+            <div class="book-scroll"></div>
+        </div>
+
+        <div id="danh-muc-sach" class="book-section">
+            <h2>Danh Mục Sách</h2>
+            <div class="book-scroll"></div>
+        </div>
+
+        <div id="sach-khuyen-mai" class="book-section">
+            <h2>Khuyến Mãi</h2>
+            <div class="book-scroll"></div>
+        </div>
+
     </div>
 
     <!-- FOOTER -->
@@ -74,6 +222,50 @@
     </div>
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
+    <script>
+        // Mảng sách mẫu
+        const books = [
+            { name: "Sách 1", price: "45.000₫", img: "../IMG/khuyen-mai.jpg" },
+            { name: "Sách 2", price: "60.000₫", img: "../IMG/khuyen-mai.jpg" },
+            { name: "Sách 3", price: "90.000₫", img: "../IMG/khuyen-mai.jpg" },
+            { name: "Sách 3", price: "90.000₫", img: "../IMG/khuyen-mai.jpg" },
+            { name: "Sách 3", price: "90.000₫", img: "../IMG/khuyen-mai.jpg" },
+            { name: "Sách 3", price: "90.000₫", img: "../IMG/khuyen-mai.jpg" },
+        ];
+
+        // Hàm sinh sách
+        function renderBooks(sectionId, books) {
+            const container = document.querySelector(`#${sectionId} .book-scroll`);
+            container.innerHTML = books.map(book => `
+                <div class="book-item">
+                    <img src="${book.img}" alt="${book.name}">
+                    <p class="fw-bold">${book.name}</p>
+                    <p class="text-danger">${book.price}</p>
+                    <div class="book-actions">
+                        <button class="btn-add" onclick="addToCart('${book.name}', '${book.price}', '${book.img}')">🛒</button>
+                        <a href="./chitietsach.html" class="btn-detail">Xem</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Hiển thị cho từng phần
+        renderBooks('sach-moi', books);
+        renderBooks('sach-ban-chay', books);
+        renderBooks('sach-khuyen-mai', books);
+        renderBooks('danh-muc-sach', books);
+
+        // Thêm vào giỏ
+        function addToCart(name, price, img) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const exist = cart.find(item => item.name === name);
+            if (exist) exist.qty++;
+            else cart.push({ name, price, img, qty: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`Đã thêm "${name}" vào giỏ hàng!`);
+        }
+    </script>
+
 </body>
 
 </html>
