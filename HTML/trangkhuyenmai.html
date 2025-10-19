@@ -5,10 +5,354 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khuyến Mãi</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+.header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo img {
+    height: 70px;
+    width: 120px;
+}
+
+.user-cart a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+.user-cart a:hover {
+    color: aqua;
+    transform: scale(1.05);
+}
+
+.search-box input {
+    padding: 6px;
+    width: 300px;
+    border: none;
+    border-radius: 4px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav a:hover {
+    color: aqua;
+    transform: scale(1.05);
+}
+
+.user-cart i {
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.user-cart a:hover i {
+    color: #ffcc99;
+    text-shadow: 0 0 8px #ffcc99;
+}
+
+.search-box {
+    /* Chiều rộng mặc định */
+    transition: all 0.3s;
+}
+
+.search-input {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+/* Khi hover vào input */
+.search-input:hover {
+    background-color: rgb(0, 0, 0);
+    /* Viền vàng */
+    transform: scale(1.05);
+    color: white;
+}
+
+/* Khi focus (click vào ô) */
+.search-input:focus {
+    outline: none;
+}
+
+.dropdown {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+}
+
+.dropdown-toggle:hover {
+    color: #000000;
+    background-color: #000000;
+
+}
+
+.dropdown-menu {
+    background-color: #ff6f61;
+}
+
+.dropdown-item {
+    transition: none !important;
+    /* Tắt hiệu ứng chuyển động */
+    transform: none !important;
+    /* Đảm bảo không phóng to */
+}
+
+#chinhsua {
+    background-color: #ff6f61;
+}
+
+#logout:hover {
+    background-color: #ff6f61;
+}
+
+/* SECTION */
+/* .content {
+    padding: 40px;
+    text-align: center;
+} */
+.container{
+    
+    display: flex;
+}
+.col{
+    border: 1px solid rgb(222, 202, 202);
+    padding-bottom: 8px;
+
+}
+.row h2{
+    margin-top: 20px;
+}
+
+
+/* FOOTER */
+.footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 30px 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+}
+
+.footer h3 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 8px;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.footer ul li a:hover {
+    color: #ff6f61;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+}
+</style>
 
 <body>
 
+
+<!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <a href="./tranggioithieu.html">
+                <img src="../IMG/logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm sách, tác giả..." class="search-input">
+        </div>
+        <div class="nav">
+            <a href="./trangchu.html">Trang Chủ</a>
+            <a href="./trangsachmoi.html">Sách Mới</a>
+            <a href="./trangbanchay.html">Bán Chạy</a>
+            <a href="./danhmucsanpham.html">Danh Mục</a>
+            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+        </div>
+        <div class="user-cart">
+            <a href="./tranggiohang.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+        </div>
+    </div>
+
+    <!-- NỘI DUNG TRANG KHUYẾN MÃI-->
+     <!-- cột 1 -->
+     <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
+            <img src="../IMG/khuyen-mai1.jpg" class="khuyen-mai1"  alt="">
+            <h2>MUA CÀNG TO-LÌ XÌ CÀNG LỚN</h2>
+            <hr>
+            <p>Giảm đến <strong>70%</strong> toàn bộ sản phẩm – Duy nhất hôm nay!</p>
+            <button type="button" class="btn btn-outline-primary">Xem nhanh</button>
+            
+
+        </div>
+         <!-- cột 2 -->
+        <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
+            <img src="../IMG/khuyen-mai2.png" class="khuyen-mai2" alt="">
+            <h2>🎁 KHUYẾN MÃI ĐẶC BIỆT: MUA 5 TẶNG 1 🎁</h2>
+            <hr>
+            <p>Chương trình áp dụng từ <strong>20/10 đến 20/11/2025</strong> – Duy nhất tại đây!</p>
+                <ul>
+                    <li>💧 Nhận ngay 1 sản phẩm miễn phí khi mua 5 sản phẩm bất kỳ cùng loại.</li>
+                    <li>🚚 Miễn phí giao hàng trong bán kính 3km.</li>
+                    <li>🕒 Chương trình có giới hạn – nhanh tay kẻo hết!</li>
+                </ul>
+            <button type="button" class="btn btn-outline-primary">Xem nhanh</button>
+        
+        </div>
+         <!-- cột 3 -->
+        <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
+            <img src="../IMG/khuyen-mai3.jpg" class="khuyen-mai3" alt="" height="405px">
+            <h2>HỌC NGOẠI NGỮ DỄ DÀNG HƠN BAO GIỜ HẾT!</h2>
+            <hr>
+
+            <p>
+            Bộ sưu tập sách học tiếng Anh, Nhật, Hàn, Trung... giúp bạn tự học tại nhà dễ dàng, tiết kiệm chi phí.  
+            Cơ hội vàng chỉ có trong tháng 10 này – nhanh tay kẻo lỡ!</p>
+            <ul >
+                <li>📘 Giảm đến <strong>50%</strong> cho tất cả sách ngoại ngữ.</li>
+                <li>🎯 Tặng kèm bookmark hoặc sổ tay học từ vựng.</li>
+                <li>🚚 Freeship cho đơn từ 200.000đ.</li>
+            </ul>
+           <button type="button" class="btn btn-outline-primary">Xem nhanh</button>
+    
+        </div>
+
+        </div>
+        
+        
+    </div>
+    
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div>
+            <h3>Về Chúng Tôi</h3>
+            <ul>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <ul>
+                <li><a href="#">Trung tâm trợ giúp</a></li>
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn
+            </p>
+        </div>
+    </div>
+    <script src="../JS/jquery.js"></script>
+    <script src="../JS/bootstrap.bundle.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
+            const userCart = document.querySelector('.user-cart');
+
+            if (userInfo) {
+                // Giao diện dropdown cho tên người dùng
+                userCart.innerHTML = `
+            <a href="./tranggiohang.html">
+                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
+            </a>
+            <div class="dropdown ms-2">
+                <button class="btn btn-outline-secondary dropdown-toggle text-white" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user"></i> ${userInfo.username}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                    <li id = "chinhsua"><a class="dropdown-item" href="#" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
+                </ul>
+            </div>
+        `;
+
+                // Xử lý nút đăng xuất
+                document.getElementById('logout').addEventListener('click', function () {
+                    localStorage.removeItem('dangNhap');
+                    window.location.reload(); // Tải lại trang
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
