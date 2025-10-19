@@ -237,16 +237,16 @@
         function renderBooks(sectionId, books) {
             const container = document.querySelector(`#${sectionId} .book-scroll`);
             container.innerHTML = books.map(book => `
-                <div class="book-item">
-                    <img src="${book.img}" alt="${book.name}">
-                    <p class="fw-bold">${book.name}</p>
-                    <p class="text-danger">${book.price}</p>
-                    <div class="book-actions">
-                        <button class="btn-add" onclick="addToCart('${book.name}', '${book.price}', '${book.img}')">🛒</button>
-                        <a href="./chitietsach.html" class="btn-detail">Xem</a>
-                    </div>
-                </div>
-            `).join('');
+        <div class="book-item">
+            <img src="${book.img}" alt="${book.name}" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">
+            <p class="fw-bold">${book.name}</p>
+            <p class="text-danger">${book.price}</p>
+            <div class="book-actions">
+                <button class="btn-add" onclick="addToCart('${book.name}', '${book.price}', '${book.img}')">🛒</button>
+                <a href="./chitietsach.html" class="btn-detail" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">Xem</a>
+            </div>
+        </div>
+    `).join('');
         }
 
         // Hiển thị cho từng phần
@@ -263,6 +263,11 @@
             else cart.push({ name, price, img, qty: 1 });
             localStorage.setItem('cart', JSON.stringify(cart));
             alert(`Đã thêm "${name}" vào giỏ hàng!`);
+        }
+        function viewBookDetail(name, price, img) {
+            const bookDetail = { name, price, img };
+            localStorage.setItem('selectedBook', JSON.stringify(bookDetail));
+            window.location.href = './trangchitiet.html';
         }
     </script>
 
