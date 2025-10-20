@@ -106,6 +106,19 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
+        // Kiểm tra đăng nhập
+        let user = null;
+        try {
+            user = JSON.parse(localStorage.getItem('dangNhap')); // lấy thông tin user
+        } catch (e) {
+            user = null; // nếu JSON bị lỗi, coi như chưa đăng nhập
+        }
+
+        if (!user || Object.keys(user).length === 0) {
+            // nếu chưa đăng nhập hoặc object rỗng
+            alert("Bạn cần đăng nhập để vào giỏ hàng!");
+            window.location.href = "./trangchu.html"; // chuyển về trang đăng nhập
+        }
         // Hiển thị giỏ hàng từ localStorage
         function loadCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -121,7 +134,7 @@
 
             cart.forEach((item, index) => {
                 // Chuyển giá từ "45.000₫" thành số 45000
-                const priceNumber = Number(item.price.replace(/[^\d]/g, '')); 
+                const priceNumber = Number(item.price.replace(/[^\d]/g, ''));
                 const qty = item.quantity || item.qty || 1; // nếu chưa có quantity thì mặc định là 1
                 const subtotal = priceNumber * qty;
                 total += subtotal;
