@@ -25,18 +25,38 @@ document.addEventListener("DOMContentLoaded", function () {
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                     <li><a class="dropdown-item" href="#" id="viewBalance"><i class="fa-solid fa-wallet"></i> Xem số dư</a></li>
+                    <li><a class="dropdown-item" href="#" id="deposit"><i class="fa-solid fa-coins"></i> Nạp tiền</a></li>
                     <li><a class="dropdown-item" href="#" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                 </ul>
             </div>
         `;
 
-        // Xử lý nút xem số dư
+        // ===== Xử lý nút Xem số dư =====
         document.getElementById('viewBalance').addEventListener('click', function () {
-            const balance = userInfo.balance ? userInfo.balance.toLocaleString('dangNhap') : "0";
+            const balance = userInfo.balance ? userInfo.balance.toLocaleString('vi-VN') : "0";
             alert(`💰 Số dư hiện tại của bạn là: ${balance} VNĐ`);
         });
 
-        // Xử lý nút đăng xuất
+        // ===== Xử lý nút Nạp tiền =====
+        document.getElementById('deposit').addEventListener('click', function () {
+            const amountStr = prompt("💵 Nhập số tiền bạn muốn nạp (VNĐ):");
+            const amount = parseInt(amountStr);
+
+            if (isNaN(amount) || amount <= 0) {
+                alert("❌ Số tiền không hợp lệ!");
+                return;
+            }
+
+            // Nếu chưa có balance thì đặt = 0
+            userInfo.balance = userInfo.balance ? userInfo.balance + amount : amount;
+
+            // Lưu lại vào localStorage
+            localStorage.setItem('dangNhap', JSON.stringify(userInfo));
+
+            alert(`✅ Bạn đã nạp ${amount.toLocaleString('vi-VN')} VNĐ.\n💰 Số dư mới: ${userInfo.balance.toLocaleString('vi-VN')} VNĐ`);
+        });
+
+        // ===== Xử lý nút Đăng xuất =====
         document.getElementById('logout').addEventListener('click', function () {
             localStorage.removeItem('dangNhap');
             window.location.reload(); // Tải lại trang

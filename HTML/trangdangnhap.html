@@ -124,37 +124,72 @@
         </div>
     </div>
     <script>
-        const passwordInput = document.getElementById('password');
-        const toggleBtn = document.getElementById('togglePassword');
+        document.addEventListener("DOMContentLoaded", () => {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.getElementById('togglePassword');
+            const usernameInput = document.getElementById('username');
+            const rememberCheckbox = document.getElementById('remember');
 
-        // Toggle hiện/ẩn mật khẩu
-        toggleBtn.addEventListener('click', () => {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            toggleBtn.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
-        });
+            // --- 1. Toggle hiện/ẩn mật khẩu ---
+            toggleBtn.addEventListener('click', () => {
+                const type = passwordInput.type === 'password' ? 'text' : 'password';
+                passwordInput.type = type;
+                toggleBtn.innerHTML = type === 'password'
+                    ? '<i class="fas fa-eye"></i>'
+                    : '<i class="fas fa-eye-slash"></i>';
+            });
 
-        // Xử lý submit đăng nhập
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Ngăn reload form
-
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Lấy danh sách user từ localStorage
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-
-            // Kiểm tra user
-            const user = users.find(u => u.username === username && u.password === password);
-
-            if (user) {
-                localStorage.setItem('dangNhap', JSON.stringify(user));
-                window.location.href = "trangchu.html";
-            } else {
-                alert("Tên đăng nhập hoặc mật khẩu không đúng!");
+            // --- 2. Khi load trang: tự động điền username & password nếu có ghi nhớ ---
+            const rememberedData = JSON.parse(localStorage.getItem('rememberedUser'));
+            if (rememberedData) {
+                usernameInput.value = rememberedData.username;
+                passwordInput.value = rememberedData.password;
+                rememberCheckbox.checked = true;
             }
+
+            // --- 3. Nếu bỏ tick "ghi nhớ đăng nhập", xóa dữ liệu lưu ---
+            rememberCheckbox.addEventListener('change', () => {
+                if (!rememberCheckbox.checked) {
+                    localStorage.removeItem('rememberedUser');
+                }
+            });
+
+            // --- 4. Xử lý đăng nhập ---
+            document.getElementById('loginForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
+                const remember = rememberCheckbox.checked;
+
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const user = users.find(u => u.username === username && u.password === password);
+
+                if (user) {
+                    // Nếu có tick "Ghi nhớ đăng nhập" → lưu cả username & password
+                    if (remember) {
+                        localStorage.setItem('rememberedUser', JSON.stringify({
+                            username: username,
+                            password: password
+                        }));
+                    } else {
+                        localStorage.removeItem('rememberedUser');
+                    }
+
+                    // Lưu thông tin người đang đăng nhập
+                    localStorage.setItem('dangNhap', JSON.stringify(user));
+
+                    alert("✅ Đăng nhập thành công!");
+                    window.location.href = "trangchu.html";
+                } else {
+                    alert("❌ Tên đăng nhập hoặc mật khẩu không đúng!");
+                }
+            });
         });
     </script>
+
+
+
 </body>
 
 
