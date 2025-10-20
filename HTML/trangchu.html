@@ -175,16 +175,6 @@
             <div class="book-scroll"></div>
         </div>
 
-        <div id="danh-muc-sach" class="book-section">
-            <h2>Danh Mục Sách</h2>
-            <div class="book-scroll"></div>
-        </div>
-
-        <div id="sach-khuyen-mai" class="book-section">
-            <h2>Khuyến Mãi</h2>
-            <div class="book-scroll"></div>
-        </div>
-
     </div>
 
     <!-- FOOTER -->
@@ -273,6 +263,15 @@
                 category: "Lịch sử",
                 img: "../IMG/khuyen-mai.jpg"
             },
+            {
+                id: 6,
+                name: "Sách 6",
+                price: "55.000₫",
+                releaseDate: "2025-10-20",
+                purchases: 950,
+                category: "Lịch sử",
+                img: "../IMG/khuyen-mai.jpg"
+            },
         ];
 
         // Hàm hiển thị sách (không hiển thị category)
@@ -294,10 +293,22 @@
         }
 
         // Hiển thị danh sách
-        renderBooks('sach-moi', books);
-        renderBooks('sach-ban-chay', books);
+        // ✅ Sắp xếp 10 sách mới nhất
+        const newestBooks = [...books]
+            .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate))
+            .slice(0, 10);
+
+        // ✅ Sắp xếp 10 sách bán chạy nhất
+        const bestSellerBooks = [...books]
+            .sort((a, b) => b.purchases - a.purchases)
+            .slice(0, 10);
+
+        // ✅ Hiển thị lên giao diện
+        renderBooks('sach-moi', newestBooks);
+        renderBooks('sach-ban-chay', bestSellerBooks);
         renderBooks('sach-khuyen-mai', books);
         renderBooks('danh-muc-sach', books);
+
 
         // Thêm vào giỏ hàng
         function addToCart(bookId) {
