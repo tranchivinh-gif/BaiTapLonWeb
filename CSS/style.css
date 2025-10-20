@@ -190,67 +190,6 @@ footer p {
 }
 
 /*========================================= TREN DAY LA TRANG CHU ==================================*/
-/* ================= TRANG BÁN CHẠY ================= */
-.bestseller-section {
-    padding: 50px 80px;
-    text-align: center;
-}
-
-.bestseller-title {
-    color: #ff6f61;
-    font-weight: bold;
-    font-size: 30px;
-    margin-bottom: 40px;
-}
-
-.book-card {
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    transition: all 0.3s;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.book-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.book-img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-.book-info {
-    padding: 15px;
-}
-
-.book-title {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.book-price {
-    color: #ff6f61;
-    font-weight: bold;
-}
-
-.btn-buy {
-    background-color: #ff6f61;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 25px;
-    transition: 0.3s;
-}
-
-.btn-buy:hover {
-    background-color: #ff856e;
-    transform: scale(1.05);
-}
-
 /* ========================Sơ đồ sitemap =====================*/
 .sitemap {
     text-align: center;
