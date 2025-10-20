@@ -220,44 +220,90 @@
             </p>
         </div>
     </div>
+
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
+
+    <!-- ✅ PHẦN SCRIPT ĐÃ CẬP NHẬT -->
     <script>
-        // Mảng sách mẫu
+        // ✅ Mảng sách mẫu có thêm thuộc tính "category" (thể loại)
         const books = [
-            { name: "Sách 1", price: "45.000₫", img: "../IMG/khuyen-mai.jpg" },
-            { name: "Sách 2", price: "60.000₫", img: "../IMG/khuyen-mai.jpg" },
-            { name: "Sách 3", price: "90.000₫", img: "../IMG/khuyen-mai.jpg" },
-            { name: "Sách 3", price: "90.000₫", img: "../IMG/khuyen-mai.jpg" },
-            { name: "Sách 3", price: "90.000₫", img: "../IMG/khuyen-mai.jpg" },
-            { name: "Sách 3", price: "90.000₫", img: "../IMG/khuyen-mai.jpg" },
+            {
+                id: 1,
+                name: "Sách 1",
+                price: "45.000₫",
+                releaseDate: "2025-01-10",
+                purchases: 120,
+                category: "Tiểu thuyết",
+                img: "../IMG/khuyen-mai.jpg"
+            },
+            {
+                id: 2,
+                name: "Sách 2",
+                price: "60.000₫",
+                releaseDate: "2025-03-05",
+                purchases: 200,
+                category: "Khoa học",
+                img: "../IMG/khuyen-mai.jpg"
+            },
+            {
+                id: 3,
+                name: "Sách 3",
+                price: "90.000₫",
+                releaseDate: "2025-02-15",
+                purchases: 180,
+                category: "Văn học",
+                img: "../IMG/khuyen-mai.jpg"
+            },
+            {
+                id: 4,
+                name: "Sách 4",
+                price: "70.000₫",
+                releaseDate: "2024-12-20",
+                purchases: 300,
+                category: "Thiếu nhi",
+                img: "../IMG/khuyen-mai.jpg"
+            },
+            {
+                id: 5,
+                name: "Sách 5",
+                price: "55.000₫",
+                releaseDate: "2025-04-10",
+                purchases: 250,
+                category: "Lịch sử",
+                img: "../IMG/khuyen-mai.jpg"
+            },
         ];
 
-        // Hàm sinh sách
+        // Hàm hiển thị sách (không hiển thị category)
         function renderBooks(sectionId, books) {
             const container = document.querySelector(`#${sectionId} .book-scroll`);
             container.innerHTML = books.map(book => `
-        <div class="book-item">
-            <img src="${book.img}" alt="${book.name}" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">
-            <p class="fw-bold">${book.name}</p>
-            <p class="text-danger">${book.price}</p>
-            <div class="book-actions">
-                <button class="btn-add" onclick="addToCart('${book.name}', '${book.price}', '${book.img}')">🛒</button>
-                <a href="./trangchitiet.html" class="btn-detail" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">Xem</a>
+            <div class="book-item">
+                <img src="${book.img}" alt="${book.name}" onclick="viewBookDetail(${book.id})">
+                <p class="fw-bold">${book.name}</p>
+                <p class="text-danger">${book.price}</p>
+                <p>📅 ${book.releaseDate}</p>
+                <p>🔥 ${book.purchases} lượt mua</p>
+                <div class="book-actions">
+                    <button class="btn-add" onclick="addToCart(${book.id})">🛒</button>
+                    <a href="./trangchitiet.html" class="btn-detail" onclick="viewBookDetail(${book.id})">Xem</a>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `).join('');
         }
 
-        // Hiển thị cho từng phần
+        // Hiển thị danh sách
         renderBooks('sach-moi', books);
         renderBooks('sach-ban-chay', books);
         renderBooks('sach-khuyen-mai', books);
         renderBooks('danh-muc-sach', books);
 
-        // Thêm vào giỏ
-        function addToCart(name, price, img) {
-            // Kiểm tra đăng nhập
+        // Thêm vào giỏ hàng
+        function addToCart(bookId) {
+            const book = books.find(b => b.id === bookId);
+            if (!book) return;
+
             const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
             if (!userInfo || !userInfo.username) {
                 alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
@@ -265,33 +311,38 @@
                 return;
             }
 
-            // Tên người dùng   
             const username = userInfo.username;
-
-            // Giỏ hàng riêng cho từng người dùng
             const cartKey = `cart_${username}`;
             let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-            // Kiểm tra sản phẩm đã tồn tại chưa
-            const exist = cart.find(item => item.name === name);
+            const exist = cart.find(item => item.id === book.id);
             if (exist) {
                 exist.qty++;
             } else {
-                cart.push({ name, price, img, qty: 1 });
+                cart.push({ id: book.id, name: book.name, price: book.price, img: book.img, qty: 1 });
             }
 
-            // Lưu lại giỏ hàng
             localStorage.setItem(cartKey, JSON.stringify(cart));
-
-            alert(`Đã thêm "${name}" vào giỏ hàng của bạn!`);
+            alert(`Đã thêm "${book.name}" vào giỏ hàng!`);
         }
 
-        function viewBookDetail(name, price, img) {
-            const bookDetail = { name, price, img };
-            localStorage.setItem('selectedBook', JSON.stringify(bookDetail));
-            window.location.href = './trangchitiet.html';
+        // Xem chi tiết
+        function viewBookDetail(bookId) {
+            const book = books.find(b => b.id === bookId);
+            if (book) {
+                localStorage.setItem('selectedBook', JSON.stringify(book));
+                window.location.href = './trangchitiet.html';
+            }
         }
+
+        // Tìm kiếm
+        document.querySelector('.search-input').addEventListener('input', function () {
+            const keyword = this.value.toLowerCase();
+            const filteredBooks = books.filter(b => b.name.toLowerCase().includes(keyword));
+            renderBooks('sach-moi', filteredBooks);
+        });
     </script>
+
 
 </body>
 
