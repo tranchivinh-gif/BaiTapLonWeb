@@ -146,7 +146,7 @@
             </a>
         </div>
         <div class="search-box">
-            <input type="text" placeholder="Tìm sách, tác giả..." class="search-input">
+            <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
         </div>
         <div class="nav">
             <a href="./trangchu.html">Trang Chủ</a>
@@ -243,7 +243,7 @@
             <p class="text-danger">${book.price}</p>
             <div class="book-actions">
                 <button class="btn-add" onclick="addToCart('${book.name}', '${book.price}', '${book.img}')">🛒</button>
-                <a href="./chitietsach.html" class="btn-detail" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">Xem</a>
+                <a href="./trangchitiet.html" class="btn-detail" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">Xem</a>
             </div>
         </div>
     `).join('');
@@ -265,7 +265,7 @@
                 return;
             }
 
-            // Tên người dùng
+            // Tên người dùng   
             const username = userInfo.username;
 
             // Giỏ hàng riêng cho từng người dùng
