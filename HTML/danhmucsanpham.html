@@ -203,13 +203,34 @@
 
         // Thêm sản phẩm vào giỏ hàng
         function addToCart(name, price, img) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            // Kiểm tra đăng nhập
+            const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
+            if (!userInfo || !userInfo.username) {
+                alert("⚠️ Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
+                window.location.href = "./trangdangnhap.html";
+                return;
+            }
+
+            const username = userInfo.username;
+            const cartKey = `cart_${username}`; // giỏ hàng riêng cho từng người dùng
+
+            // Lấy giỏ hàng hiện tại của người đó
+            let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+            // Kiểm tra sản phẩm đã có trong giỏ chưa
             const exist = cart.find(item => item.name === name);
-            if (exist) exist.qty++;
-            else cart.push({ name, price, img, qty: 1 });
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`✅ Đã thêm "${name}" vào giỏ hàng!`);
+            if (exist) {
+                exist.qty++;
+            } else {
+                cart.push({ name, price, img, qty: 1 });
+            }
+
+            // Lưu lại vào localStorage
+            localStorage.setItem(cartKey, JSON.stringify(cart));
+
+            alert(`✅ Đã thêm "${name}" vào giỏ hàng của bạn!`);
         }
+
 
         // Lưu chi tiết sách khi bấm Xem
         function viewBookDetail(name, price, img) {

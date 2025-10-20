@@ -107,22 +107,25 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
-        // Kiểm tra đăng nhập
+        // === KIỂM TRA ĐĂNG NHẬP ===
         let user = null;
         try {
             user = JSON.parse(localStorage.getItem('dangNhap')); // lấy thông tin user
         } catch (e) {
-            user = null; // nếu JSON bị lỗi, coi như chưa đăng nhập
+            user = null;
         }
 
-        if (!user || Object.keys(user).length === 0) {
-            // nếu chưa đăng nhập hoặc object rỗng
-            alert("Bạn cần đăng nhập để vào giỏ hàng!");
-            window.location.href = "./trangchu.html"; // chuyển về trang đăng nhập
+        if (!user || !user.username) {
+            alert("Bạn cần đăng nhập để xem giỏ hàng!");
+            window.location.href = "./trangdangnhap.html";
         }
-        // Hiển thị giỏ hàng từ localStorage
+
+        const username = user.username;
+        const cartKey = `cart_${username}`;
+
+        // === HÀM HIỂN THỊ GIỎ HÀNG ===
         function loadCart() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
             const tbody = document.getElementById('cart-body');
             tbody.innerHTML = '';
             let total = 0;
@@ -134,52 +137,60 @@
             }
 
             cart.forEach((item, index) => {
-                // Chuyển giá từ "45.000₫" thành số 45000
                 const priceNumber = Number(item.price.replace(/[^\d]/g, ''));
-                const qty = item.quantity || item.qty || 1; // nếu chưa có quantity thì mặc định là 1
+                const qty = item.quantity || item.qty || 1;
                 const subtotal = priceNumber * qty;
                 total += subtotal;
 
                 const row = `
-                    <tr>
-                        <td><img src="${item.img}" width="60" style="border-radius:5px;"></td>
-                        <td>${item.name}</td>
-                        <td>${item.price}</td>
-                        <td><input type="number" value="${qty}" min="1" data-index="${index}" style="width:60px; text-align:center;"></td>
-                        <td>${subtotal.toLocaleString()}₫</td>
-                        <td><button class="btn btn-danger btn-sm" data-index="${index}"><i class="fa-solid fa-trash"></i> Xóa</button></td>
-                    </tr>
-                `;
+                <tr>
+                    <td><img src="${item.img}" width="60" style="border-radius:5px;"></td>
+                    <td>${item.name}</td>
+                    <td>${item.price}</td>
+                    <td>
+                        <input type="number" value="${qty}" min="1" data-index="${index}" 
+                        style="width:60px; text-align:center;">
+                    </td>
+                    <td>${subtotal.toLocaleString()}₫</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" data-index="${index}">
+                            <i class="fa-solid fa-trash"></i> Xóa
+                        </button>
+                    </td>
+                </tr>
+            `;
                 tbody.innerHTML += row;
             });
 
             document.getElementById('cart-total').textContent = total.toLocaleString() + "₫";
         }
 
-        // Xóa sản phẩm
+        // === XÓA SẢN PHẨM ===
         document.addEventListener('click', (e) => {
             if (e.target.closest('.btn-danger')) {
                 const index = e.target.closest('.btn-danger').dataset.index;
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
                 cart.splice(index, 1);
-                localStorage.setItem('cart', JSON.stringify(cart));
+                localStorage.setItem(cartKey, JSON.stringify(cart));
                 loadCart();
             }
         });
 
-        // Cập nhật số lượng
+        // === CẬP NHẬT SỐ LƯỢNG ===
         document.addEventListener('input', (e) => {
             if (e.target.tagName === 'INPUT' && e.target.type === 'number') {
                 const index = e.target.dataset.index;
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
                 cart[index].quantity = parseInt(e.target.value);
-                localStorage.setItem('cart', JSON.stringify(cart));
+                localStorage.setItem(cartKey, JSON.stringify(cart));
                 loadCart();
             }
         });
 
+        // === GỌI KHI MỚI VÀO TRANG ===
         loadCart();
     </script>
+
 
 
 </body>
