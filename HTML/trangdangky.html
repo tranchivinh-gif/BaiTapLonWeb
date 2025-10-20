@@ -161,7 +161,7 @@
             }
 
             // Thêm user mới
-            users.push({ username: username, password: password });
+            users.push({ username: username, password: password, "balance": 150000 });
             localStorage.setItem('users', JSON.stringify(users));
 
             alert("Đăng ký thành công!");

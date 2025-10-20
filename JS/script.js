@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userCart = document.querySelector('.user-cart');
 
     if (userInfo) {
-        // Giao diện dropdown cho tên người dùng
+        // Giao diện dropdown cho người dùng
         userCart.innerHTML = `
             <a href="./tranggiohang.html">
                 <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
@@ -24,10 +24,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     <i class="fa-solid fa-user"></i> ${userInfo.username}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-                    <li id = "chinhsua"><a class="dropdown-item" href="#" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
+                    <li><a class="dropdown-item" href="#" id="viewBalance"><i class="fa-solid fa-wallet"></i> Xem số dư</a></li>
+                    <li><a class="dropdown-item" href="#" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                 </ul>
             </div>
         `;
+
+        // Xử lý nút xem số dư
+        document.getElementById('viewBalance').addEventListener('click', function () {
+            const balance = userInfo.balance ? userInfo.balance.toLocaleString('dangNhap') : "0";
+            alert(`💰 Số dư hiện tại của bạn là: ${balance} VNĐ`);
+        });
 
         // Xử lý nút đăng xuất
         document.getElementById('logout').addEventListener('click', function () {
@@ -36,4 +43,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
 //  ============================ TREN LA TRANG CHU==========================
