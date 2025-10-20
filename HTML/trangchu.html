@@ -140,6 +140,59 @@
             padding: 2px 5px;
             transform: translate(30%, -30%);
         }
+
+        /* ===== DROPDOWN KẾT QUẢ TÌM KIẾM ===== */
+        .header {
+            position: relative;
+            z-index: 999;
+        }
+
+        .search-box {
+            position: relative;
+            width: 250px;
+            /* hoặc 300px nếu muốn ô dài hơn */
+        }
+
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-top: none;
+            z-index: 1000;
+            display: none;
+            max-height: 250px;
+            overflow-y: auto;
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-results div {
+            padding: 8px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .search-results div img {
+            width: 30px;
+            height: 40px;
+            object-fit: cover;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+
+        .search-results div:hover {
+            background: #f8f9fa;
+        }
     </style>
 </head>
 
@@ -153,6 +206,7 @@
         </div>
         <div class="search-box">
             <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
+            <div class="search-results"></div>
         </div>
         <div class="nav">
             <a href="./trangchu.html">Trang Chủ</a>
@@ -318,8 +372,7 @@
         // ✅ Hiển thị lên giao diện
         renderBooks('sach-moi', newestBooks);
         renderBooks('sach-ban-chay', bestSellerBooks);
-        renderBooks('sach-khuyen-mai', books);
-        renderBooks('danh-muc-sach', books);
+
 
 
         // Thêm vào giỏ hàng
@@ -359,12 +412,46 @@
             }
         }
 
-        // Tìm kiếm
-        document.querySelector('.search-input').addEventListener('input', function () {
-            const keyword = this.value.toLowerCase();
-            const filteredBooks = books.filter(b => b.name.toLowerCase().includes(keyword));
-            renderBooks('sach-moi', filteredBooks);
-        });
+        // ================== TÌM KIẾM CÓ DROPDOWN ==================
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
+
+        if (searchInput && searchResults) {
+            searchInput.addEventListener('input', function () {
+                const keyword = this.value.trim().toLowerCase();
+
+                if (!keyword) {
+                    searchResults.style.display = 'none';
+                    searchResults.innerHTML = '';
+                    return;
+                }
+
+                const filteredBooks = books.filter(book =>
+                    book.name.toLowerCase().includes(keyword)
+                );
+
+                if (filteredBooks.length > 0) {
+                    searchResults.style.display = 'block';
+                    searchResults.innerHTML = filteredBooks.map(book => `
+                <div onclick="viewBookDetail(${book.id})">
+                    <img src="${book.img}" alt="${book.name}">
+                    <span>${book.name}</span>
+                </div>
+            `).join('');
+                } else {
+                    searchResults.style.display = 'block';
+                    searchResults.innerHTML = `<div>Không tìm thấy kết quả phù hợp</div>`;
+                }
+            });
+
+            // Ẩn dropdown khi click ra ngoài
+            document.addEventListener('click', function (e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        }
+
     </script>
 
 
