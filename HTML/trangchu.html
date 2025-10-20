@@ -134,6 +134,12 @@
         .btn-detail:hover {
             opacity: 0.9;
         }
+
+        #cart-count {
+            font-size: 10px;
+            padding: 2px 5px;
+            transform: translate(30%, -30%);
+        }
     </style>
 </head>
 
@@ -156,7 +162,13 @@
             <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
         </div>
         <div class="user-cart">
-            <a href="./tranggiohang.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+            <a href="./tranggiohang.html" class="cart-link position-relative">
+                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
+                <span id="cart-count"
+                    class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill"
+                    style="font-size: 10px;">0</span>
+            </a>
+
             <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
         </div>
     </div>
@@ -335,6 +347,7 @@
 
             localStorage.setItem(cartKey, JSON.stringify(cart));
             alert(`Đã thêm "${book.name}" vào giỏ hàng!`);
+            updateCartCount(); // ✅ Cập nhật lại số lượng trên biểu tượng
         }
 
         // Xem chi tiết
