@@ -190,3 +190,156 @@ footer p {
 }
 
 /*========================================= TREN DAY LA TRANG CHU ==================================*/
+/* ================= TRANG BÁN CHẠY ================= */
+.bestseller-section {
+    padding: 50px 80px;
+    text-align: center;
+}
+
+.bestseller-title {
+    color: #ff6f61;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.book-card {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.book-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.book-info {
+    padding: 15px;
+}
+
+.book-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.book-price {
+    color: #ff6f61;
+    font-weight: bold;
+}
+
+.btn-buy {
+    background-color: #ff6f61;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.btn-buy:hover {
+    background-color: #ff856e;
+    transform: scale(1.05);
+}
+/* ========================Sơ đồ sitemap =====================*/
+        .sitemap {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .sitemap h2 {
+            color: #ff6f61;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        /* Dạng sơ đồ cây */
+        .tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tree ul {
+            position: relative;
+            padding-top: 20px;
+            transition: all 0.5s;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tree li {
+            list-style-type: none;
+            text-align: center;
+            position: relative;
+            padding: 20px 10px 0 10px;
+        }
+
+        /* Vẽ nhánh nối */
+        .tree li::before,
+        .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            border-top: 2px solid #ccc;
+            width: 50%;
+            height: 20px;
+        }
+
+        .tree li::before {
+            right: 50%;
+            border-right: 2px solid #ccc;
+        }
+
+        .tree li::after {
+            left: 50%;
+            border-left: 2px solid #ccc;
+        }
+
+        /* Xóa nhánh cho node đơn */
+        .tree li:only-child::before,
+        .tree li:only-child::after {
+            display: none;
+        }
+
+        .tree li:only-child {
+            padding-top: 0;
+        }
+
+        /* Khối trang */
+        .tree li a {
+            border: 2px solid #ff6f61;
+            border-radius: 8px;
+            padding: 10px 20px;
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            background-color: #fff;
+            transition: all 0.3s;
+        }
+
+        .tree li a:hover {
+            background-color: #ff6f61;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Nối dọc */
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 2px solid #ccc;
+            height: 20px;
+        }
