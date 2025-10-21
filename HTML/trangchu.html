@@ -40,41 +40,37 @@
 
         .book-item {
             flex: 0 0 auto;
-            width: 350px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .book-item:hover {
-            transform: scale(1.05);
-        }
-
-        .book-item img {
-            width: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .book-item p {
-            margin-top: 8px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .book-item {
-            flex: 0 0 auto;
             width: 250px;
+            height: 400px;
             text-align: center;
             border: 1px solid #eee;
             border-radius: 8px;
             padding: 10px;
             background: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s;
         }
 
         .book-item:hover {
             transform: scale(1.03);
             transition: 0.3s;
+        }
+
+        .book-item img {
+            width: 100%;
+            height: 200px;
+
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .book-item p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .book-price {
@@ -148,11 +144,6 @@
         .search-box {
             position: relative;
             width: 250px;
-        }
-
-
-        .search-box {
-            position: relative;
         }
 
         .search-results {
@@ -276,88 +267,98 @@
         const books = [
             {
                 id: 1,
-                name: "Sách 1",
+                name: "Đừng lựa chọn khi còn trẻ",
                 price: "45.000₫",
                 releaseDate: "2025-01-10",
                 purchases: 120,
-                category: "Tiểu thuyết",
-                img: "../IMG/khuyen-mai.jpg"
+                category: "Cuộc Sống",
+                img: "../IMG/sachdungluachonkhicontre.jpeg"
             },
             {
                 id: 2,
-                name: "Sách 2",
+                name: "7 thói quen hiệu quả",
                 price: "60.000₫",
                 releaseDate: "2025-03-05",
                 purchases: 200,
                 category: "Khoa học",
-                img: "../IMG/khuyen-mai.jpg"
+                img: "../IMG/sach7thoiquenhieuqua.webp"
             },
             {
                 id: 3,
-                name: "Sách 3",
+                name: "lịch sử Việt Nam",
                 price: "90.000₫",
                 releaseDate: "2025-02-15",
                 purchases: 180,
-                category: "Văn học",
-                img: "../IMG/khuyen-mai.jpg"
+                category: "Lịch Sử",
+                img: "../IMG/sachlichsuvietnam.png"
             },
             {
                 id: 4,
-                name: "Sách 4",
+                name: "Toán",
                 price: "70.000₫",
                 releaseDate: "2024-12-20",
                 purchases: 300,
-                category: "Thiếu nhi",
-                img: "../IMG/khuyen-mai.jpg"
+                category: "SGK",
+                img: "../IMG/sachtoan.png"
             },
             {
                 id: 5,
-                name: "Sách 5",
+                name: "Truyện Kiều",
                 price: "55.000₫",
                 releaseDate: "2025-04-10",
                 purchases: 250,
-                category: "Lịch sử",
-                img: "../IMG/khuyen-mai.jpg"
+                category: "Truyện",
+                img: "../IMG/sachtruyenkieu.jpg"
             },
             {
                 id: 6,
-                name: "Sách 6",
+                name: "Văn",
                 price: "55.000₫",
                 releaseDate: "2025-10-20",
                 purchases: 950,
-                category: "Lịch sử",
-                img: "../IMG/khuyen-mai.jpg"
+                category: "SGK",
+                img: "../IMG/sachvan.jpg"
             },
         ];
+        // ========== Thêm sách thủ công ==========
 
-        function renderBooks(sectionId, books) {
-            const container = document.querySelector(`#${sectionId} .book-scroll`);
-            container.innerHTML = books.map(book => `
-            <div class="book-item">
-                <img src="${book.img}" alt="${book.name}" onclick="viewBookDetail(${book.id})">
-                <p class="fw-bold">${book.name}</p>
-                <p class="text-danger">${book.price}</p>
-                <p>📅 ${book.releaseDate}</p>
-                <p>🔥 ${book.purchases} lượt mua</p>
-                <div class="book-actions">
-                    <button class="btn-add" onclick="addToCart(${book.id})">🛒</button>
-                    <a href="./trangchitiet.html" class="btn-detail" onclick="viewBookDetail(${book.id})">Xem</a>
-                </div>
+        // Lấy container từng phần
+        const sachMoiContainer = document.querySelector('#sach-moi .book-scroll');
+        const sachBanChayContainer = document.querySelector('#sach-ban-chay .book-scroll');
+
+        // Hàm thêm sách thủ công
+        function addBookManually(container, book) {
+            const bookHTML = `
+        <div class="book-item">
+            <img src="${book.img}" alt="${book.name}" onclick="viewBookDetail(${book.id})">
+            <p class="fw-bold">${book.name}</p>
+            <p class="text-danger">${book.price}</p>
+            <p>${book.releaseDate}</p>
+            <p>${book.purchases} lượt mua</p>
+            <div class="book-actions">
+                <button class="btn-add" onclick="addToCart(${book.id})">🛒</button>
+                <a href="./trangchitiet.html" class="btn-detail" onclick="viewBookDetail(${book.id})">Xem</a>
             </div>
-        `).join('');
+        </div>`;
+            container.innerHTML += bookHTML;
         }
 
-        const newestBooks = [...books]
-            .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate))
-            .slice(0, 10);
+        // ===== Thêm sách mới thủ công =====
+        addBookManually(sachMoiContainer, books[0]);
+        addBookManually(sachMoiContainer, books[1]);
+        addBookManually(sachMoiContainer, books[2]);
+        addBookManually(sachMoiContainer, books[3]);
+        addBookManually(sachMoiContainer, books[4]);
+        addBookManually(sachMoiContainer, books[5]);
 
-        const bestSellerBooks = [...books]
-            .sort((a, b) => b.purchases - a.purchases)
-            .slice(0, 10);
-
-        renderBooks('sach-moi', newestBooks);
-        renderBooks('sach-ban-chay', bestSellerBooks);
-
+        // ===== Thêm sách bán chạy thủ công =====
+        addBookManually(sachBanChayContainer, books[0]);
+        addBookManually(sachBanChayContainer, books[1]);
+        addBookManually(sachBanChayContainer, books[2]);
+        addBookManually(sachBanChayContainer, books[3]);
+        addBookManually(sachBanChayContainer, books[4]);
+        addBookManually(sachBanChayContainer, books[5]);
+        addBookManually(sachBanChayContainer, books[0]);
 
 
         function addToCart(bookId) {
