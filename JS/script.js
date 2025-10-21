@@ -1,19 +1,7 @@
-//  ============================ DUOI LA TRANG DANG NHAP==========================
-
-//  ============================ TREN LA TRANG DANG NHAP==========================
-
-//  ============================ TREN LA TRANG DANG KY==========================
-
-//  ============================ TREN LA TRANG DANG KY==========================
-
-//  ============================ TREN LA TRANG CHU==========================
-
-// sử lý phần đăng nhập cho tất cả các trang
 document.addEventListener("DOMContentLoaded", function () {
     const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
     const userCart = document.querySelector('.user-cart');
 
-    // ===== Hàm cập nhật số lượng giỏ hàng =====
     function updateCartCount() {
         const cartCountEl = document.getElementById('cart-count');
         if (!cartCountEl) return;
@@ -48,25 +36,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 </ul>
             </div>`;
 
-        // ✅ Cập nhật số lượng giỏ hàng ngay sau khi innerHTML được gán
         updateCartCount();
 
-        // Xử lý các nút
         document.getElementById('viewBalance').addEventListener('click', function () {
             const balance = userInfo.balance ? userInfo.balance.toLocaleString('vi-VN') : "0";
             alert(`💰 Số dư hiện tại của bạn là: ${balance} VNĐ`);
         });
 
         document.getElementById('deposit').addEventListener('click', function () {
-            const amountStr = prompt("💵 Nhập số tiền bạn muốn nạp (VNĐ):");
+            const amountStr = prompt("Nhập số tiền bạn muốn nạp (VNĐ):");
             const amount = parseInt(amountStr);
             if (isNaN(amount) || amount <= 0) {
-                alert("❌ Số tiền không hợp lệ!");
+                alert("Số tiền không hợp lệ!");
                 return;
             }
             userInfo.balance = userInfo.balance ? userInfo.balance + amount : amount;
             localStorage.setItem('dangNhap', JSON.stringify(userInfo));
-            alert(`✅ Bạn đã nạp ${amount.toLocaleString('vi-VN')} VNĐ.\n💰 Số dư mới: ${userInfo.balance.toLocaleString('vi-VN')} VNĐ`);
+            alert(`Bạn đã nạp ${amount.toLocaleString('vi-VN')} VNĐ.\n Số dư mới: ${userInfo.balance.toLocaleString('vi-VN')} VNĐ`);
         });
 
         document.getElementById('logout').addEventListener('click', function () {
@@ -74,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.reload();
         });
     } else {
-        // Nếu chưa đăng nhập, vẫn tạo badge số lượng
         userCart.innerHTML = `
             <a href="./tranggiohang.html">
                 <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
@@ -85,4 +70,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 window.updateCartCount = updateCartCount;
-//  ============================ TREN LA TRANG CHU==========================

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../CSS/style.css">
     <script src="../JS/jquery.js"></script>
     <style>
-        /* Luôn hiển thị nút tăng giảm cho input type=number */
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
             opacity: 1;
@@ -44,7 +43,6 @@
         </div>
     </div>
 
-    <!-- NỘI DUNG TRANG GIỎ HÀNG -->
     <div class="content" style="padding: 40px;">
         <h1>Giỏ Hàng Của Bạn</h1>
         <table class="table table-bordered table-striped mt-4">
@@ -108,7 +106,6 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
-        // === KIỂM TRA ĐĂNG NHẬP ===
         let user = null;
         try {
             user = JSON.parse(localStorage.getItem('dangNhap')); // lấy thông tin user
@@ -124,7 +121,6 @@
         const username = user.username;
         const cartKey = `cart_${username}`;
 
-        // === HÀM HIỂN THỊ GIỎ HÀNG ===
         function loadCart() {
             const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
             const tbody = document.getElementById('cart-body');
@@ -177,7 +173,6 @@
             }
         });
 
-        // === CẬP NHẬT SỐ LƯỢNG ===
         document.addEventListener('input', (e) => {
             if (e.target.tagName === 'INPUT' && e.target.type === 'number') {
                 const index = e.target.dataset.index;
@@ -188,7 +183,6 @@
             }
         });
 
-        // === GỌI KHI MỚI VÀO TRANG ===
         loadCart();
     </script>
 

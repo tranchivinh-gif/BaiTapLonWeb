@@ -19,9 +19,7 @@
 
         input.form-control:focus {
             border-color: #ff6f61;
-            /* Viền đỏ */
             box-shadow: 0 0 5px #ff6f61;
-            /* Bóng đỏ xung quanh */
         }
 
         .logo {
@@ -33,13 +31,10 @@
             transition: color 0.3s;
         }
 
-        /* Khi hover vào nút, icon đổi màu */
         #togglePassword:hover i {
             color: white;
-            /* đỏ hoặc màu bạn thích */
         }
 
-        /* Khi password đang hiển thị, icon đổi màu xanh */
         #togglePassword.active i {
             color: green;
         }
@@ -52,7 +47,6 @@
 </head>
 
 <body>
-    <!-- PHẦN ĐĂNG NHẬP -->
     <div class="row justify-content-center mt-5">
         <div class="col-md-6 col-lg-4">
             <img src="../IMG/logo.png" class="logo d-block mx-auto mb-3" alt="logo">
@@ -89,7 +83,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer mt-5">
         <div>
             <h3>Về Chúng Tôi</h3>
@@ -130,7 +123,6 @@
             const usernameInput = document.getElementById('username');
             const rememberCheckbox = document.getElementById('remember');
 
-            // --- 1. Toggle hiện/ẩn mật khẩu ---
             toggleBtn.addEventListener('click', () => {
                 const type = passwordInput.type === 'password' ? 'text' : 'password';
                 passwordInput.type = type;
@@ -139,7 +131,6 @@
                     : '<i class="fas fa-eye-slash"></i>';
             });
 
-            // --- 2. Khi load trang: tự động điền username & password nếu có ghi nhớ ---
             const rememberedData = JSON.parse(localStorage.getItem('rememberedUser'));
             if (rememberedData) {
                 usernameInput.value = rememberedData.username;
@@ -147,14 +138,12 @@
                 rememberCheckbox.checked = true;
             }
 
-            // --- 3. Nếu bỏ tick "ghi nhớ đăng nhập", xóa dữ liệu lưu ---
             rememberCheckbox.addEventListener('change', () => {
                 if (!rememberCheckbox.checked) {
                     localStorage.removeItem('rememberedUser');
                 }
             });
 
-            // --- 4. Xử lý đăng nhập ---
             document.getElementById('loginForm').addEventListener('submit', function (e) {
                 e.preventDefault();
 
@@ -166,7 +155,6 @@
                 const user = users.find(u => u.username === username && u.password === password);
 
                 if (user) {
-                    // Nếu có tick "Ghi nhớ đăng nhập" → lưu cả username & password
                     if (remember) {
                         localStorage.setItem('rememberedUser', JSON.stringify({
                             username: username,
@@ -176,13 +164,12 @@
                         localStorage.removeItem('rememberedUser');
                     }
 
-                    // Lưu thông tin người đang đăng nhập
                     localStorage.setItem('dangNhap', JSON.stringify(user));
 
-                    alert("✅ Đăng nhập thành công!");
+                    alert("Đăng nhập thành công!");
                     window.location.href = "trangchu.html";
                 } else {
-                    alert("❌ Tên đăng nhập hoặc mật khẩu không đúng!");
+                    alert("Tên đăng nhập hoặc mật khẩu không đúng!");
                 }
             });
         });

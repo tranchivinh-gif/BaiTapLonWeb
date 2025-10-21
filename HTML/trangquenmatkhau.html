@@ -39,7 +39,6 @@
 </head>
 
 <body>
-    <!-- HEADER -->
     <div class="row justify-content-center mt-5">
         <div class="col-md-6 col-lg-4">
             <img src="../IMG/logo.png" class="logo d-block mx-auto mb-3" alt="logo">
@@ -47,14 +46,10 @@
                 <div class="card-body">
                     <h3 class="card-title text-center mb-4">Bạn Quên Mật Khẩu?</h3>
                     <form id="registerForm">
-
-                        <!-- Tên đăng nhập -->
                         <div class="mb-3">
                             <label for="regUsername" class="form-label">Nhập tên đăng nhập</label>
                             <input type="text" class="form-control" id="regUsername" name="username" required>
                         </div>
-
-                        <!-- Mật khẩu -->
                         <div class="mb-3">
                             <label for="regPassword" class="form-label">Nhập mật khẩu mới</label>
                             <div class="input-group">
@@ -64,8 +59,6 @@
                                 </button>
                             </div>
                         </div>
-
-                        <!-- Xác nhận mật khẩu -->
                         <div class="mb-3">
                             <label for="regConfirm" class="form-label">Xác nhận mật khẩu mới</label>
                             <div class="input-group">
@@ -89,7 +82,6 @@
             </div>
         </div>
     </div>
-    <!-- FOOTER -->
     <div class="footer mt-5">
         <div>
             <h3>Về Chúng Tôi</h3>
@@ -101,7 +93,6 @@
                 <li><a href="#">Chính sách bảo mật</a></li>
             </ul>
         </div>
-
         <div>
             <h3>Hỗ Trợ Khách Hàng</h3>
             <ul>
@@ -111,7 +102,6 @@
                 <li><a href="#">Liên hệ</a></li>
             </ul>
         </div>
-
         <div>
             <h3>Kết Nối Với Chúng Tôi</h3>
             <div class="social-icons">
@@ -125,7 +115,6 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
-        // ====== Hàm hiển thị/ẩn mật khẩu ======
         function togglePassword(inputId, btnId) {
             const input = document.getElementById(inputId);
             const btn = document.getElementById(btnId);
@@ -136,11 +125,9 @@
             });
         }
 
-        // Gọi cho 2 ô mật khẩu
         togglePassword('regPassword', 'toggleRegPassword');
         togglePassword('regConfirm', 'toggleRegConfirm');
 
-        // ====== Xử lý đổi mật khẩu ======
         const form = document.getElementById('registerForm');
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -150,18 +137,16 @@
             const confirmPassword = document.getElementById('regConfirm').value;
 
             if (newPassword !== confirmPassword) {
-                alert("⚠️ Mật khẩu xác nhận không khớp!");
+                alert("Mật khẩu xác nhận không khớp!");
                 return;
             }
 
-            // Lấy danh sách users từ localStorage
             let users = JSON.parse(localStorage.getItem('users')) || [];
 
-            // Tìm người dùng có username khớp
             const userIndex = users.findIndex(u => u.username === username);
 
             if (userIndex === -1) {
-                alert("❌ Tên đăng nhập không tồn tại!");
+                alert("Tên đăng nhập không tồn tại!");
                 return;
             }
 
@@ -169,7 +154,7 @@
             users[userIndex].password = newPassword;
             localStorage.setItem('users', JSON.stringify(users));
 
-            alert("✅ Đổi mật khẩu thành công! Vui lòng đăng nhập lại.");
+            alert("Đổi mật khẩu thành công! Vui lòng đăng nhập lại.");
             window.location.href = "trangdangnhap.html";
         });
     </script>

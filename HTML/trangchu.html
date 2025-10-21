@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <style>
-        /* --- PHẦN MỚI THÊM --- */
         .book-section {
             margin: 40px 0;
         }
@@ -141,7 +140,6 @@
             transform: translate(30%, -30%);
         }
 
-        /* ===== DROPDOWN KẾT QUẢ TÌM KIẾM ===== */
         .header {
             position: relative;
             z-index: 999;
@@ -150,7 +148,6 @@
         .search-box {
             position: relative;
             width: 250px;
-            /* hoặc 300px nếu muốn ô dài hơn */
         }
 
 
@@ -197,7 +194,6 @@
 </head>
 
 <body>
-    <!-- HEADER -->
     <div class="header">
         <div class="logo">
             <a href="./tranggioithieu.html">
@@ -227,10 +223,8 @@
         </div>
     </div>
 
-    <!-- NỘI DUNG TRANG -->
     <div class="content">
         <h1>Chào mừng bạn đến với BookStore</h1>
-        <!-- Các khu vực sách -->
         <div id="sach-moi" class="book-section">
             <h2>Sách Mới Phát Hành</h2>
             <div class="book-scroll"></div>
@@ -240,10 +234,8 @@
             <h2>Sách Bán Chạy</h2>
             <div class="book-scroll"></div>
         </div>
-
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
         <div>
             <h3>Về Chúng Tôi</h3>
@@ -280,9 +272,7 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
 
-    <!-- ✅ PHẦN SCRIPT ĐÃ CẬP NHẬT -->
     <script>
-        // ✅ Mảng sách mẫu có thêm thuộc tính "category" (thể loại)
         const books = [
             {
                 id: 1,
@@ -340,7 +330,6 @@
             },
         ];
 
-        // Hàm hiển thị sách (không hiển thị category)
         function renderBooks(sectionId, books) {
             const container = document.querySelector(`#${sectionId} .book-scroll`);
             container.innerHTML = books.map(book => `
@@ -358,24 +347,19 @@
         `).join('');
         }
 
-        // Hiển thị danh sách
-        // ✅ Sắp xếp 10 sách mới nhất
         const newestBooks = [...books]
             .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate))
             .slice(0, 10);
 
-        // ✅ Sắp xếp 10 sách bán chạy nhất
         const bestSellerBooks = [...books]
             .sort((a, b) => b.purchases - a.purchases)
             .slice(0, 10);
 
-        // ✅ Hiển thị lên giao diện
         renderBooks('sach-moi', newestBooks);
         renderBooks('sach-ban-chay', bestSellerBooks);
 
 
 
-        // Thêm vào giỏ hàng
         function addToCart(bookId) {
             const book = books.find(b => b.id === bookId);
             if (!book) return;
@@ -400,10 +384,9 @@
 
             localStorage.setItem(cartKey, JSON.stringify(cart));
             alert(`Đã thêm "${book.name}" vào giỏ hàng!`);
-            updateCartCount(); // ✅ Cập nhật lại số lượng trên biểu tượng
+            updateCartCount();
         }
 
-        // Xem chi tiết
         function viewBookDetail(bookId) {
             const book = books.find(b => b.id === bookId);
             if (book) {
@@ -412,7 +395,6 @@
             }
         }
 
-        // ================== TÌM KIẾM CÓ DROPDOWN ==================
         const searchInput = document.querySelector('.search-input');
         const searchResults = document.querySelector('.search-results');
 
@@ -444,7 +426,6 @@
                 }
             });
 
-            // Ẩn dropdown khi click ra ngoài
             document.addEventListener('click', function (e) {
                 if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
                     searchResults.style.display = 'none';
