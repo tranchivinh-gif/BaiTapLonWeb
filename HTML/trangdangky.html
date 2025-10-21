@@ -47,14 +47,11 @@
                 <div class="card-body">
                     <h3 class="card-title text-center mb-4">Đăng ký</h3>
                     <form id="registerForm">
-
-                        <!-- Tên đăng nhập -->
                         <div class="mb-3">
                             <label for="regUsername" class="form-label">Tên đăng nhập</label>
                             <input type="text" class="form-control" id="regUsername" name="username" required>
                         </div>
 
-                        <!-- Mật khẩu -->
                         <div class="mb-3">
                             <label for="regPassword" class="form-label">Mật khẩu</label>
                             <div class="input-group">
@@ -65,7 +62,6 @@
                             </div>
                         </div>
 
-                        <!-- Xác nhận mật khẩu -->
                         <div class="mb-3">
                             <label for="regConfirm" class="form-label">Xác nhận mật khẩu</label>
                             <div class="input-group">
@@ -88,7 +84,7 @@
             </div>
         </div>
     </div>
-    <!-- FOOTER -->
+
     <div class="footer mt-5">
         <div>
             <h3>Về Chúng Tôi</h3>
@@ -122,7 +118,6 @@
         </div>
     </div>
     <script>
-        // Hàm toggle mật khẩu
         function togglePassword(inputId, btnId) {
             const input = document.getElementById(inputId);
             const btn = document.getElementById(btnId);
@@ -133,11 +128,9 @@
             });
         }
 
-        // Gọi toggle cho password và confirm
         togglePassword('regPassword', 'toggleRegPassword');
         togglePassword('regConfirm', 'toggleRegConfirm');
 
-        // Xử lý submit form đăng ký
         const registerForm = document.getElementById('registerForm');
         registerForm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -151,21 +144,18 @@
                 return;
             }
 
-            // Lấy danh sách users từ localStorage
             let users = JSON.parse(localStorage.getItem('users')) || [];
 
-            // Kiểm tra username đã tồn tại
             if (users.some(u => u.username === username)) {
                 alert("Tên đăng nhập đã tồn tại!");
                 return;
             }
 
-            // Thêm user mới
             users.push({ username: username, password: password, "balance": 150000 });
             localStorage.setItem('users', JSON.stringify(users));
 
             alert("Đăng ký thành công!");
-            window.location.href = "trangdangnhap.html"; // nếu muốn chuyển trang
+            window.location.href = "trangdangnhap.html";
         });
     </script>
 </body>
