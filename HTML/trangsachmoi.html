@@ -2,20 +2,87 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sách Mới </title>
-    <link rel="stylesheet" href="../CSS/bootstrap.min.css" />
-    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css" />
-    <link rel="stylesheet" href="../CSS/style.css" />
-    <script src="../JS/jquery.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sách Mới</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        .book-section {
+            margin: 40px 0;
+        }
+
+        .book-section h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-left: 4px solid #ffc107;
+            padding-left: 10px;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .book-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            text-align: center;
+            padding: 10px;
+            background: #fff;
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .book-item:hover {
+            transform: scale(1.03);
+        }
+
+        .book-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .book-item p {
+            margin: 5px 0;
+        }
+
+        .book-actions {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-add {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+        }
+
+        .btn-detail {
+            background-color: #17a2b8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- HEADER (giữ giống trang khác để đồng bộ) -->
+    <!-- HEADER -->
     <div class="header">
         <div class="logo">
-            <a href="./tranggioithieu.html"><img src="../IMG/logo.png" alt="logo"></a>
+            <a href="./tranggioithieu.html">
+                <img src="../IMG/logo.png" alt="logo">
+            </a>
         </div>
         <div class="search-box">
             <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
@@ -24,151 +91,27 @@
         <div class="nav">
             <a href="./trangchu.html">Trang Chủ</a>
             <a href="./trangsachmoi.html" class="active">Sách Mới</a>
-
             <a href="./trangbanchay.html">Bán Chạy</a>
             <a href="./danhmucsanpham.html">Danh Mục</a>
-            <a href="../HTML/trangbanchay.html">Bán Chạy</a>
             <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
         </div>
         <div class="user-cart">
-            <a href="./tranggiohang.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+            <a href="./tranggiohang.html" class="cart-link position-relative">
+                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
+                <span id="cart-count"
+                    class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill"
+                    style="font-size: 10px;">0</span>
+            </a>
             <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
         </div>
     </div>
 
-    <!-- NỘI DUNG CHÍNH -->
-    <div class="container mt-5 mb-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0">📚 Sách Mới</h2>
-
-            <div class="d-flex gap-3 align-items-center">
-
-                <select id="sortSelect" class="form-select form-select-sm" style="width:220px;">
-                    <option value="new">Mới nhất</option>
-                    <option value="price-asc">Giá: thấp → cao</option>
-                    <option value="price-desc">Giá: cao → thấp</option>
-                    <option value="alpha">Tên A → Z</option>
-                </select>
-
-                <div class="input-group input-group-sm" style="width:230px;">
-                    <span class="input-group-text"><i class="fa-solid fa-filter"></i></span>
-                    <select id="categorySelect" class="form-select">
-                        <option value="all">Tất cả thể loại</option>
-                        <option value="ky-nang">Kỹ năng sống</option>
-                        <option value="van-hoc">Văn học</option>
-                        <option value="kinh-te">Kinh tế</option>
-                        <option value="thieu-nhi">Thiếu nhi</option>
-                    </select>
-                </div>
-            </div>
+    <!-- NỘI DUNG -->
+    <div class="content container">
+        <div class="book-section">
+            <h2>Sách Mới Phát Hành</h2>
+            <div class="book-grid" id="book-list"></div>
         </div>
-
-        <!-- Lưới sách -->
-        <div id="booksGrid" class="row g-4">
-            <!-- Card sách (nhân bản / sửa nội dung hoặc tạo động bằng JS) -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <div class="position-relative">
-                        <img src="../IMG/Hau1.png" class="card-img-top" alt="">
-                        <span class="badge bg-danger position-absolute" style="top:10px; left:10px;">MỚI</span>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h6 class="card-title">Sách 1</h6>
-                        <p class="card-text text-muted mb-1">Tac giả</p>
-                        <p class="text-danger fw-bold mb-2">giá</p>
-                        <div class="mt-auto d-flex gap-2">
-                            <button class="btn btn-outline-primary btn-sm w-100 btn-quickview"
-                                data-title="Tuổi Trẻ Đáng Giá Bao Nhiêu" data-author="Rosie Nguyễn" data-price="85.000₫"
-                                data-img="../IMG/sach1.jpg"
-                                data-desc="Cuốn sách là lời nhắn gửi đến những người trẻ...">Xem nhanh</button>
-                            <button class="btn btn-success btn-sm w-100 btn-addcart"><i
-                                    class="fa-solid fa-cart-plus"></i> Thêm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- --- Bản mẫu sách 2 --- -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <div class="position-relative">
-                        <img src="../IMG/Hau1.png" class="card-img-top" alt="">
-                        <span class="badge bg-danger position-absolute" style="top:10px; left:10px;">MỚI</span>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h6 class="card-title">Sách 2</h6>
-                        <p class="card-text text-muted mb-1"></p>Tác giả
-                        <p class="text-danger fw-bold mb-2">giá</p>
-                        <div class="mt-auto d-flex gap-2">
-                            <button class="btn btn-outline-primary btn-sm w-100 btn-quickview"
-                                data-title="Đi Tìm Lẽ Sống" data-author="Viktor Frankl" data-price="90.000₫"
-                                data-img="../IMG/sach2.jpg"
-                                data-desc="Một tác phẩm triết lý giúp tìm ý nghĩa cuộc sống.">Xem nhanh</button>
-                            <button class="btn btn-success btn-sm w-100 btn-addcart"><i
-                                    class="fa-solid fa-cart-plus"></i> Thêm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- --- sách 3 --- -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <div class="position-relative">
-                        <img src="../IMG/Hau1.png" class="card-img-top" alt="">
-                        <span class="badge bg-danger position-absolute" style="top:10px; left:10px;">MỚI</span>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h6 class="card-title">Sách 3</h6>
-                        <p class="card-text text-muted mb-1">Tác giả</p>
-                        <p class="text-danger fw-bold mb-2">giá</p>
-                        <div class="mt-auto d-flex gap-2">
-                            <button class="btn btn-outline-primary btn-sm w-100 btn-quickview" data-title="Đắc Nhân Tâm"
-                                data-author="Dale Carnegie" data-price="99.000₫" data-img="../IMG/sach3.jpg"
-                                data-desc="Kỹ năng giao tiếp và ảnh hưởng người khác.">Xem nhanh</button>
-                            <button class="btn btn-success btn-sm w-100 btn-addcart"><i
-                                    class="fa-solid fa-cart-plus"></i> Thêm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- --- sách 4 --- -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <div class="position-relative">
-                        <img src="../IMG/Hau1.png" class="card-img-top" alt="">
-                        <span class="badge bg-danger position-absolute" style="top:10px; left:10px;">MỚI</span>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h6 class="card-title">Sách 4</h6>
-                        <p class="card-text text-muted mb-1"> Tác giả</p>
-                        <p class="text-danger fw-bold mb-2">Giá</p>
-                        <div class="mt-auto d-flex gap-2">
-                            <button class="btn btn-outline-primary btn-sm w-100 btn-quickview"
-                                data-title="Tôi Tài Giỏi, Bạn Cũng Thế!" data-author="Adam Khoo" data-price="88.000₫"
-                                data-img="../IMG/sach4.jpg"
-                                data-desc="Kỹ năng học và thay đổi tư duy để thành công.">Xem nhanh</button>
-                            <button class="btn btn-success btn-sm w-100 btn-addcart"><i
-                                    class="fa-solid fa-cart-plus"></i> Thêm</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- --- bạn có thể nhân bản thẻ card ở trên để thêm sách tiếp --- -->
-        </div>
-
-        <!-- Pagination -->
-        <nav aria-label="Page navigation example" class="mt-5">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Trước</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
-            </ul>
-        </nav>
     </div>
 
     <!-- FOOTER -->
@@ -183,7 +126,6 @@
                 <li><a href="#">Chính sách bảo mật</a></li>
             </ul>
         </div>
-
         <div>
             <h3>Hỗ Trợ Khách Hàng</h3>
             <ul>
@@ -193,7 +135,6 @@
                 <li><a href="#">Liên hệ</a></li>
             </ul>
         </div>
-
         <div>
             <h3>Kết Nối Với Chúng Tôi</h3>
             <div class="social-icons">
@@ -204,75 +145,68 @@
         </div>
     </div>
 
-    <!-- Quick View Modal (Bootstrap) -->
-    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5 text-center">
-                            <img id="modalImg" src="../IMG/sach1.jpg" class="img-fluid rounded" alt="book">
-                        </div>
-                        <div class="col-md-7">
-                            <h4 id="modalTitle">Tiêu đề sách</h4>
-                            <p class="text-muted" id="modalAuthor">Tác giả</p>
-                            <p class="text-danger fw-bold" id="modalPrice">0₫</p>
-                            <p id="modalDesc">Mô tả ngắn...</p>
-                            <div class="d-flex gap-2 mt-3">
-                                <button class="btn btn-success"><i class="fa-solid fa-cart-plus"></i> Thêm vào
-                                    giỏ</button>
-                                <a href="./chitietsach.html" class="btn btn-outline-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer py-2">
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Đóng</button>
+    <script src="../JS/bootstrap.bundle.js"></script>
+
+    <script>
+        const books = [
+            { id: 1, name: "Sách 1", price: "45.000₫", releaseDate: "2025-01-10", img: "../IMG/khuyen-mai.jpg" },
+            { id: 2, name: "Sách 2", price: "60.000₫", releaseDate: "2025-03-05", img: "../IMG/khuyen-mai.jpg" },
+            { id: 3, name: "Sách 3", price: "90.000₫", releaseDate: "2025-02-15", img: "../IMG/khuyen-mai.jpg" },
+            { id: 4, name: "Sách 4", price: "70.000₫", releaseDate: "2024-12-20", img: "../IMG/khuyen-mai.jpg" },
+            { id: 5, name: "Sách 5", price: "55.000₫", releaseDate: "2025-04-10", img: "../IMG/khuyen-mai.jpg" },
+            { id: 6, name: "Sách 6", price: "55.000₫", releaseDate: "2025-10-20", img: "../IMG/khuyen-mai.jpg" },
+        ];
+
+        // Chỉ lấy sách mới nhất (ví dụ 6 quyển mới nhất)
+        const newestBooks = [...books].sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+
+        const bookList = document.getElementById('book-list');
+        bookList.innerHTML = newestBooks.map(book => `
+            <div class="book-item">
+                <img src="${book.img}" alt="${book.name}" onclick="viewBookDetail(${book.id})">
+                <p class="fw-bold">${book.name}</p>
+                <p class="text-danger">${book.price}</p>
+                <p>📅 ${book.releaseDate}</p>
+                <div class="book-actions">
+                    <button class="btn-add" onclick="addToCart(${book.id})">🛒</button>
+                    <a href="./trangchitiet.html" class="btn-detail" onclick="viewBookDetail(${book.id})">Xem</a>
                 </div>
             </div>
-        </div>
-    </div>
+        `).join('');
 
-    <!-- Script (Bootstrap JS cần sau jQuery nếu dùng bootstrap v4; nếu v5 thì jQuery ko cần nhưng không sao khi có) -->
-    <script src="../JS/script.js"></script>
-    <script src="../JS/bootstrap.bundle.min.js"></script>
-    <script>
-        // Quick view modal: đổ dữ liệu khi click
-        $(document).on('click', '.btn-quickview', function () {
-            const title = $(this).data('title');
-            const author = $(this).data('author');
-            const price = $(this).data('price');
-            const img = $(this).data('img');
-            const desc = $(this).data('desc');
+        function viewBookDetail(bookId) {
+            const book = books.find(b => b.id === bookId);
+            if (book) {
+                localStorage.setItem('selectedBook', JSON.stringify(book));
+                window.location.href = './trangchitiet.html';
+            }
+        }
 
-            $('#modalTitle').text(title);
-            $('#modalAuthor').text(author);
-            $('#modalPrice').text(price);
-            $('#modalImg').attr('src', img);
-            $('#modalDesc').text(desc);
+        function addToCart(bookId) {
+            const book = books.find(b => b.id === bookId);
+            if (!book) return;
 
-            $('#quickViewModal').modal('show');
-        });
+            const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
+            if (!userInfo || !userInfo.username) {
+                alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
+                window.location.href = "./trangdangnhap.html";
+                return;
+            }
 
-        // Add to cart (demo)
-        $(document).on('click', '.btn-addcart', function () {
-            // demo: hiển thị alert, bạn có thể thay bằng xử lý thêm vào giỏ hàng thực tế
-            alert('Đã thêm vào giỏ hàng!');
-        });
+            const username = userInfo.username;
+            const cartKey = `cart_${username}`;
+            let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-        // Sắp xếp (demo, chỉ thay đổi thứ tự DOM dựa trên giá trị)
-        $('#sortSelect').on('change', function () {
-            const val = $(this).val();
-            // hiện demo: bạn có thể implement sort thực tế bằng JS hoặc server-side
-            console.log('Sort by', val);
-        });
+            const exist = cart.find(item => item.id === book.id);
+            if (exist) {
+                exist.qty++;
+            } else {
+                cart.push({ id: book.id, name: book.name, price: book.price, img: book.img, qty: 1 });
+            }
 
-        // Lọc theo thể loại (demo)
-        $('#categorySelect').on('change', function () {
-            const cat = $(this).val();
-            console.log('Filter by', cat);
-        });
+            localStorage.setItem(cartKey, JSON.stringify(cart));
+            alert(`Đã thêm "${book.name}" vào giỏ hàng!`);
+        }
     </script>
 </body>
-
 </html>
