@@ -123,24 +123,35 @@
 
     <!-- NỘI DUNG DANH MỤC -->
     <div class="content" style="padding: 40px;">
-        <h1>Danh Mục Sản Phẩm</h1>
 
-        <!-- DANH MỤC SÁCH -->
+        <h1 class="text-center mb-4 fw-bold">📚 Danh Mục Sản Phẩm</h1>
+
+        <!-- NÚT CHUYỂN NHANH GIỮA CÁC DANH MỤC -->
+        <div class="text-center mb-5">
+            <a href="#sach-giao-khoa" class="btn btn-warning m-1"><i class="fa-solid fa-book"></i> Sách Giáo Khoa</a>
+            <a href="#sach-van-hoc" class="btn btn-primary m-1"><i class="fa-solid fa-book-open"></i> Sách Văn Học</a>
+            <a href="#sach-ky-nang" class="btn btn-success m-1"><i class="fa-solid fa-lightbulb"></i> Sách Kỹ Năng</a>
+        </div>
+
+        <!-- DANH MỤC SÁCH GIÁO KHOA -->
         <div id="sach-giao-khoa" class="book-section">
             <h2>📚 Sách Giáo Khoa</h2>
             <div class="book-scroll"></div>
         </div>
 
+        <!-- DANH MỤC SÁCH VĂN HỌC -->
         <div id="sach-van-hoc" class="book-section">
             <h2>📖 Sách Văn Học</h2>
             <div class="book-scroll"></div>
         </div>
 
+        <!-- DANH MỤC SÁCH KỸ NĂNG -->
         <div id="sach-ky-nang" class="book-section">
             <h2>📗 Sách Kỹ Năng</h2>
             <div class="book-scroll"></div>
         </div>
     </div>
+
 
     <!-- FOOTER -->
     <div class="footer">
@@ -182,14 +193,26 @@
         const sachGiaoKhoa = [
             { name: "Toán 12", price: "45.000₫", img: "../IMG/sachtoan.png" },
             { name: "Vật Lý 12", price: "40.000₫", img: "../IMG/sachvatly.png" },
+            { name: "Toán 12", price: "45.000₫", img: "../IMG/sachtoan.png" },
+            { name: "Vật Lý 12", price: "40.000₫", img: "../IMG/sachvatly.png" },
+            { name: "Toán 12", price: "45.000₫", img: "../IMG/sachtoan.png" },
+            { name: "Vật Lý 12", price: "40.000₫", img: "../IMG/sachvatly.png" },
         ];
 
         const sachVanHoc = [
             { name: "Chí Phèo", price: "90.000₫", img: "../IMG/sachvan.jpg" },
             { name: "Truyện Kiều", price: "55.000₫", img: "../IMG/sachtruyenkieu.jpg" },
+            { name: "Chí Phèo", price: "90.000₫", img: "../IMG/sachvan.jpg" },
+            { name: "Truyện Kiều", price: "55.000₫", img: "../IMG/sachtruyenkieu.jpg" },
+            { name: "Chí Phèo", price: "90.000₫", img: "../IMG/sachvan.jpg" },
+            { name: "Truyện Kiều", price: "55.000₫", img: "../IMG/sachtruyenkieu.jpg" },
         ];
 
         const sachKyNang = [
+            { name: "Đừng Lựa Chọn An Nhàn Khi Còn Trẻ", price: "110.000₫", img: "../IMG/sachdungluachonkhicontre.jpeg" },
+            { name: "7 Thói Quen Hiệu Quả", price: "130.000₫", img: "../IMG/sach7thoiquenhieuqua.webp" },
+            { name: "Đừng Lựa Chọn An Nhàn Khi Còn Trẻ", price: "110.000₫", img: "../IMG/sachdungluachonkhicontre.jpeg" },
+            { name: "7 Thói Quen Hiệu Quả", price: "130.000₫", img: "../IMG/sach7thoiquenhieuqua.webp" },
             { name: "Đừng Lựa Chọn An Nhàn Khi Còn Trẻ", price: "110.000₫", img: "../IMG/sachdungluachonkhicontre.jpeg" },
             { name: "7 Thói Quen Hiệu Quả", price: "130.000₫", img: "../IMG/sach7thoiquenhieuqua.webp" },
         ];

@@ -105,6 +105,7 @@
     </div>
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
+
     <script>
         let user = null;
         try {
@@ -140,22 +141,22 @@
                 total += subtotal;
 
                 const row = `
-                <tr>
-                    <td><img src="${item.img}" width="60" style="border-radius:5px;"></td>
-                    <td>${item.name}</td>
-                    <td>${item.price}</td>
-                    <td>
-                        <input type="number" value="${qty}" min="1" data-index="${index}" 
-                        style="width:60px; text-align:center;">
-                    </td>
-                    <td>${subtotal.toLocaleString()}₫</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm" data-index="${index}">
-                            <i class="fa-solid fa-trash"></i> Xóa
-                        </button>
-                    </td>
-                </tr>
-            `;
+                    <tr>
+                        <td><img src="${item.img}" width="60" style="border-radius:5px;"></td>
+                        <td>${item.name}</td>
+                        <td>${item.price}</td>
+                        <td>
+                            <input type="number" value="${qty}" min="1" data-index="${index}" 
+                            style="width:60px; text-align:center;">
+                        </td>
+                        <td>${subtotal.toLocaleString()}₫</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" data-index="${index}">
+                                <i class="fa-solid fa-trash"></i> Xóa
+                            </button>
+                        </td>
+                    </tr>
+                `;
                 tbody.innerHTML += row;
             });
 
@@ -173,6 +174,7 @@
             }
         });
 
+        // === CẬP NHẬT SỐ LƯỢNG ===
         document.addEventListener('input', (e) => {
             if (e.target.tagName === 'INPUT' && e.target.type === 'number') {
                 const index = e.target.dataset.index;
@@ -183,8 +185,21 @@
             }
         });
 
+        // ✅ === NÚT THANH TOÁN ===
+        document.querySelector('.btn-success').addEventListener('click', () => {
+            const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+            if (cart.length === 0) {
+                alert("🛒 Giỏ hàng của bạn đang trống. Hãy thêm sản phẩm trước khi thanh toán!");
+                return;
+            }
+
+            // ⚡ Chuyển sang trang thanh toán
+            window.location.href = "./trangthanhtoan.html";
+        });
+
         loadCart();
     </script>
+
 
 
 

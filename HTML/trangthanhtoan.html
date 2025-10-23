@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/jquery.js"></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <a href="./tranggioithieu.html">
+                <img src="../IMG/logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="nav">
+            <a href="./trangchu.html">Trang Chủ</a>
+            <a href="./trangsachmoi.html">Sách Mới</a>
+            <a href="./trangbanchay.html">Bán Chạy</a>
+            <a href="./danhmucsanpham.html">Danh Mục</a>
+            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+        </div>
+        <div class="user-cart">
+            <a href="./tranggiohang.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center mb-4">Thanh Toán Đơn Hàng</h1>
+
+        <div class="row">
+            <!-- CỘT 1: Thông tin người nhận -->
+            <div class="col-md-6">
+                <h4>Thông Tin Người Nhận</h4>
+                <form id="payment-form" class="mt-3">
+                    <div class="mb-3">
+                        <label class="form-label">Họ và tên:</label>
+                        <input type="text" id="fullname" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số điện thoại:</label>
+                        <input type="tel" id="phone" class="form-control" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Địa chỉ giao hàng:</label>
+                        <textarea id="address" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phương thức thanh toán:</label>
+                        <select id="payment-method" class="form-select" required>
+                            <option value="">-- Chọn phương thức --</option>
+                            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                            <option value="bank">Chuyển khoản ngân hàng</option>
+                            <option value="momo">Ví MoMo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mt-3">
+                        <i class="fa-solid fa-credit-card"></i> Xác Nhận Thanh Toán
+                    </button>
+                </form>
+            </div>
+
+            <!-- CỘT 2: Hiển thị sản phẩm từ giỏ hàng -->
+            <div class="col-md-6">
+                <h4>Đơn Hàng Của Bạn</h4>
+                <table class="table table-bordered mt-3 text-center align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Sách</th>
+                            <th>SL</th>
+                            <th>Thành Tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody id="order-items">
+                        <tr><td colspan="3" style="color:gray;">Không có sản phẩm nào.</td></tr>
+                    </tbody>
+                </table>
+                <h4 class="text-end">Tổng cộng: <span id="order-total" style="color:red;">0₫</span></h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div>
+            <h3>Về Chúng Tôi</h3>
+            <ul>
+                <li><a href="./trangsitemap.html">Site Map</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Hỗ Trợ Khách Hàng</h3>
+            <ul>
+                <li><a href="#">Trung tâm trợ giúp</a></li>
+                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Kết Nối Với Chúng Tôi</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn</p>
+        </div>
+    </div>
+
+    <script src="../JS/bootstrap.bundle.js"></script>
+    <script>
+        // === 1️⃣ Lấy thông tin người dùng ===
+        let user = null;
+        try {
+            user = JSON.parse(localStorage.getItem('dangNhap'));
+        } catch (e) {
+            user = null;
+        }
+
+        // Nếu chưa đăng nhập thì bắt quay lại đăng nhập
+        if (!user || !user.username) {
+            alert("Bạn cần đăng nhập để thanh toán!");
+            window.location.href = "./trangdangnhap.html";
+        }
+
+        const username = user.username;
+        const cartKey = `cart_${username}`;
+
+        // === 2️⃣ Load sản phẩm từ giỏ hàng ===
+        function loadOrder() {
+            const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+            const tbody = document.getElementById('order-items');
+            let total = 0;
+            tbody.innerHTML = '';
+
+            if (cart.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="3" style="color:gray;">Không có sản phẩm nào.</td></tr>`;
+                document.getElementById('order-total').textContent = "0₫";
+                return;
+            }
+
+            // Duyệt từng sản phẩm trong giỏ hàng
+            cart.forEach(item => {
+                const priceNumber = Number(item.price.replace(/[^\d]/g, ''));
+                const qty = item.quantity || 1;
+                const subtotal = priceNumber * qty;
+                total += subtotal;
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${qty}</td>
+                        <td>${subtotal.toLocaleString()}₫</td>
+                    </tr>
+                `;
+            });
+
+            // Cập nhật tổng tiền
+            document.getElementById('order-total').textContent = total.toLocaleString() + "₫";
+        }
+
+        // === 3️⃣ Xử lý khi bấm "Xác nhận thanh toán" ===
+        document.getElementById('payment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const fullname = document.getElementById('fullname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const method = document.getElementById('payment-method').value;
+
+            if (!fullname || !phone || !address || !method) {
+                alert("Vui lòng điền đầy đủ thông tin!");
+                return;
+            }
+
+            alert("✅ Thanh toán thành công! Cảm ơn bạn đã mua hàng tại BookStore.");
+            localStorage.removeItem(cartKey); // Xóa giỏ hàng sau khi thanh toán
+            window.location.href = "./trangchu.html";
+        });
+
+        // Gọi khi load trang
+        loadOrder();
+    </script>
+</body>
+</html>
