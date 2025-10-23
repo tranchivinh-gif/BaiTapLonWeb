@@ -21,6 +21,7 @@
             font-family: Arial, sans-serif;
             overflow-x: hidden;
         }
+    
 
         .text-h1 {
             text-align: center;
@@ -28,26 +29,41 @@
             color: rgba(255, 255, 255, 0.629);
             text-shadow: 2px 2px rgb(18, 18, 233);
         }
+        .sidebar {
+    position: fixed;
+    top: 150px;
+    width: 120px;
+    height: 400px;
+    z-index: 10;
+    opacity: 0.9;
+}
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+.sidebar.left {
+    left: 0;
+}
 
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
+.sidebar.right {
+    right: 0;
+}
 
-       .container {
+.sidebar img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+
+
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 40px;
         }
-        .hangtren, .hangduoi {
+
+        .hangtren,.hangduoi {
             display: flex;
             justify-content: center;
             gap: 40px;
@@ -62,6 +78,7 @@
             padding: 25px;
             width: 250px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .thanhvien:hover {
@@ -78,18 +95,6 @@
             border: 4px solid #66a6ff;
         }
 
-        .thanhvien h3 {
-            font-size: 1.3em;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .thanhvien p {
-            font-size: 0.95em;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
         .footer {
             background-color: #333;
             color: #ccc;
@@ -104,11 +109,6 @@
             color: #fff;
             font-size: 16px;
             margin-bottom: 10px;
-        }
-
-        footer p {
-            margin-top: 10px;
-            font-size: 14px;
         }
 
         .footer ul {
@@ -150,10 +150,6 @@
                     <img src="../IMG/logo.png" alt="logo">
                 </a>
             </div>
-            <div class="search-box">
-                <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
-                <div class="search-results"></div>
-            </div>
             <div class="nav">
                 <a href="./trangchu.html">Trang Chủ</a>
                 <a href="./trangsachmoi.html">Sách Mới</a>
@@ -166,55 +162,158 @@
                 <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
             </div>
         </div>
+
         <div class="text-h1">
             <h1><b>Nhóm 2 - Giới Thiệu Thành Viên</b></h1>
+        <div class="sidebar left">
+    <img src="../IMG/anh_decor_gioi_thieu3.jpg" alt="Books Left">
+</div>
 
-        </div>
+<div class="sidebar right">
+    <img src="../IMG/anh_decor_gioi_thieu3.jpg" alt="Books Right">
+</div>
 
 
     </header>
 
     <div class="container">
-    <div class="hangtren">
-        <div class="thanhvien">
-            <img src="../IMG/avatar-nam.jpg" alt="Thanh viên 1">
-            <h3>Trần Chí Vĩnh</h3>
-            <p>Trưởng nhóm</p>
-            <p>Mssv: 23662901</p>
+        <div class="hangtren">
+            <div class="thanhvien" data-bs-toggle="modal" data-bs-target="#tv1">
+                <img src="../IMG/avatar-nam.jpg" alt="Thanh viên 1">
+                <h3>Trần Chí Vĩnh</h3>
+                <p>Trưởng nhóm</p>
+                <p>Mssv: 23662901</p>
+            </div>
+
+            <div class="thanhvien" data-bs-toggle="modal" data-bs-target="#tv2">
+                <img src="../IMG/avatar-nam.jpg" alt="Thanh viên 2">
+                <h3>Nguyễn Tấn Hoàng Vũ</h3>
+                <p>Thành viên</p>
+                <p>Mssv: 23657941</p>
+            </div>
+
+            <div class="thanhvien" data-bs-toggle="modal" data-bs-target="#tv3">
+                <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 3">
+                <h3>Trần Như Ý</h3>
+                <p>Thành viên</p>
+                <p>Mssv: 23655891</p>
+            </div>
         </div>
 
-        <div class="thanhvien">
-            <img src="../IMG/avatar-nam.jpg" alt="Thanh viên 2">
-            <h3>Nguyễn Tấn Hoàng Vũ</h3>
-            <p>Thành viên</p>
-            <p>Mssv: 23657941</p>
-        </div>
+        <div class="hangduoi">
+            <div class="thanhvien" data-bs-toggle="modal" data-bs-target="#tv4">
+                <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 4">
+                <h3>Phạm Nguyễn Xuân Thanh</h3>
+                <p>Thành viên</p>
+                <p>Mssv: 23659911</p>
+            </div>
 
-        <div class="thanhvien">
-            <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 3">
-            <h3>Trần Như Ý</h3>
-            <p>Thành viên</p>
-            <p>Mssv: 23655891</p>
+            <div class="thanhvien" data-bs-toggle="modal" data-bs-target="#tv5">
+                <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 5">
+                <h3>Phùng Võ Việt Tường Vi</h3>
+                <p>Thành viên</p>
+                <p>Mssv: 23653321</p>
+            </div>
         </div>
     </div>
 
-    <div class="hangduoi">
-        <div class="thanhvien">
-            <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 4">
-            <h3>Phạm Nguyễn Xuân Thanh</h3>
-            <p>Thành viên</p>
-            <p>Mssv: 23659911</p>
-        </div>
-
-        <div class="thanhvien">
-            <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 5">
-            <h3>Phùng Võ Việt Tường Vi</h3>
-            <p>Thành viên</p>
+    <!-- Modal Thành viên 1 -->
+    <div class="modal fade" id="tv1" tabindex="-1" aria-labelledby="tv1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="tv1Label">Trần Chí Vĩnh - Trưởng nhóm</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="../IMG/avatar-nam.jpg" alt="Trần Chí Vĩnh" class="rounded-circle mb-3" width="120"
+                        height="120">
+                    <p><strong>MSSV:</strong> 23662901</p>
+                    <p><strong>Vai trò:</strong> Trưởng nhóm</p>
+                    <p><strong>Mô tả:</strong> Quản lý tiến độ nhóm, phụ trách giao diện trang đăng nhập và trang chủ.</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
+    <!-- Modal Thành viên 2 -->
+    <div class="modal fade" id="tv2" tabindex="-1" aria-labelledby="tv2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="tv2Label">Nguyễn Tấn Hoàng Vũ</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="../IMG/avatar-nam.jpg" class="rounded-circle mb-3" width="120" height="120">
+                    <p><strong>MSSV:</strong> 23657941</p>
+                    <p><strong>Vai trò:</strong> Thành viên</p>
+                    <p><strong>Mô tả:</strong> Phụ trách giao diện trang chi tiết và trang sách mới. </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal Thành viên 3 -->
+    <div class="modal fade" id="tv3" tabindex="-1" aria-labelledby="tv3Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-dark">
+                    <h5 class="modal-title" id="tv3Label">Trần Như Ý</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="../IMG/avatar-nu.jpg" class="rounded-circle mb-3" width="120" height="120">
+                    <p><strong>MSSV:</strong> 23655891</p>
+                    <p><strong>Vai trò:</strong> Thành viên</p>
+                    <p><strong>Mô tả:</strong> Phụ trách giao diện trang danh mục sản phẩm và giỏ hàng. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Thành viên 4 -->
+    <div class="modal fade" id="tv4" tabindex="-1" aria-labelledby="tv4Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="tv4Label">Phạm Nguyễn Xuân Thanh</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="../IMG/avatar-nu.jpg" class="rounded-circle mb-3" width="120" height="120">
+                    <p><strong>MSSV:</strong> 23659911</p>
+                    <p><strong>Vai trò:</strong> Thành viên</p>
+                    <p><strong>Mô tả:</strong> Phụ trách giao diện trang giới thiệu và khuyến mãi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Thành viên 5 -->
+    <div class="modal fade" id="tv5" tabindex="-1" aria-labelledby="tv5Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="tv5Label">Phùng Võ Việt Tường Vi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="../IMG/avatar-nu.jpg" class="rounded-circle mb-3" width="120" height="120">
+                    <p><strong>MSSV:</strong> 23653321</p>
+                    <p><strong>Vai trò:</strong> Thành viên</p>
+                    <p><strong>Mô tả:</strong> Phụ trách giao diện trang bán hàng và sitemap</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer>
         <div class="footer">
             <div>
@@ -249,7 +348,7 @@
             </div>
         </div>
     </footer>
-    <script src="../JS/script.js"></script>
+
     <script src="../JS/bootstrap.bundle.js"></script>
 </body>
 
