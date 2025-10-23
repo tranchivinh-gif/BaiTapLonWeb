@@ -144,24 +144,35 @@
 
 <body>
     <header>
-        <div class="header">
-            <div class="logo">
-                <a href="./tranggioithieu.html">
-                    <img src="../IMG/logo.png" alt="logo">
-                </a>
-            </div>
-            <div class="nav">
-                <a href="./trangchu.html">Trang Chủ</a>
-                <a href="./trangsachmoi.html">Sách Mới</a>
-                <a href="./trangbanchay.html">Bán Chạy</a>
-                <a href="./danhmucsanpham.html">Danh Mục</a>
-                <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
-            </div>
-            <div class="user-cart">
-                <a href="./tranggiohang.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
-                <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
-            </div>
+        
+    <div class="header">
+        <div class="logo">
+            <a href="./tranggioithieu.html">
+                <img src="../IMG/logo.png" alt="logo">
+            </a>
         </div>
+        <div class="search-box">
+            <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
+            <div class="search-results"></div>
+        </div>
+        <div class="nav">
+            <a href="./trangchu.html">Trang Chủ</a>
+            <a href="./trangsachmoi.html">Sách Mới</a>
+            <a href="./trangbanchay.html">Bán Chạy</a>
+            <a href="./danhmucsanpham.html">Danh Mục</a>
+            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+        </div>
+        <div class="user-cart">
+            <a href="./tranggiohang.html" class="cart-link position-relative">
+                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
+                <span id="cart-count"
+                    class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill"
+                    style="font-size: 10px;">0</span>
+            </a>
+
+            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+        </div>
+    </div>
 
         <div class="text-h1">
             <h1><b>Nhóm 2 - Giới Thiệu Thành Viên</b></h1>
