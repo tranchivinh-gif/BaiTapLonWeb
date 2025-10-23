@@ -22,10 +22,22 @@
             padding-left: 10px;
         }
 
+        /* ==== Thêm thanh cuộn ngang ==== */
         .book-scroll {
             display: flex;
-            flex-wrap: wrap;
+            overflow-x: auto;
             gap: 20px;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+        }
+
+        .book-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .book-scroll::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
         }
 
         .book-item {
@@ -100,7 +112,7 @@
             <a href="./trangchu.html">Trang Chủ</a>
             <a href="./trangsachmoi.html">Sách Mới</a>
             <a href="./trangbanchay.html">Bán Chạy</a>
-            <a href="./danhmucsanpham.html">Danh Mục</a>
+            <a href="./danhmucsanpham.html" class="active">Danh Mục</a>
             <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
         </div>
         <div class="user-cart">
@@ -162,23 +174,24 @@
             <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn</p>
         </div>
     </div>
+
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
         // Dữ liệu mẫu
         const sachGiaoKhoa = [
-            { name: "Toán 12", price: "45.000₫", img: "../IMG/sach-giao-khoa-toan-12-tap-1-ket-noi-tri-thuc-voi-cuoc-song.png" },
-            { name: "Vật Lý 12", price: "40.000₫", img: "../IMG/sach-giao-khoa-vat-li-12-ket-noi-tri-thuc-voi-cuoc-song.png" }
+            { name: "Toán 12", price: "45.000₫", img: "../IMG/sachtoan.png" },
+            { name: "Vật Lý 12", price: "40.000₫", img: "../IMG/sachvatly.png" },
         ];
 
         const sachVanHoc = [
-            { name: "Chí Phèo", price: "90.000₫", img: "../IMG/van-1.jpg" },
-            { name: "Truyện Kiều", price: "55.000₫", img: "../IMG/image001-1678344452723.jpg" }
+            { name: "Chí Phèo", price: "90.000₫", img: "../IMG/sachvan.jpg" },
+            { name: "Truyện Kiều", price: "55.000₫", img: "../IMG/sachtruyenkieu.jpg" },
         ];
 
         const sachKyNang = [
-            { name: "Đừng Lựa Chọn An Nhàn Khi Còn Trẻ", price: "110.000₫", img: "../IMG/Dừng-lựa-chọn-an-nhàn-khi-còn-trẻ.jpeg" },
-            { name: "7 Thói Quen Hiệu Quả", price: "130.000₫", img: "../IMG/7h_700x650_bia1.webp" }
+            { name: "Đừng Lựa Chọn An Nhàn Khi Còn Trẻ", price: "110.000₫", img: "../IMG/sachdungluachonkhicontre.jpeg" },
+            { name: "7 Thói Quen Hiệu Quả", price: "130.000₫", img: "../IMG/sach7thoiquenhieuqua.webp" },
         ];
 
         // Hàm hiển thị sách
@@ -191,7 +204,7 @@
                     <p class="text-danger">${book.price}</p>
                     <div class="book-actions">
                         <button class="btn-add" onclick="addToCart('${book.name}', '${book.price}', '${book.img}')">🛒</button>
-                        <a href="./chitietsach.html" class="btn-detail" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">Xem</a>
+                        <a href="./trangchitiet.html" class="btn-detail" onclick="viewBookDetail('${book.name}', '${book.price}', '${book.img}')">Xem</a>
                     </div>
                 </div>
             `).join('');
@@ -204,7 +217,6 @@
 
         // Thêm sản phẩm vào giỏ hàng
         function addToCart(name, price, img) {
-            // Kiểm tra đăng nhập
             const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
             if (!userInfo || !userInfo.username) {
                 alert("⚠️ Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
@@ -213,12 +225,9 @@
             }
 
             const username = userInfo.username;
-            const cartKey = `cart_${username}`; // giỏ hàng riêng cho từng người dùng
-
-            // Lấy giỏ hàng hiện tại của người đó
+            const cartKey = `cart_${username}`;
             let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-            // Kiểm tra sản phẩm đã có trong giỏ chưa
             const exist = cart.find(item => item.name === name);
             if (exist) {
                 exist.qty++;
@@ -226,18 +235,14 @@
                 cart.push({ name, price, img, qty: 1 });
             }
 
-            // Lưu lại vào localStorage
             localStorage.setItem(cartKey, JSON.stringify(cart));
-
             alert(`✅ Đã thêm "${name}" vào giỏ hàng của bạn!`);
         }
-
 
         // Lưu chi tiết sách khi bấm Xem
         function viewBookDetail(name, price, img) {
             const bookDetail = { name, price, img };
             localStorage.setItem('selectedBook', JSON.stringify(bookDetail));
-            window.location.href = './trangchitiet.html';
         }
     </script>
 </body>
