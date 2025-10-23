@@ -2,333 +2,319 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khuyến Mãi</title>
-    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khuyến Mãi</title>
+  <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+  <link rel="stylesheet" href="../CSS/style.css">
 </head>
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        overflow-x: hidden;
-    }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+  }
 
-    /* HEADER */
-    .header {
-        background-color: #ff6f61;
-        color: white;
-        padding: 10px 50px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+  /* HEADER */
+  .header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    .logo {
-        font-size: 24px;
-        font-weight: bold;
-    }
+  .logo img {
+    height: 70px;
+    width: 120px;
+  }
 
-    .logo img {
-        height: 70px;
-        width: 120px;
-    }
+  .nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
 
-    .user-cart a {
-        text-decoration: none;
-        color: white;
-        transition: all 0.3s;
-    }
+  .nav a:hover {
+    color: aqua;
+    transform: scale(1.05);
+  }
 
-    .user-cart a:hover {
-        color: aqua;
-        transform: scale(1.05);
-    }
+  .search-input {
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    transition: all 0.3s;
+    font-size: 16px;
+    padding: 6px;
+  }
 
-    .search-box input {
-        padding: 6px;
-        width: 300px;
-        border: none;
-        border-radius: 4px;
-    }
+  .search-input:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+  }
 
-    .nav {
-        display: flex;
-        gap: 20px;
-    }
+  /* CONTENT */
+  .container {
+    display: flex;
+  }
 
-    .nav a {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s;
-    }
+  .col {
+    border: 1px solid rgb(222, 202, 202);
+    padding-bottom: 2px;
+  }
+  .col-md-4 p {
+  margin-bottom: 1px; /* giảm khoảng cách phía dưới đoạn <p> */
+}
 
-    .nav a:hover {
-        color: aqua;
-        transform: scale(1.05);
-    }
+.col-md-4 ul {
+  margin-top: 1px; /* giảm khoảng cách phía trên danh sách <ul> */
+}
 
-    .user-cart i {
-        color: #fff;
-        transition: all 0.3s ease;
-    }
+.row h2 {
+    margin-top: 20px;
+  }
 
-    .user-cart a:hover i {
-        color: #ffcc99;
-        text-shadow: 0 0 8px #ffcc99;
-    }
+  /* FOOTER */
+  .footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 30px 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+  }
 
-    .search-box {
-        /* Chiều rộng mặc định */
-        transition: all 0.3s;
-    }
+  .footer h3 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 
-    .search-input {
-        width: 100%;
-        border: 2px solid #ccc;
-        border-radius: 25px;
-        transition: all 0.3s;
-        font-size: 16px;
-    }
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
 
-    /* Khi hover vào input */
-    .search-input:hover {
-        background-color: rgb(0, 0, 0);
-        /* Viền vàng */
-        transform: scale(1.05);
-        color: white;
-    }
+  .footer ul li a {
+    text-decoration: none;
+    color: #ccc;
+  }
 
-    /* Khi focus (click vào ô) */
-    .search-input:focus {
-        outline: none;
-    }
+  .footer ul li a:hover {
+    color: #ff6f61;
+  }
 
-    .dropdown {
-        display: inline-block;
-        margin-left: 10px;
-    }
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
 
-    .dropdown-toggle {
-        background-color: transparent;
-        border: none;
-    }
-
-    .dropdown-toggle:hover {
-        color: #000000;
-        background-color: #000000;
-
-    }
-
-    .dropdown-menu {
-        background-color: #ff6f61;
-    }
-
-    .dropdown-item {
-        transition: none !important;
-        /* Tắt hiệu ứng chuyển động */
-        transform: none !important;
-        /* Đảm bảo không phóng to */
-    }
-
-    #chinhsua {
-        background-color: #ff6f61;
-    }
-
-    #logout:hover {
-        background-color: #ff6f61;
-    }
-
-    /* SECTION */
-    /* .content {
-    padding: 40px;
-    text-align: center;
-} */
-    .container {
-
-        display: flex;
-    }
-
-    .col {
-        border: 1px solid rgb(222, 202, 202);
-        padding-bottom: 8px;
-
-    }
-
-    .row h2 {
-        margin-top: 20px;
-    }
-
-
-    /* FOOTER */
-    .footer {
-        background-color: #333;
-        color: #ccc;
-        padding: 30px 50px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        width: 100%;
-    }
-
-    .footer h3 {
-        color: #fff;
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    footer p {
-        margin-top: 10px;
-        font-size: 14px;
-    }
-
-    .footer ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .footer ul li {
-        margin-bottom: 8px;
-    }
-
-    .footer ul li a {
-        text-decoration: none;
-        color: #ccc;
-    }
-
-    .footer ul li a:hover {
-        color: #ff6f61;
-    }
-
-    .social-icons {
-        display: flex;
-        gap: 10px;
-    }
-
-    .social-icons a {
-        text-decoration: none;
-        font-size: 20px;
-        color: #fff;
-    }
+  .social-icons a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+  }
 </style>
 
 <body>
 
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">
+      <a href="./tranggioithieu.html">
+        <img src="../IMG/logo.png" alt="logo">
+      </a>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
+    </div>
+    <div class="nav">
+      <a href="./trangchu.html">Trang Chủ</a>
+      <a href="./trangsachmoi.html">Sách Mới</a>
+      <a href="./trangbanchay.html">Bán Chạy</a>
+      <a href="./danhmucsanpham.html">Danh Mục</a>
+      <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+    </div>
+    <div class="user-cart">
+      <a href="./tranggiohang.html" style="color:white;"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
+      <a href="./trangdangnhap.html" style="color:white;"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+    </div>
+  </div>
 
-    <!-- HEADER -->
-    <div class="header">
-        <div class="logo">
-            <a href="./tranggioithieu.html">
-                <img src="../IMG/logo.png" alt="logo">
-            </a>
+  <!-- NỘI DUNG TRANG KHUYẾN MÃI -->
+  <div class="container mt-5">
+    <div class="row">
+
+      <!-- Cột 1 -->
+      <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
+        <img src="../IMG/khuyen-mai1.jpg" class="khuyen-mai1" alt="">
+        <h2>MUA CÀNG TO - LÌ XÌ CÀNG LỚN</h2>
+        <hr>
+        <p>Giảm đến <strong>70%</strong> toàn bộ sản phẩm – Duy nhất hôm nay!</p>
+        <ul>
+            <li>🎁Ưu đãi đặc biệt dành cho những đơn hàng khủng!</li>
+            <li>📦Càng mua nhiều – càng nhận quà to.</li>
+            <li>🕒 Áp dụng toàn bộ sản phẩm sách trong tháng <strong>10/2025</strong>.</li>
+        </ul>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+          data-bs-target="#modal1">Xem nhanh</button>
+      </div>
+      <!-- Cột 2 -->
+      <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
+        <img src="../IMG/khuyen-mai2.png" class="khuyen-mai2" alt="">
+        <h2>🎁 KHUYẾN MÃI ĐẶC BIỆT: MUA 5 TẶNG 1 🎁</h2>
+        <hr>
+        <p>Chương trình áp dụng từ <strong>20/10 đến 20/11/2025</strong> – Duy nhất tại đây!</p>
+        <ul>
+            <li>💧 Nhận ngay 1 sản phẩm miễn phí khi mua 5 sản phẩm bất kỳ cùng loại.</li>
+            <li>🚚 Miễn phí giao hàng trong bán kính 3km.</li>
+            <li>🕒 Chương trình có giới hạn – nhanh tay kẻo hết!</li>
+        </ul>
+            
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+          data-bs-target="#modal2">Xem nhanh</button>
+      </div>
+
+      <!-- Cột 3 -->
+      <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
+        <img src="../IMG/khuyen-mai3.jpg" class="khuyen-mai3" alt="" height="405px">
+        <h2>HỌC NGOẠI NGỮ DỄ DÀNG HƠN</h2>
+        <hr>
+       <p>Bộ sưu tập sách học tiếng Anh, Nhật, Hàn, Trung... giúp bạn tự học tại nhà dễ dàng, tiết kiệm chi phí. Cơ hội vàng chỉ có trong tháng 10 này – nhanh tay kẻo lỡ!</p>
+       <ul>
+        <li>📘 Giảm đến <strong>50%</strong> cho tất cả sách ngoại ngữ.</li>
+        <li>🎯 Tặng kèm bookmark hoặc sổ tay học từ vựng.</li>
+        <li>🚚 Freeship cho đơn từ 200.000đ.</li>
+       </ul>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+          data-bs-target="#modal3">Xem nhanh</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <!-- Modal 1 -->
+  <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="modal1Label">Chi tiết: MUA CÀNG TO - LÌ XÌ CÀNG LỚN</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <div class="search-box">
-            <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
-            <div class="search-results"></div>
+        <div class="modal-body">
+          <img src="../IMG/anh_khuyen_mai1.webp" class="img-fluid rounded mb-3" alt="">
+          <p>🔥Nhằm mục đích mang lại những món quà tri thức ngày Tết cùng bạn đọc, Book Store xin gửi đến các bạn chương trình MUA CÀNG TO – LÌ XÌ CÀNG LỚN với rất nhiều ưu đãi:.</p>
+          <ul>
+            <li>⚡ Đơn từ 100k-200k: Nhận ngay lì xì 10k + Móc khóa </li>
+            <li>⚡ Đơn từ 200k-300k: Nhận ngay lì xì 20k + Móc khóa</li>
+            <li>⚡ Đơn từ 300k-400k: Nhận ngay lì xì 30k + Sổ tay</li>
+            <li>⚡ Đơn từ 400k-500k: Nhận ngay lì xì 40k + Sổ tay</li>
+          </ul>
+          <p><b>Lưu ý: Lì xì sẽ được trừ trực tiếp vào đơn hàng của khách hàng.</b></p>
+          <p>💌 Hãy trao cho nhau thật nhiều "tri thức", cùng nhau đi tới ước mơ. Dành tặng cho bạn bè, người thân hay chính mình những cuốn sách nhân ngày đầu năm!</p>
         </div>
-        <div class="nav">
-            <a href="./trangchu.html">Trang Chủ</a>
-            <a href="./trangsachmoi.html">Sách Mới</a>
-            <a href="./trangbanchay.html">Bán Chạy</a>
-            <a href="./danhmucsanpham.html">Danh Mục</a>
-            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
         </div>
-        <div class="user-cart">
-            <a href="./tranggiohang.html"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
-            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="modal2Label">Chi tiết: KHUYẾN MÃI MUA 5 TẶNG 1</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
+        <div class="modal-body">
+          <img src="../IMG/anh_khuyen_mai.png" class="img-fluid rounded mb-3" alt="">
+          <p>🎉 Khuyến mãi mua 5 tặng 1. Mua ngay 5 sách Quốc văn với đơn hàng nhỏ hơn 399k giảm 100% cho cuốn sách có giá thấp nhấ</p>
+          <ul>
+            <li>Mở bán top sách 50% ngày 29/09</li>
+            <li>Đồng giá 9k, mã giảm 99k: 22/09 – 30/09</li>
+            <li>Mã giảm đồ chơi 10k – 30k mỗi ngày</li>
+          </ul>
+          <p>Số lượng ưu đãi có hạn và có thể kết thúc trước dự kiến.</p>
+          <p><b>Diễn ra từ 24/09 - 30/09.</b></p>
+          <p>Áp dụng khi mua online tại website.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title" id="modal3Label">Chi tiết: ƯU ĐÃI SÁCH NGOẠI NGỮ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="../IMG/anh_khuyen_mai2.jpg" class="img-fluid rounded mb-3" alt="">
+          <p>📚 Giảm Lên Đến 50% Tất Cả Sách Ngoại Ngữ (Anh - Pháp - Nhật - Trung - Hàn)</p>
+          <ul>
+            <li>Top 100+ sách Ngoại ngữ cực hot chỉ còn NỬA GIÁ.</li>
+            <li>Giảm thêm 20k khi đặt sách qua APP Newshop. (Áp dụng cho đơn từ 150k).</li>
+            <li>Giảm tiếp 20k khi thanh toán qua ZaloPay. (Áp dụng cho đơn từ 60k).</li>
+            <li>Miễn phí vận chuyển cho đơn từ 250k.</li>
+          </ul>
+          <p><b>Thời gian áp dụng: đến hết 25/11/2025</b></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <h3>Về Chúng Tôi</h3>
+      <ul>
+        <li><a href="./trangsitemap.html">Site Map</a></li>
+        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="#">Tuyển dụng</a></li>
+        <li><a href="#">Điều khoản sử dụng</a></li>
+        <li><a href="#">Chính sách bảo mật</a></li>
+      </ul>
     </div>
 
-    <!-- NỘI DUNG TRANG KHUYẾN MÃI-->
-    <!-- cột 1 -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
-                <img src="../IMG/khuyen-mai1.jpg" class="khuyen-mai1" alt="">
-                <h2>MUA CÀNG TO-LÌ XÌ CÀNG LỚN</h2>
-                <hr>
-                <p>Giảm đến <strong>70%</strong> toàn bộ sản phẩm – Duy nhất hôm nay!</p>
-                <button type="button" class="btn btn-outline-primary">Xem nhanh</button>
-
-
-            </div>
-            <!-- cột 2 -->
-            <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
-                <img src="../IMG/khuyen-mai2.png" class="khuyen-mai2" alt="">
-                <h2>🎁 KHUYẾN MÃI ĐẶC BIỆT: MUA 5 TẶNG 1 🎁</h2>
-                <hr>
-                <p>Chương trình áp dụng từ <strong>20/10 đến 20/11/2025</strong> – Duy nhất tại đây!</p>
-                <ul>
-                    <li>💧 Nhận ngay 1 sản phẩm miễn phí khi mua 5 sản phẩm bất kỳ cùng loại.</li>
-                    <li>🚚 Miễn phí giao hàng trong bán kính 3km.</li>
-                    <li>🕒 Chương trình có giới hạn – nhanh tay kẻo hết!</li>
-                </ul>
-                <button type="button" class="btn btn-outline-primary">Xem nhanh</button>
-
-            </div>
-            <!-- cột 3 -->
-            <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
-                <img src="../IMG/khuyen-mai3.jpg" class="khuyen-mai3" alt="" height="405px">
-                <h2>HỌC NGOẠI NGỮ DỄ DÀNG HƠN BAO GIỜ HẾT!</h2>
-                <hr>
-
-                <p>
-                    Bộ sưu tập sách học tiếng Anh, Nhật, Hàn, Trung... giúp bạn tự học tại nhà dễ dàng, tiết kiệm chi
-                    phí.
-                    Cơ hội vàng chỉ có trong tháng 10 này – nhanh tay kẻo lỡ!</p>
-                <ul>
-                    <li>📘 Giảm đến <strong>50%</strong> cho tất cả sách ngoại ngữ.</li>
-                    <li>🎯 Tặng kèm bookmark hoặc sổ tay học từ vựng.</li>
-                    <li>🚚 Freeship cho đơn từ 200.000đ.</li>
-                </ul>
-                <button type="button" class="btn btn-outline-primary">Xem nhanh</button>
-
-            </div>
-
-        </div>
-
-
+    <div>
+      <h3>Hỗ Trợ Khách Hàng</h3>
+      <ul>
+        <li><a href="#">Trung tâm trợ giúp</a></li>
+        <li><a href="#">Hướng dẫn mua hàng</a></li>
+        <li><a href="#">Chính sách đổi trả</a></li>
+        <li><a href="#">Liên hệ</a></li>
+      </ul>
     </div>
 
-
-    <!-- FOOTER -->
-    <div class="footer">
-        <div>
-            <h3>Về Chúng Tôi</h3>
-            <ul>
-                <li><a href="./trangsitemap.html">Site Map</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Tuyển dụng</a></li>
-                <li><a href="#">Điều khoản sử dụng</a></li>
-                <li><a href="#">Chính sách bảo mật</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h3>Hỗ Trợ Khách Hàng</h3>
-            <ul>
-                <li><a href="#">Trung tâm trợ giúp</a></li>
-                <li><a href="#">Hướng dẫn mua hàng</a></li>
-                <li><a href="#">Chính sách đổi trả</a></li>
-                <li><a href="#">Liên hệ</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h3>Kết Nối Với Chúng Tôi</h3>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn
-            </p>
-        </div>
+    <div>
+      <h3>Kết Nối Với Chúng Tôi</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn</p>
     </div>
-    <script src="../JS/script.js"></script>
-    <script src="../JS/bootstrap.bundle.js"></script>
+  </div>
+
+  <script src="../JS/bootstrap.bundle.js"></script>
 </body>
 
 </html>
