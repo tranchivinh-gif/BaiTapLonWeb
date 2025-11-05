@@ -404,7 +404,7 @@ footer p {
     }
 
     .search-box {
-        width: 300px;
+        width: 100%;
     }
 
     .book-item {
@@ -432,7 +432,7 @@ footer p {
     }
 
     .search-box {
-        width: 90%;
+        width: 100%;
         margin: 10px 0;
     }
 
@@ -467,7 +467,7 @@ footer p {
     }
 
     .search-box {
-        width: 85%;
+        width: 100%;
         margin-top: 10px;
     }
 
@@ -516,7 +516,7 @@ footer p {
     }
 
     .search-box {
-        width: 90%;
+        width: 100%;
     }
 
     .footer {
