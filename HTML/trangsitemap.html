@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="../CSS/bootstrap.min.css">
     <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
     <link rel="stylesheet" href="../CSS/style.css">
-
-    <script src="../JS/jquery.js"></script>
-    <script src="../JS/bootstrap.bundle.min.js"></script>
-    <script src="../JS/banchay.js" defer></script>
 
     <style>
         .sitemap {
@@ -72,10 +68,6 @@
             display: none;
         }
 
-        .tree li:only-child {
-            padding-top: 0;
-        }
-
         .tree ul ul::before {
             content: '';
             position: absolute;
@@ -104,31 +96,24 @@
             color: white;
             transform: scale(1.05);
         }
-
-        .sitemap::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .sitemap::-webkit-scrollbar-thumb {
-            background: #ff6f61;
-            border-radius: 10px;
-        }
     </style>
-
 
 </head>
 
 <body>
+    <!-- HEADER -->
     <div class="header">
         <div class="logo">
             <a href="./tranggioithieu.html">
                 <img src="../IMG/logo.png" alt="logo">
             </a>
         </div>
+
         <div class="search-box">
             <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
             <div class="search-results"></div>
         </div>
+
         <div class="nav">
             <a href="./trangchu.html">Trang Chủ</a>
             <a href="./trangsachmoi.html">Sách Mới</a>
@@ -136,50 +121,86 @@
             <a href="./danhmucsanpham.html">Danh Mục</a>
             <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
         </div>
+
         <div class="user-cart">
             <a href="./tranggiohang.html" class="cart-link position-relative">
                 <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
                 <span id="cart-count"
                     class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill"
-                    style="font-size: 10px;">0</span>
+                    style="font-size:10px;">0</span>
             </a>
-
             <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
         </div>
     </div>
 
+    <!-- SITEMAP -->
     <div class="sitemap container">
         <h2>Sơ Đồ Cấu Trúc Website BookStore</h2>
+
         <div class="tree">
             <ul>
                 <li>
                     <a href="./trangchu.html">Trang Chủ</a>
+
                     <ul>
-                        <li><a href="./trangsachmoi.html">Sách Mới</a></li>
-                        <li><a href="./trangbanchay.html">Bán Chạy</a></li>
+                        <!-- Chi tiết -->
+                        <li>
+                            <a href="./trangchitiet.html">Trang chi tiết</a>
+                        </li>
+                        <!-- SÁCH MỚI -->
+                        <li>
+                            <a href="./trangsachmoi.html">Sách Mới</a>
+                            <ul>
+                                <li><a href="./trangchitiet.html">Trang Chi Tiết</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- BÁN CHẠY -->
+                        <li>
+                            <a href="./trangbanchay.html">Bán Chạy</a>
+                            <ul>
+                                <li><a href="./trangchitiet.html">Trang Chi Tiết</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DANH MỤC (BỎ MỤC CON CŨ) -->
                         <li>
                             <a href="./danhmucsanpham.html">Danh Mục</a>
                             <ul>
-                                <li><a href="./danhmucsanpham.html#sach-giao-khoa">Sách Giáo Khoa</a></li>
-                                <li><a href="./danhmucsanpham.html#sach-van-hoc">Sách Văn Học</a></li>
-                                <li><a href="./danhmucsanpham.html#sach-ky-nang">Sách Kỹ Năng</a></li>
-                                <li><a href="#">Sách Thiếu Nhi</a></li>
+                                <li><a href="./trangchitiet.html">Trang Chi Tiết</a></li>
                             </ul>
                         </li>
+
+                        <!-- KHUYẾN MÃI -->
                         <li><a href="./trangkhuyenmai.html">Khuyến Mãi</a></li>
-                        <li><a href="./tranggiohang.html">Giỏ Hàng</a></li>
+
+                        <!-- GIỎ HÀNG -->
+                        <li>
+                            <a href="./tranggiohang.html">Giỏ Hàng</a>
+                            <ul>
+                                <li><a href="./trangchitiet.html">Trang Chi Tiết</a></li>
+                                <li><a href="./trangthanhtoan.html">Trang Thanh Toán</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- ĐĂNG NHẬP -->
                         <li>
                             <a href="./trangdangnhap.html">Đăng Nhập</a>
                             <ul>
                                 <li><a href="./trangdangky.html">Đăng Ký</a></li>
+                                <li><a href="./trangquenmatkhau.html">Quên Mật Khẩu</a></li>
                             </ul>
                         </li>
+
+                        <!-- GIỚI THIỆU -->
                         <li><a href="./tranggioithieu.html">Giới Thiệu</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
+
+    <!-- FOOTER -->
     <div class="footer">
         <div>
             <h3>Về Chúng Tôi</h3>
@@ -201,16 +222,26 @@
                 <li><a href="#">Liên hệ</a></li>
             </ul>
         </div>
+
         <div>
             <h3>Kết Nối Với Chúng Tôi</h3>
             <div class="social-icons">
                 <a href="#"><i class="fa-brands fa-facebook"></i></a>
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
             </div>
-            <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn
+            <p style="margin-top:10px;font-size:14px;">
+                📞 Hotline: 1900 1234<br>
+                ✉️ Email: Tên_Nhà_Sách@bookstore.vn
+            </p>
+            <p>
+                <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                    <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss"
+                        alt="Valid CSS!" />
+                </a>
             </p>
         </div>
     </div>
+
 </body>
 
 </html>
