@@ -2,447 +2,303 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bán Chạy</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bán Chạy</title>
 
-    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
-    <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
+  <link rel="stylesheet" href="../CSS/style.css">
 
-    <script src="../JS/jquery.js"></script>
-    <script src="../JS/bootstrap.bundle.min.js"></script>
+  <script src="../JS/jquery.js"></script>
+  <script src="../JS/bootstrap.bundle.min.js"></script>
 
-    <style>
-        body {
-            background-color: #f9f9f9;
-        }
+  <style>
+    body {
+      background-color: #f9f9f9;
+    }
 
-        .main-container {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 25px;
-            padding: 30px 50px;
-        }
+    .main-container {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 25px;
+      padding: 30px 50px;
+    }
 
-        /* Sidebar */
-        .sidebar {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            height: fit-content;
-        }
+    /* Sidebar */
+    .sidebar {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      height: fit-content;
+    }
 
-        .sidebar h5 {
-            color: #ff6f61;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-size: 15px;
-        }
+    .sidebar h5 {
+      color: #ff6f61;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
 
-        .sidebar ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 20px;
-        }
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
 
-        .sidebar ul li {
-            margin: 6px 0;
-            cursor: pointer;
-            color: #333;
-            font-size: 15px;
-        }
+    .sidebar ul li {
+      margin: 6px 0;
+      cursor: pointer;
+      color: #333;
+      font-size: 15px;
+    }
 
-        .sidebar ul li:hover,
-        .sidebar ul li.active {
-            color: #ff6f61;
-            font-weight: 600;
-        }
+    .sidebar ul li:hover,
+    .sidebar ul li.active {
+      color: #ff6f61;
+      font-weight: 600;
+    }
 
-        .price-filter label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            cursor: pointer;
-            font-size: 15px;
-        }
+    .price-filter label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
 
-        .price-filter input {
-            margin-right: 8px;
-            accent-color: #ff6f61;
-            transform: scale(1.1);
-        }
+    /* Sort bar */
+    .sort-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+    }
 
-        /* Sort bar */
-        .sort-bar {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 10px 15px;
-            margin-bottom: 20px;
-        }
+    /* BOOK GRID – GIỐNG FAHASA */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+      padding: 20px 0;
+    }
 
-        .sort-select {
-            border: 1px solid #ccc;
-            border-radius: 20px;
-            padding: 6px 12px;
-            font-size: 14px;
-            color: #555;
-            background-color: #fff;
-            transition: all 0.2s;
-        }
+    .book-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.3s;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-        .sort-select:focus {
-            border-color: #ff6f61;
-            box-shadow: 0 0 4px #ffb0a3;
-            outline: none;
-        }
+    .book-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-        .display-wrapper {
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            background-color: #fff;
-            padding: 3px 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+    .book-card img {
+      height: 230px;
+      width: 100%;
+      object-fit: cover;
+    }
 
-        /* Book grid */
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
-            padding: 20px 0;
-        }
+    .book-card h6 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 10px 8px 6px;
+      color: #222;
+      min-height: 42px;
+    }
 
-        .book-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: 0.3s;
-            text-align: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .book-card .price {
+      color: #d9534f;
+      font-weight: bold;
+      margin: 6px 0;
+    }
 
-        .book-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+    .book-card .sold {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
 
-        .book-card img {
-            height: 230px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .book-card h6 {
-            font-size: 15px;
-            font-weight: 600;
-            margin: 10px 8px 6px;
-            color: #222;
-            min-height: 42px;
-        }
-
-        .book-card .price {
-            color: #d9534f;
-            font-weight: bold;
-            margin: 6px 0;
-        }
-
-        .book-card .sold {
-            color: #777;
-            font-size: 13px;
-            margin-bottom: 10px;
-        }
-
-        .badge-hot {
-            background-color: #ff6f61;
-            color: white;
-            font-size: 13px;
-            border-radius: 5px;
-            padding: 3px 7px;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-    </style>
+    .badge-hot {
+      background-color: #ff6f61;
+      color: white;
+      font-size: 13px;
+      border-radius: 5px;
+      padding: 3px 7px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- HEADER -->
-    <div class="header">
-        <div class="logo">
-            <a href="./tranggioithieu.html"><img src="../IMG/logo.png" alt="logo"></a>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">
+      <a href="./tranggioithieu.html"><img src="../IMG/logo.png"></a>
+    </div>
+
+    <div class="search-box"><input type="text" placeholder="Tìm sản phẩm"></div>
+
+    <div class="nav">
+      <a href="./trangchu.html">Trang Chủ</a>
+      <a href="./trangsachmoi.html">Sách Mới</a>
+      <a href="./trangbanchay.html" class="active">Bán Chạy</a>
+      <a href="./danhmucsanpham.html">Danh Mục</a>
+      <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <h5>Nhóm sản phẩm</h5>
+      <ul></ul>
+
+      <h5>Giá</h5>
+      <div class="price-filter"></div>
+    </div>
+
+    <!-- CONTENT -->
+    <div>
+      <div class="sort-bar">
+        <label class="me-2">Sắp xếp theo:</label>
+        <select id="sortSelect" class="sort-select">
+          <option value="banchay">Bán chạy nhất</option>
+          <option value="giaTang">Giá tăng dần</option>
+          <option value="giaGiam">Giá giảm dần</option>
+          <option value="ten">Tên A-Z</option>
+        </select>
+
+        <div class="ms-4 d-flex align-items-center">
+          <label class="me-2">Hiển thị:</label>
+          <div class="display-wrapper">
+            <i class="fa-solid fa-grip"></i>
+            <span id="displayCount">0</span>
+          </div>
         </div>
-        <div class="search-box">
-            <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
-        </div>
-        <div class="nav">
-            <a href="./trangchu.html">Trang Chủ</a>
-            <a href="./trangsachmoi.html">Sách Mới</a>
-            <a href="./trangbanchay.html" class="active">Bán Chạy</a>
-            <a href="./danhmucsanpham.html">Danh Mục</a>
-            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
-        </div>
-        <div class="user-cart">
-            <a href="./tranggiohang.html" class="cart-link position-relative">
-                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
-                <span id="cart-count"
-                    class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill">0</span>
-            </a>
-            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
-        </div>
+      </div>
 
-        <!-- ===== NỘI DUNG TRANG BÁN CHẠY ===== -->
-        <div class="main-container">
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <h5>Nhóm sản phẩm</h5>
-                <ul>
-                    <li>Tất cả sản phẩm</li>
-                    <li>Sách thiếu nhi</li>
-                    <li>Giáo khoa - Tham khảo</li>
-                    <li>Văn học</li>
-                    <li>Tâm lý - Kỹ năng sống</li>
-                    <li>Kinh tế</li>
-                </ul>
+      <div class="book-grid" id="book-list"></div>
+    </div>
+  </div>
 
-                <h5 class="mt-4">Giá</h5>
-                <div class="price-filter">
-                    <label><input type="checkbox" /> 0đ - 150.000đ</label>
-                    <label><input type="checkbox" /> 150.000đ - 300.000đ</label>
-                    <label><input type="checkbox" /> 300.000đ - 500.000đ</label>
-                    <label><input type="checkbox" /> 500.000đ - 700.000đ</label>
-                    <label><input type="checkbox" /> Trên 700.000đ</label>
-                </div>
-            </div>
+  <!-- FOOTER -->
+  <div class="footer"></div>
 
-            <!-- Content -->
-            <div>
-                <div class="banner">
-                    <img src="../IMG/Hau1.png" alt="Banner 1" />
-                    <img src="../IMG/Hau1.png" alt="Banner 2" />
-                </div>
+  <!-- SCRIPT -->
+  <script>
+    async function loadBooksFromTrangChu() {
+      const res = await fetch("./trangchu.html");
+      const html = await res.text();
+      const match = html.match(/const books\s*=\s*(\[.*?\]);/s);
+      return eval(match[1]);
+    }
 
-                <!-- Sort Bar -->
-                <div class="sort-bar">
-                    <div class="d-flex align-items-center justify-content-end w-100 gap-3">
-                        <!-- Ô 1: Sắp xếp -->
-                        <div class="d-flex align-items-center">
-                            <label for="sortSelect" class="me-2 fw-semibold text-secondary">Sắp xếp theo:</label>
-                            <select id="sortSelect" class="sort-select">
-                                <option value="banchay">Bán chạy nhất</option>
-                                <option value="giaTang">Giá tăng dần</option>
-                                <option value="giaGiam">Giá giảm dần</option>
-                                <option value="ten">Tên (A-Z)</option>
-                            </select>
-                        </div>
+    loadBooksFromTrangChu().then(books => {
+      const bookList = document.getElementById("book-list");
+      const sidebar = document.querySelector(".sidebar ul");
+      const priceFilter = document.querySelector(".price-filter");
+      const displayCount = document.getElementById("displayCount");
+      const sortSelect = document.getElementById("sortSelect");
 
-                        <!-- Ô 2: Hiển thị -->
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="fw-semibold text-secondary mb-0">Hiển thị:</label>
-                            <div class="display-wrapper" id="displayCountBox">
-                                <i class="fa-solid fa-grip text-muted"></i>
-                                <span id="displayCount" class="fw-semibold text-secondary">0</span>
-                                <span class="text-secondary" style="font-size: 14px;"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      const categories = [...new Set(books.map(b => b.category))];
+      sidebar.innerHTML = `<li class="active" data-cat="all">Tất cả</li>` +
+        categories.map(c => `<li data-cat="${c}">${c}</li>`).join("");
 
-                <!-- Danh sách sách -->
-                <div class="book-grid" id="book-list"></div>
-            </div>
-        </div>
+      const prices = [
+        { label: "0 - 150.000đ", min: 0, max: 150000 },
+        { label: "150.000 - 300.000đ", min: 150000, max: 300000 },
+        { label: "300.000 - 500.000đ", min: 300000, max: 500000 },
+        { label: "Trên 500.000đ", min: 500000, max: Infinity }
+      ];
 
-        <!-- NỘI DUNG -->
-        <div class="main-container">
-            <!-- SIDEBAR -->
-            <div class="sidebar">
-                <h5>Danh Mục</h5>
-                <ul></ul>
-                <h5>Khoảng giá</h5>
-                <div class="price-filter"></div>
-            </div>
+      priceFilter.innerHTML = prices.map(p =>
+        `<label><input type="checkbox" class="pf" data-min="${p.min}" data-max="${p.max}"> ${p.label}</label>`
+      ).join("");
 
-            <!-- PHẦN SÁCH -->
-            <div class="content">
-                <div class="sort-bar">
-                    <div class="d-flex align-items-center justify-content-end w-100 gap-3">
-                        <div class="d-flex align-items-center">
-                            <label for="sortSelect" class="me-2 fw-semibold text-secondary">Sắp xếp theo:</label>
-                            <select id="sortSelect" class="sort-select">
-                                <option value="banchay">Bán chạy nhất</option>
-                                <option value="giaTang">Giá tăng dần</option>
-                                <option value="giaGiam">Giá giảm dần</option>
-                                <option value="ten">Tên (A-Z)</option>
-                            </select>
-                        </div>
+      let filtered = [...books];
 
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="fw-semibold text-secondary mb-0">Hiển thị:</label>
-                            <div class="display-wrapper">
-                                <i class="fa-solid fa-grip text-muted"></i>
-                                <span id="displayCount" class="fw-semibold text-secondary">0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      function render(list) {
+        bookList.innerHTML = "";
+        displayCount.textContent = list.length;
 
-                <div class="book-grid" id="book-list"></div>
-            </div>
-        </div>
-
-        <!-- FOOTER -->
-        <div class="footer">
-            <div>
-                <h3>Về Chúng Tôi</h3>
-                <ul>
-                    <li><a href="./trangsitemap.html">Site Map</a></li>
-                    <li><a href="#">Giới thiệu</a></li>
-                    <li><a href="#">Tuyển dụng</a></li>
-                    <li><a href="#">Điều khoản sử dụng</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Hỗ Trợ Khách Hàng</h3>
-                <ul>
-                    <li><a href="#">Trung tâm trợ giúp</a></li>
-                    <li><a href="#">Hướng dẫn mua hàng</a></li>
-                    <li><a href="#">Chính sách đổi trả</a></li>
-                    <li><a href="#">Liên hệ</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Kết Nối Với Chúng Tôi</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-                <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email:
-                    Tên_Nhà_Sách@bookstore.vn</p>
-            </div>
-        </div>
-
-        <script>
-            async function loadBooksFromTrangChu() {
-                try {
-                    const res = await fetch("./trangchu.html");
-                    const html = await res.text();
-                    const match = html.match(/const books\s*=\s*(\[.*?\]);/s);
-                    if (!match) throw new Error("Không tìm thấy danh sách sách trong trang chủ!");
-                    return eval(match[1]);
-                } catch (err) {
-                    console.error("Lỗi khi đọc dữ liệu:", err);
-                    return [];
-                }
-            }
-
-            loadBooksFromTrangChu().then(books => {
-                const container = document.getElementById("book-list");
-                const sidebar = document.querySelector(".sidebar ul");
-                const priceFilter = document.querySelector(".price-filter");
-                const sortSelect = document.getElementById("sortSelect");
-                const displayCount = document.getElementById("displayCount");
-
-                if (!books.length) {
-                    container.innerHTML = `<div class="text-center text-muted">Không có dữ liệu.</div>`;
-                    return;
-                }
-
-                const categories = [...new Set(books.map(b => b.category))];
-                sidebar.innerHTML = `<li class="active" data-cat="all">Tất cả</li>` +
-                    categories.map(cat => `<li data-cat="${cat}">${cat}</li>`).join("");
-
-                const priceRanges = [
-                    { label: "0đ - 150.000đ", min: 0, max: 150000 },
-                    { label: "150.000đ - 300.000đ", min: 150000, max: 300000 },
-                    { label: "300.000đ - 500.000đ", min: 300000, max: 500000 },
-                    { label: "Trên 500.000đ", min: 500000, max: Infinity }
-                ];
-                priceFilter.innerHTML = priceRanges.map(r =>
-                    `<label><input type="checkbox" class="price-checkbox" data-min="${r.min}" data-max="${r.max}"/> ${r.label}</label>`
-                ).join("");
-
-                let baseList = [...books].sort((a, b) => b.purchases - a.purchases);
-                let filtered = [...baseList];
-
-                function render(list) {
-                    container.innerHTML = "";
-                    displayCount.textContent = list.length;
-                    if (!list.length) {
-                        container.innerHTML = `<div class="text-muted text-center w-100">Không có sản phẩm phù hợp</div>`;
-                        return;
-                    }
-                    list.forEach((b, i) => {
-                        const price = b.price || (b.gia ? b.gia.toLocaleString() + "đ" : "Liên hệ");
-                        container.innerHTML += `
+        list.forEach((b, i) => {
+          const price = b.price || b.gia + "đ";
+          bookList.innerHTML += `
             <div class="book-card">
               ${i === 0 ? `<span class="badge-hot">Bán chạy nhất</span>` : ""}
-              <img src="${b.img}" alt="${b.name}">
+              <img src="${b.img}">
               <h6>${b.name}</h6>
               <p class="price">${price}</p>
               <p class="sold">Đã bán: ${b.purchases}</p>
             </div>`;
-                    });
-                }
+        });
+      }
 
-                function applyFilters() {
-                    const activeCat = sidebar.querySelector("li.active").dataset.cat;
-                    const checked = [...document.querySelectorAll(".price-checkbox:checked")];
-                    filtered = books.filter(b => activeCat === "all" || b.category === activeCat);
-                    if (checked.length) {
-                        filtered = filtered.filter(b => {
-                            const p = parseInt((b.price || "").replace(/\D/g, "")) || 0;
-                            return checked.some(cb => p >= +cb.dataset.min && p < +cb.dataset.max);
-                        });
-                    }
-                    applySort();
-                }
+      function applyFilters() {
+        const activeCat = sidebar.querySelector(".active").dataset.cat;
+        const activePrices = [...document.querySelectorAll(".pf:checked")];
 
-                function applySort() {
-                    const val = sortSelect.value;
-                    const num = p => parseInt((p.price || "").replace(/\D/g, "")) || 0;
-                    if (val === "giaTang") filtered.sort((a, b) => num(a) - num(b));
-                    else if (val === "giaGiam") filtered.sort((a, b) => num(b) - num(a));
-                    else if (val === "ten") filtered.sort((a, b) => a.name.localeCompare(b.name));
-                    else filtered.sort((a, b) => b.purchases - a.purchases);
-                    render(filtered);
-                }
+        filtered = books.filter(b => activeCat === "all" || b.category === activeCat);
 
-                sidebar.querySelectorAll("li").forEach(li => {
-                    li.addEventListener("click", () => {
-                        sidebar.querySelectorAll("li").forEach(x => x.classList.remove("active"));
-                        li.classList.add("active");
-                        applyFilters();
-                    });
-                });
+        if (activePrices.length) {
+          filtered = filtered.filter(b => {
+            const p = Number(b.price.replace(/\D/g, "")) || 0;
+            return activePrices.some(c => p >= c.dataset.min && p < c.dataset.max);
+          });
+        }
 
-                document.querySelectorAll(".price-checkbox").forEach(cb =>
-                    cb.addEventListener("change", applyFilters)
-                );
+        applySort();
+      }
 
-                sortSelect.addEventListener("change", applySort);
-                render(filtered);
-            });
-        </script>
+      function applySort() {
+        const val = sortSelect.value;
+        const num = p => Number(p.price.replace(/\D/g, "")) || 0;
+
+        if (val === "giaTang") filtered.sort((a, b) => num(a) - num(b));
+        else if (val === "giaGiam") filtered.sort((a, b) => num(b) - num(a));
+        else if (val === "ten") filtered.sort((a, b) => a.name.localeCompare(b.name));
+        else filtered.sort((a, b) => b.purchases - a.purchases);
+
+        render(filtered);
+      }
+
+      sidebar.querySelectorAll("li").forEach(li =>
+        li.addEventListener("click", () => {
+          sidebar.querySelectorAll("li").forEach(x => x.classList.remove("active"));
+          li.classList.add("active");
+          applyFilters();
+        })
+      );
+
+      document.querySelectorAll(".pf").forEach(cb =>
+        cb.addEventListener("change", applyFilters)
+      );
+
+      sortSelect.addEventListener("change", applySort);
+
+      applySort();
+    });
+  </script>
 </body>
 
 </html>
