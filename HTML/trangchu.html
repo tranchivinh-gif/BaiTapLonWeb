@@ -329,13 +329,10 @@
                 img: "../IMG/sachvan.jpg"
             },
         ];
-        // ========== Thêm sách thủ công ==========
 
-        // Lấy container từng phần
         const sachMoiContainer = document.querySelector('#sach-moi .book-scroll');
         const sachBanChayContainer = document.querySelector('#sach-ban-chay .book-scroll');
 
-        // Hàm thêm sách thủ công
         function addBookManually(container, book) {
             const bookHTML = `
         <div class="book-item">
@@ -352,7 +349,6 @@
             container.innerHTML += bookHTML;
         }
 
-        // ===== Thêm sách mới thủ công =====
         addBookManually(sachMoiContainer, books[0]);
         addBookManually(sachMoiContainer, books[1]);
         addBookManually(sachMoiContainer, books[2]);
@@ -360,7 +356,6 @@
         addBookManually(sachMoiContainer, books[4]);
         addBookManually(sachMoiContainer, books[5]);
 
-        // ===== Thêm sách bán chạy thủ công =====
         addBookManually(sachBanChayContainer, books[0]);
         addBookManually(sachBanChayContainer, books[1]);
         addBookManually(sachBanChayContainer, books[2]);
@@ -442,10 +437,7 @@
                 }
             });
         }
-
     </script>
-
-
 </body>
 
 </html>
