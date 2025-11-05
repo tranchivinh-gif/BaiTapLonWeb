@@ -70,7 +70,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-danger w-100">Đăng ký</button>
+                        <button type="submit" class="btn btn-danger w-100">Đặt lại mật khẩu</button>
 
                         <p class="text-center mt-3">
                             <a href="/HTML/trangchu.html" class="text-danger">Trang Chủ</a> |
@@ -115,6 +115,8 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+
         function togglePassword(inputId, btnId) {
             const input = document.getElementById(inputId);
             const btn = document.getElementById(btnId);
@@ -136,13 +138,17 @@
             const newPassword = document.getElementById('regPassword').value;
             const confirmPassword = document.getElementById('regConfirm').value;
 
+            if (!passwordRegex.test(newPassword)) {
+                alert("Mật khẩu phải có ít nhất 6 ký tự, gồm ít nhất 1 chữ hoa và 1 chữ số!");
+                return;
+            }
+
             if (newPassword !== confirmPassword) {
                 alert("Mật khẩu xác nhận không khớp!");
                 return;
             }
 
             let users = JSON.parse(localStorage.getItem('users')) || [];
-
             const userIndex = users.findIndex(u => u.username === username);
 
             if (userIndex === -1) {
@@ -150,7 +156,6 @@
                 return;
             }
 
-            // Cập nhật mật khẩu mới
             users[userIndex].password = newPassword;
             localStorage.setItem('users', JSON.stringify(users));
 

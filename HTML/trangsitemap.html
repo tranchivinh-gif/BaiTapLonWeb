@@ -14,112 +14,111 @@
     <script src="../JS/bootstrap.bundle.min.js"></script>
     <script src="../JS/banchay.js" defer></script>
 
-  <style>
-    .sitemap {
-      text-align: center;
-      padding: 40px 10px;
-      overflow-x: auto;
-    }
+    <style>
+        .sitemap {
+            text-align: center;
+            padding: 40px 10px;
+            overflow-x: auto;
+        }
 
-    .sitemap h2 {
-      color: #ff6f61;
-      font-weight: bold;
-      margin-bottom: 40px;
-    }
+        .sitemap h2 {
+            color: #ff6f61;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
 
-    .tree {
-      display: inline-block;
-      transform: scale(0.9);
-      transform-origin: top center;
-    }
+        .tree {
+            display: inline-block;
+            transform: scale(0.9);
+            transform-origin: top center;
+        }
 
-    .tree ul {
-      position: relative;
-      padding-top: 20px;
-      display: flex;
-      justify-content: center;
-    }
+        .tree ul {
+            position: relative;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-    .tree li {
-      list-style-type: none;
-      text-align: center;
-      position: relative;
-      padding: 15px 5px 0 5px;
-    }
+        .tree li {
+            list-style-type: none;
+            text-align: center;
+            position: relative;
+            padding: 15px 5px 0 5px;
+        }
 
-    .tree li::before,
-    .tree li::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      border-top: 2px solid #ccc;
-      width: 50%;
-      height: 15px;
-    }
+        .tree li::before,
+        .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            border-top: 2px solid #ccc;
+            width: 50%;
+            height: 15px;
+        }
 
-    .tree li::before {
-      right: 50%;
-      border-right: 2px solid #ccc;
-    }
+        .tree li::before {
+            right: 50%;
+            border-right: 2px solid #ccc;
+        }
 
-    .tree li::after {
-      left: 50%;
-      border-left: 2px solid #ccc;
-    }
+        .tree li::after {
+            left: 50%;
+            border-left: 2px solid #ccc;
+        }
 
-    .tree li:only-child::before,
-    .tree li:only-child::after {
-      display: none;
-    }
+        .tree li:only-child::before,
+        .tree li:only-child::after {
+            display: none;
+        }
 
-    .tree li:only-child {
-      padding-top: 0;
-    }
+        .tree li:only-child {
+            padding-top: 0;
+        }
 
-    .tree ul ul::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      border-left: 2px solid #ccc;
-      height: 15px;
-    }
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 2px solid #ccc;
+            height: 15px;
+        }
 
-    .tree li a {
-      border: 2px solid #ff6f61;
-      border-radius: 6px;
-      padding: 8px 16px;
-      display: inline-block;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      background-color: #fff;
-      transition: all 0.3s;
-      font-size: 15px;
-      white-space: nowrap;
-    }
+        .tree li a {
+            border: 2px solid #ff6f61;
+            border-radius: 6px;
+            padding: 8px 16px;
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            background-color: #fff;
+            transition: all 0.3s;
+            font-size: 15px;
+            white-space: nowrap;
+        }
 
-    .tree li a:hover {
-      background-color: #ff6f61;
-      color: white;
-      transform: scale(1.05);
-    }
+        .tree li a:hover {
+            background-color: #ff6f61;
+            color: white;
+            transform: scale(1.05);
+        }
 
-    .sitemap::-webkit-scrollbar {
-      height: 8px;
-    }
+        .sitemap::-webkit-scrollbar {
+            height: 8px;
+        }
 
-    .sitemap::-webkit-scrollbar-thumb {
-      background: #ff6f61;
-      border-radius: 10px;
-    }
-  </style>
+        .sitemap::-webkit-scrollbar-thumb {
+            background: #ff6f61;
+            border-radius: 10px;
+        }
+    </style>
 
 
 </head>
 
 <body>
-<!-- HEADER -->
     <div class="header">
         <div class="logo">
             <a href="./tranggioithieu.html">
@@ -149,41 +148,38 @@
         </div>
     </div>
 
-    <!-- NỘI DUNG TRANG SITEMAP -->
     <div class="sitemap container">
         <h2>Sơ Đồ Cấu Trúc Website BookStore</h2>
         <div class="tree">
-        <ul>
-            <li>
-            <a href="./trangchu.html">Trang Chủ</a>
             <ul>
-                <li><a href="./trangsachmoi.html">Sách Mới</a></li>
-                <li><a href="./trangbanchay.html">Bán Chạy</a></li>
                 <li>
-                <a href="./danhmucsanpham.html">Danh Mục</a>
-                <ul>
-                    <li><a href="#">Sách Giáo Khoa</a></li>
-                    <li><a href="#">Sách Văn Học</a></li>
-                    <li><a href="#">Sách Kỹ Năng</a></li>
-                    <li><a href="#">Sách Thiếu Nhi</a></li>
-                </ul>
+                    <a href="./trangchu.html">Trang Chủ</a>
+                    <ul>
+                        <li><a href="./trangsachmoi.html">Sách Mới</a></li>
+                        <li><a href="./trangbanchay.html">Bán Chạy</a></li>
+                        <li>
+                            <a href="./danhmucsanpham.html">Danh Mục</a>
+                            <ul>
+                                <li><a href="./danhmucsanpham.html#sach-giao-khoa">Sách Giáo Khoa</a></li>
+                                <li><a href="./danhmucsanpham.html#sach-van-hoc">Sách Văn Học</a></li>
+                                <li><a href="./danhmucsanpham.html#sach-ky-nang">Sách Kỹ Năng</a></li>
+                                <li><a href="#">Sách Thiếu Nhi</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./trangkhuyenmai.html">Khuyến Mãi</a></li>
+                        <li><a href="./tranggiohang.html">Giỏ Hàng</a></li>
+                        <li>
+                            <a href="./trangdangnhap.html">Đăng Nhập</a>
+                            <ul>
+                                <li><a href="./trangdangky.html">Đăng Ký</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./tranggioithieu.html">Giới Thiệu</a></li>
+                    </ul>
                 </li>
-                <li><a href="./trangkhuyenmai.html">Khuyến Mãi</a></li>
-                <li><a href="./tranggiohang.html">Giỏ Hàng</a></li>
-                <li>
-                <a href="./trangdangnhap.html">Đăng Nhập</a>
-                <ul>
-                    <li><a href="./trangdangky.html">Đăng Ký</a></li>
-                </ul>
-                </li>
-                <li><a href="./tranggioithieu.html">Giới Thiệu</a></li>
             </ul>
-            </li>
-        </ul>
         </div>
     </div>
-
-        <!-- FOOTER -->
     <div class="footer">
         <div>
             <h3>Về Chúng Tôi</h3>
@@ -205,7 +201,6 @@
                 <li><a href="#">Liên hệ</a></li>
             </ul>
         </div>
-
         <div>
             <h3>Kết Nối Với Chúng Tôi</h3>
             <div class="social-icons">

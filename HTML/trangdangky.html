@@ -117,6 +117,7 @@
             </p>
         </div>
     </div>
+
     <script>
         function togglePassword(inputId, btnId) {
             const input = document.getElementById(inputId);
@@ -135,9 +136,23 @@
         registerForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const username = document.getElementById('regUsername').value;
+            const username = document.getElementById('regUsername').value.trim();
             const password = document.getElementById('regPassword').value;
             const confirm = document.getElementById('regConfirm').value;
+
+            const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{2,15}$/;
+
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+            if (!usernameRegex.test(username)) {
+                alert("Tên đăng nhập phải bắt đầu bằng chữ, không có ký tự đặc biệt và dài 3-16 ký tự!");
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                alert("Mật khẩu phải có ít nhất 1 chữ hoa, 1 số và dài tối thiểu 6 ký tự!");
+                return;
+            }
 
             if (password !== confirm) {
                 alert("Mật khẩu xác nhận không khớp!");

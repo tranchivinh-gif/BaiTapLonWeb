@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../fontawesomefree/css/all.min.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <style>
-        /* --- Giống trang chủ --- */
         .book-section {
             margin: 40px 0;
         }
@@ -22,7 +21,6 @@
             padding-left: 10px;
         }
 
-        /* ==== Thêm thanh cuộn ngang ==== */
         .book-scroll {
             display: flex;
             overflow-x: auto;
@@ -97,7 +95,6 @@
 </head>
 
 <body>
-    <!-- HEADER -->
     <div class="header">
         <div class="logo">
             <a href="./tranggioithieu.html">
@@ -121,39 +118,32 @@
         </div>
     </div>
 
-    <!-- NỘI DUNG DANH MỤC -->
     <div class="content" style="padding: 40px;">
 
         <h1 class="text-center mb-4 fw-bold">📚 Danh Mục Sản Phẩm</h1>
 
-        <!-- NÚT CHUYỂN NHANH GIỮA CÁC DANH MỤC -->
         <div class="text-center mb-5">
             <a href="#sach-giao-khoa" class="btn btn-warning m-1"><i class="fa-solid fa-book"></i> Sách Giáo Khoa</a>
             <a href="#sach-van-hoc" class="btn btn-primary m-1"><i class="fa-solid fa-book-open"></i> Sách Văn Học</a>
             <a href="#sach-ky-nang" class="btn btn-success m-1"><i class="fa-solid fa-lightbulb"></i> Sách Kỹ Năng</a>
         </div>
 
-        <!-- DANH MỤC SÁCH GIÁO KHOA -->
         <div id="sach-giao-khoa" class="book-section">
             <h2>📚 Sách Giáo Khoa</h2>
             <div class="book-scroll"></div>
         </div>
 
-        <!-- DANH MỤC SÁCH VĂN HỌC -->
         <div id="sach-van-hoc" class="book-section">
             <h2>📖 Sách Văn Học</h2>
             <div class="book-scroll"></div>
         </div>
 
-        <!-- DANH MỤC SÁCH KỸ NĂNG -->
         <div id="sach-ky-nang" class="book-section">
             <h2>📗 Sách Kỹ Năng</h2>
             <div class="book-scroll"></div>
         </div>
     </div>
 
-
-    <!-- FOOTER -->
     <div class="footer">
         <div>
             <h3>Về Chúng Tôi</h3>
@@ -189,7 +179,6 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
-        // Dữ liệu mẫu
         const sachGiaoKhoa = [
             { name: "Toán 12", price: "45.000₫", img: "../IMG/sachtoan.png" },
             { name: "Vật Lý 12", price: "40.000₫", img: "../IMG/sachvatly.png" },
@@ -235,7 +224,6 @@
             { name: "7 Thói Quen Hiệu Quả", price: "130.000₫", img: "../IMG/sach7thoiquenhieuqua.webp" },
         ];
 
-        // Hàm hiển thị sách
         function renderBooks(sectionId, data) {
             const container = document.querySelector(`#${sectionId} .book-scroll`);
             container.innerHTML = data.map(book => `
@@ -251,12 +239,10 @@
             `).join('');
         }
 
-        // Gọi hiển thị
         renderBooks('sach-giao-khoa', sachGiaoKhoa);
         renderBooks('sach-van-hoc', sachVanHoc);
         renderBooks('sach-ky-nang', sachKyNang);
 
-        // Thêm sản phẩm vào giỏ hàng
         function addToCart(name, price, img) {
             const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
             if (!userInfo || !userInfo.username) {
@@ -280,7 +266,6 @@
             alert(`✅ Đã thêm "${name}" vào giỏ hàng của bạn!`);
         }
 
-        // Lưu chi tiết sách khi bấm Xem
         function viewBookDetail(name, price, img) {
             const bookDetail = { name, price, img };
             localStorage.setItem('selectedBook', JSON.stringify(bookDetail));

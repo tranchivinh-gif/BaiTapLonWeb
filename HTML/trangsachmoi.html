@@ -106,7 +106,6 @@
         </div>
     </div>
 
-    <!-- NỘI DUNG -->
     <div class="content container">
         <div class="book-section">
             <h2>Sách Mới Phát Hành</h2>
@@ -114,7 +113,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
         <div>
             <h3>Về Chúng Tôi</h3>
@@ -157,7 +155,6 @@
             { id: 6, name: "Sách 6", price: "55.000₫", releaseDate: "2025-10-20", img: "../IMG/sachvatly.png" },
         ];
 
-        // Chỉ lấy sách mới nhất (ví dụ 6 quyển mới nhất)
         const newestBooks = [...books].sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
 
         const bookList = document.getElementById('book-list');
@@ -209,4 +206,5 @@
         }
     </script>
 </body>
+
 </html>

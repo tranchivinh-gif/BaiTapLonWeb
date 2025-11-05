@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,7 @@
       gap: 40px;
       background: #fff;
       border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
       padding: 30px;
     }
 
@@ -52,7 +53,8 @@
       margin: 15px 0;
     }
 
-    .btn-add, .btn-back {
+    .btn-add,
+    .btn-back {
       border: none;
       border-radius: 6px;
       padding: 10px 20px;
@@ -76,7 +78,6 @@
       margin-left: 10px;
     }
 
-    /* Sách tương tự */
     h3.similar-title {
       max-width: 1100px;
       margin: 50px auto 25px;
@@ -90,7 +91,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 25px;
-      justify-content: center; /* ✅ Căn giữa sách */
+      justify-content: center;
       max-width: 1100px;
       margin: 0 auto 60px;
     }
@@ -99,7 +100,7 @@
       width: 220px;
       background-color: white;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       padding: 10px;
       text-align: center;
       transition: transform 0.3s;
@@ -124,7 +125,8 @@
       margin-top: 8px;
     }
 
-    .book-actions .btn-add, .book-actions .btn-detail {
+    .book-actions .btn-add,
+    .book-actions .btn-detail {
       padding: 6px 10px;
       border-radius: 6px;
       font-size: 14px;
@@ -143,13 +145,14 @@
       text-decoration: none;
     }
 
-    .book-actions .btn-add:hover, .book-actions .btn-detail:hover {
+    .book-actions .btn-add:hover,
+    .book-actions .btn-detail:hover {
       opacity: 0.9;
     }
   </style>
 </head>
+
 <body>
-  <!-- HEADER -->
   <div class="header">
     <div class="logo">
       <a href="./tranggioithieu.html">
@@ -170,15 +173,13 @@
     <div class="user-cart">
       <a href="./tranggiohang.html" class="cart-link position-relative">
         <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
-        <span id="cart-count"
-              class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill"
-              style="font-size: 10px;">0</span>
+        <span id="cart-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill"
+          style="font-size: 10px;">0</span>
       </a>
       <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
     </div>
   </div>
 
-  <!-- NỘI DUNG CHI TIẾT -->
   <div class="book-detail-container">
     <img id="book-image" src="" alt="Book image">
     <div class="book-info">
@@ -196,11 +197,9 @@
     </div>
   </div>
 
-  <!-- SÁCH TƯƠNG TỰ -->
   <h3 class="similar-title">📚 Sách tương tự</h3>
   <div id="similar-books" class="book-scroll"></div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <div>
       <h3>Về Chúng Tôi</h3>
@@ -233,7 +232,6 @@
 
   <script src="../JS/bootstrap.bundle.js"></script>
   <script>
-    // Lấy thông tin sách từ localStorage
     const book = JSON.parse(localStorage.getItem('selectedBook'));
     if (book) {
       document.getElementById('book-image').src = book.img;
@@ -244,7 +242,6 @@
       document.getElementById('book-price').textContent = book.price;
     }
 
-    // Dữ liệu mẫu
     const books = [
       { id: 1, name: "Đắc Nhân Tâm", img: "../IMG/khuyen-mai.jpg", price: "99.000₫", releaseDate: "2024-04-12", purchases: 500, category: "Kỹ năng sống" },
       { id: 2, name: "Tuổi Trẻ Đáng Giá Bao Nhiêu", img: "../IMG/khuyen-mai.jpg", price: "85.000₫", releaseDate: "2023-10-05", purchases: 620, category: "Kỹ năng sống" },
@@ -252,7 +249,6 @@
       { id: 4, name: "Hạt Giống Tâm Hồn", img: "../IMG/khuyen-mai.jpg", price: "95.000₫", releaseDate: "2023-08-25", purchases: 850, category: "Truyền cảm hứng" }
     ];
 
-    // Thêm vào giỏ hàng
     document.getElementById('add-cart').addEventListener('click', () => {
       if (!book) return;
       const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
@@ -274,18 +270,16 @@
       alert(`Đã thêm "${book.name}" vào giỏ hàng!`);
     });
 
-    // Hiển thị sách tương tự
     function renderSimilarBooks() {
       const container = document.getElementById("similar-books");
       if (!book) return;
 
       let similar = books.filter(b => b.category === book.category && b.id !== book.id);
 
-      // Nếu không có sách cùng thể loại → chọn ngẫu nhiên 4 cuốn khác
       if (similar.length === 0) {
         similar = books.filter(b => b.id !== book.id)
-                       .sort(() => 0.5 - Math.random())
-                       .slice(0, 4);
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 4);
       }
 
       container.innerHTML = similar.map(b => `
@@ -305,13 +299,11 @@
 
     renderSimilarBooks();
 
-    // Xem chi tiết
     function viewBookDetail(id) {
       const selected = books.find(b => b.id === id);
       localStorage.setItem('selectedBook', JSON.stringify(selected));
     }
 
-    // Thêm giỏ hàng trong phần tương tự
     function addToCart(id) {
       const selected = books.find(b => b.id === id);
       const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
@@ -334,4 +326,5 @@
     }
   </script>
 </body>
+
 </html>

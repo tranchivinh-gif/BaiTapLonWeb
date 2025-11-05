@@ -21,7 +21,7 @@
             font-family: Arial, sans-serif;
             overflow-x: hidden;
         }
-    
+
 
         .text-h1 {
             text-align: center;
@@ -29,6 +29,7 @@
             color: rgba(255, 255, 255, 0.629);
             text-shadow: 2px 2px rgb(18, 18, 233);
         }
+
         .sidebar {
             position: fixed;
             top: 150px;
@@ -50,7 +51,7 @@
             width: 100%;
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
 
@@ -61,14 +62,10 @@
             flex-direction: column;
             align-items: center;
             gap: 40px;
-            /* background: radial-gradient(circle at 20% 20%, #694483, #5e5151 70%),
-            linear-gradient(135deg, #6c9eb4, #40788b, #3c946e);
-            background-blend-mode: screen; */
-
-
         }
 
-        .hangtren,.hangduoi {
+        .hangtren,
+        .hangduoi {
             display: flex;
             justify-content: center;
             gap: 40px;
@@ -149,45 +146,45 @@
 
 <body>
     <header>
-        
-    <div class="header">
-        <div class="logo">
-            <a href="./tranggioithieu.html">
-                <img src="../IMG/logo.png" alt="logo">
-            </a>
-        </div>
-        <div class="search-box">
-            <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
-            <div class="search-results"></div>
-        </div>
-        <div class="nav">
-            <a href="./trangchu.html">Trang Chủ</a>
-            <a href="./trangsachmoi.html">Sách Mới</a>
-            <a href="./trangbanchay.html">Bán Chạy</a>
-            <a href="./danhmucsanpham.html">Danh Mục</a>
-            <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
-        </div>
-        <div class="user-cart">
-            <a href="./tranggiohang.html" class="cart-link position-relative">
-                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
-                <span id="cart-count"
-                    class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill"
-                    style="font-size: 10px;">0</span>
-            </a>
 
-            <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+        <div class="header">
+            <div class="logo">
+                <a href="./tranggioithieu.html">
+                    <img src="../IMG/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Tìm sản phẩm..." class="search-input">
+                <div class="search-results"></div>
+            </div>
+            <div class="nav">
+                <a href="./trangchu.html">Trang Chủ</a>
+                <a href="./trangsachmoi.html">Sách Mới</a>
+                <a href="./trangbanchay.html">Bán Chạy</a>
+                <a href="./danhmucsanpham.html">Danh Mục</a>
+                <a href="./trangkhuyenmai.html">Khuyến Mãi</a>
+            </div>
+            <div class="user-cart">
+                <a href="./tranggiohang.html" class="cart-link position-relative">
+                    <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
+                    <span id="cart-count"
+                        class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill"
+                        style="font-size: 10px;">0</span>
+                </a>
+
+                <a href="./trangdangnhap.html"><i class="fa-solid fa-user"></i> Đăng nhập</a>
+            </div>
         </div>
-    </div>
 
         <div class="text-h1">
             <h1><b>Nhóm 2 - Giới Thiệu Thành Viên</b></h1>
-        <div class="sidebar left">
-    <img src="../IMG/anh_decor_gioi_thieu3.jpg" alt="Books Left">
-</div>
+            <div class="sidebar left">
+                <img src="../IMG/anh_decor_gioi_thieu3.jpg" alt="Books Left">
+            </div>
 
-<div class="sidebar right">
-    <img src="../IMG/anh_decor_gioi_thieu3.jpg" alt="Books Right">
-</div>
+            <div class="sidebar right">
+                <img src="../IMG/anh_decor_gioi_thieu3.jpg" alt="Books Right">
+            </div>
 
 
     </header>
@@ -233,7 +230,6 @@
         </div>
     </div>
 
-    <!-- Modal Thành viên 1 -->
     <div class="modal fade" id="tv1" tabindex="-1" aria-labelledby="tv1Label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -247,13 +243,13 @@
                         height="120">
                     <p><strong>MSSV:</strong> 23662901</p>
                     <p><strong>Vai trò:</strong> Trưởng nhóm</p>
-                    <p><strong>Mô tả:</strong> Quản lý tiến độ nhóm, phụ trách giao diện trang đăng nhập và trang chủ.</p>
+                    <p><strong>Mô tả:</strong> Quản lý tiến độ nhóm, phụ trách giao diện trang đăng nhập và trang chủ.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Thành viên 2 -->
     <div class="modal fade" id="tv2" tabindex="-1" aria-labelledby="tv2Label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -272,14 +268,12 @@
         </div>
     </div>
 
-    <!-- Modal Thành viên 3 -->
     <div class="modal fade" id="tv3" tabindex="-1" aria-labelledby="tv3Label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-success text-dark">
                     <h5 class="modal-title" id="tv3Label">Trần Như Ý</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
                     <img src="../IMG/avatar-nu.jpg" class="rounded-circle mb-3" width="120" height="120">
@@ -291,7 +285,6 @@
         </div>
     </div>
 
-    <!-- Modal Thành viên 4 -->
     <div class="modal fade" id="tv4" tabindex="-1" aria-labelledby="tv4Label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -310,7 +303,6 @@
         </div>
     </div>
 
-    <!-- Modal Thành viên 5 -->
     <div class="modal fade" id="tv5" tabindex="-1" aria-labelledby="tv5Label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -329,7 +321,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer">
             <div>
@@ -352,7 +343,6 @@
                     <li><a href="#">Liên hệ</a></li>
                 </ul>
             </div>
-
             <div>
                 <h3>Kết Nối Với Chúng Tôi</h3>
                 <div class="social-icons">

@@ -17,7 +17,6 @@
     overflow-x: hidden;
   }
 
-  /* HEADER */
   .header {
     background-color: #ff6f61;
     color: white;
@@ -59,7 +58,6 @@
     transform: scale(1.05);
   }
 
-  /* CONTENT */
   .container {
     display: flex;
   }
@@ -68,19 +66,19 @@
     border: 1px solid rgb(222, 202, 202);
     padding-bottom: 2px;
   }
+
   .col-md-4 p {
-  margin-bottom: 1px; /* giảm khoảng cách phía dưới đoạn <p> */
-}
+    margin-bottom: 1px;
+  }
 
-.col-md-4 ul {
-  margin-top: 1px; /* giảm khoảng cách phía trên danh sách <ul> */
-}
+  .col-md-4 ul {
+    margin-top: 1px;
+  }
 
-.row h2 {
+  .row h2 {
     margin-top: 20px;
   }
 
-  /* FOOTER */
   .footer {
     background-color: #333;
     color: #ccc;
@@ -124,8 +122,6 @@
 </style>
 
 <body>
-
-  <!-- HEADER -->
   <div class="header">
     <div class="logo">
       <a href="./tranggioithieu.html">
@@ -148,59 +144,53 @@
     </div>
   </div>
 
-  <!-- NỘI DUNG TRANG KHUYẾN MÃI -->
   <div class="container mt-5">
     <div class="row">
-
-      <!-- Cột 1 -->
       <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
         <img src="../IMG/khuyen-mai1.jpg" class="khuyen-mai1" alt="">
         <h2>MUA CÀNG TO - LÌ XÌ CÀNG LỚN</h2>
         <hr>
         <p>Giảm đến <strong>70%</strong> toàn bộ sản phẩm – Duy nhất hôm nay!</p>
         <ul>
-            <li>🎁Ưu đãi đặc biệt dành cho những đơn hàng khủng!</li>
-            <li>📦Càng mua nhiều – càng nhận quà to.</li>
-            <li>🕒 Áp dụng toàn bộ sản phẩm sách trong tháng <strong>10/2025</strong>.</li>
+          <li>🎁Ưu đãi đặc biệt dành cho những đơn hàng khủng!</li>
+          <li>📦Càng mua nhiều – càng nhận quà to.</li>
+          <li>🕒 Áp dụng toàn bộ sản phẩm sách trong tháng <strong>10/2025</strong>.</li>
         </ul>
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-          data-bs-target="#modal1">Xem nhanh</button>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal1">Xem
+          nhanh</button>
       </div>
-      <!-- Cột 2 -->
       <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
         <img src="../IMG/khuyen-mai2.png" class="khuyen-mai2" alt="">
         <h2>🎁 KHUYẾN MÃI ĐẶC BIỆT: MUA 5 TẶNG 1 🎁</h2>
         <hr>
         <p>Chương trình áp dụng từ <strong>20/10 đến 20/11/2025</strong> – Duy nhất tại đây!</p>
         <ul>
-            <li>💧 Nhận ngay 1 sản phẩm miễn phí khi mua 5 sản phẩm bất kỳ cùng loại.</li>
-            <li>🚚 Miễn phí giao hàng trong bán kính 3km.</li>
-            <li>🕒 Chương trình có giới hạn – nhanh tay kẻo hết!</li>
+          <li>💧 Nhận ngay 1 sản phẩm miễn phí khi mua 5 sản phẩm bất kỳ cùng loại.</li>
+          <li>🚚 Miễn phí giao hàng trong bán kính 3km.</li>
+          <li>🕒 Chương trình có giới hạn – nhanh tay kẻo hết!</li>
         </ul>
-            
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-          data-bs-target="#modal2">Xem nhanh</button>
+
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal2">Xem
+          nhanh</button>
       </div>
 
-      <!-- Cột 3 -->
       <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
         <img src="../IMG/khuyen-mai3.jpg" class="khuyen-mai3" alt="" height="405px">
         <h2>HỌC NGOẠI NGỮ DỄ DÀNG HƠN</h2>
         <hr>
-       <p>Bộ sưu tập sách học tiếng Anh, Nhật, Hàn, Trung... giúp bạn tự học tại nhà dễ dàng, tiết kiệm chi phí. Cơ hội vàng chỉ có trong tháng 10 này – nhanh tay kẻo lỡ!</p>
-       <ul>
-        <li>📘 Giảm đến <strong>50%</strong> cho tất cả sách ngoại ngữ.</li>
-        <li>🎯 Tặng kèm bookmark hoặc sổ tay học từ vựng.</li>
-        <li>🚚 Freeship cho đơn từ 200.000đ.</li>
-       </ul>
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-          data-bs-target="#modal3">Xem nhanh</button>
+        <p>Bộ sưu tập sách học tiếng Anh, Nhật, Hàn, Trung... giúp bạn tự học tại nhà dễ dàng, tiết kiệm chi phí. Cơ hội
+          vàng chỉ có trong tháng 10 này – nhanh tay kẻo lỡ!</p>
+        <ul>
+          <li>📘 Giảm đến <strong>50%</strong> cho tất cả sách ngoại ngữ.</li>
+          <li>🎯 Tặng kèm bookmark hoặc sổ tay học từ vựng.</li>
+          <li>🚚 Freeship cho đơn từ 200.000đ.</li>
+        </ul>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal3">Xem
+          nhanh</button>
       </div>
     </div>
   </div>
 
-  <!-- MODALS -->
-  <!-- Modal 1 -->
   <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -210,7 +200,8 @@
         </div>
         <div class="modal-body">
           <img src="../IMG/anh_khuyen_mai1.webp" class="img-fluid rounded mb-3" alt="">
-          <p>🔥Nhằm mục đích mang lại những món quà tri thức ngày Tết cùng bạn đọc, Book Store xin gửi đến các bạn chương trình MUA CÀNG TO – LÌ XÌ CÀNG LỚN với rất nhiều ưu đãi:.</p>
+          <p>🔥Nhằm mục đích mang lại những món quà tri thức ngày Tết cùng bạn đọc, Book Store xin gửi đến các bạn
+            chương trình MUA CÀNG TO – LÌ XÌ CÀNG LỚN với rất nhiều ưu đãi:.</p>
           <ul>
             <li>⚡ Đơn từ 100k-200k: Nhận ngay lì xì 10k + Móc khóa </li>
             <li>⚡ Đơn từ 200k-300k: Nhận ngay lì xì 20k + Móc khóa</li>
@@ -218,7 +209,8 @@
             <li>⚡ Đơn từ 400k-500k: Nhận ngay lì xì 40k + Sổ tay</li>
           </ul>
           <p><b>Lưu ý: Lì xì sẽ được trừ trực tiếp vào đơn hàng của khách hàng.</b></p>
-          <p>💌 Hãy trao cho nhau thật nhiều "tri thức", cùng nhau đi tới ước mơ. Dành tặng cho bạn bè, người thân hay chính mình những cuốn sách nhân ngày đầu năm!</p>
+          <p>💌 Hãy trao cho nhau thật nhiều "tri thức", cùng nhau đi tới ước mơ. Dành tặng cho bạn bè, người thân hay
+            chính mình những cuốn sách nhân ngày đầu năm!</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -227,7 +219,6 @@
     </div>
   </div>
 
-  <!-- Modal 2 -->
   <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -237,7 +228,8 @@
         </div>
         <div class="modal-body">
           <img src="../IMG/anh_khuyen_mai.png" class="img-fluid rounded mb-3" alt="">
-          <p>🎉 Khuyến mãi mua 5 tặng 1. Mua ngay 5 sách Quốc văn với đơn hàng nhỏ hơn 399k giảm 100% cho cuốn sách có giá thấp nhấ</p>
+          <p>🎉 Khuyến mãi mua 5 tặng 1. Mua ngay 5 sách Quốc văn với đơn hàng nhỏ hơn 399k giảm 100% cho cuốn sách có
+            giá thấp nhấ</p>
           <ul>
             <li>Mở bán top sách 50% ngày 29/09</li>
             <li>Đồng giá 9k, mã giảm 99k: 22/09 – 30/09</li>
@@ -255,7 +247,6 @@
     </div>
   </div>
 
-  <!-- Modal 3 -->
   <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal3Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -281,7 +272,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <div>
       <h3>Về Chúng Tôi</h3>
