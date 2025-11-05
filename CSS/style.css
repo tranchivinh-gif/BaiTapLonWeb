@@ -337,8 +337,6 @@ footer p {
     background: #f8f9fa;
 }
 
-/* ===================== RESPONSIVE DESIGN ===================== */
-
 /* --- Tablet (màn hình nhỏ hơn 992px) --- */
 @media (max-width: 992px) {
     .header {
@@ -387,21 +385,66 @@ footer p {
     }
 }
 
-/* --- Mobile (màn hình nhỏ hơn 768px) --- */
-@media (max-width: 768px) {
+@media (min-width: 1200px) {
+    .content {
+        max-width: 1200px;
+        margin: auto;
+    }
+}
+
+/* --- Tablet ngang (992px đến 1199px) --- */
+@media (max-width: 1199px) and (min-width: 992px) {
     .header {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     .nav {
+        gap: 15px;
+    }
+
+    .search-box {
+        width: 300px;
+    }
+
+    .book-item {
+        width: 220px;
+        height: 360px;
+    }
+
+    .footer {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: center;
+    }
+}
+
+/* --- Tablet dọc (768px đến 991px, iPad & iPad mini) --- */
+@media (max-width: 991px) and (min-width: 768px) {
+    .header {
         flex-direction: column;
-        align-items: center;
-        gap: 8px;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .logo img {
+        height: 60px;
+        width: 110px;
     }
 
     .search-box {
         width: 90%;
+        margin: 10px 0;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .book-item {
+        width: 45%;
+        height: auto;
     }
 
     .book-scroll {
@@ -409,10 +452,39 @@ footer p {
         justify-content: center;
     }
 
+    .footer {
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+    }
+}
+
+/* --- Điện thoại lớn (480px đến 767px, iPhone 12, 13, XR, SE landscape) --- */
+@media (max-width: 767px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .search-box {
+        width: 85%;
+        margin-top: 10px;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
     .book-item {
         width: 90%;
-        max-width: 300px;
+        max-width: 320px;
         height: auto;
+    }
+
+    .content {
+        padding: 15px;
     }
 
     .footer {
@@ -420,35 +492,42 @@ footer p {
         text-align: center;
     }
 
-    .footer h3 {
-        margin-top: 15px;
-    }
-
     .category-links .btn {
         width: 90%;
     }
 }
 
-/* --- Màn hình cực nhỏ (dưới 480px) --- */
-@media (max-width: 480px) {
-    .logo img {
-        height: 50px;
-        width: 90px;
+/* --- Điện thoại nhỏ (≤479px, iPhone SE, Android mini) --- */
+@media (max-width: 479px) {
+    h1 {
+        font-size: 18px;
+    }
+
+    .book-section h2 {
+        font-size: 16px;
     }
 
     .nav a {
         font-size: 14px;
     }
 
-    .book-section h2 {
-        font-size: 18px;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
     .book-item p {
+        font-size: 13px;
+    }
+
+    .search-box {
+        width: 90%;
+    }
+
+    .footer {
+        padding: 20px;
+    }
+
+    .footer h3 {
+        font-size: 14px;
+    }
+
+    .footer ul li a {
         font-size: 13px;
     }
 }
