@@ -38,6 +38,18 @@
             width: 100%;
             overflow-x: auto;
         }
+        
+        .cart-container {
+            overflow-y: auto;
+        }
+
+        .cart-footer {
+            position: sticky;
+            bottom: 0;
+            padding: 15px;
+            text-align: right;
+            z-index: 10;
+        }
 
 
         @media (max-width: 479px) {
@@ -73,33 +85,34 @@
         </div>
     </div>
 
-    <div class="table-responsive" style="padding: 40px;">
+   <div class="table-responsive cart-container" style="padding: 40px;">
         <h1>Giỏ Hàng Của Bạn</h1>
         <table class="table table-bordered table-striped mt-4">
             <thead class="table-dark">
-                <tr>
-                    <th>Hình Ảnh</th>
-                    <th>Tên Sách</th>
-                    <th>Đơn Giá</th>
-                    <th>Số Lượng</th>
-                    <th>Thành Tiền</th>
-                    <th>Xóa</th>
-                </tr>
+            <tr>
+                <th>Hình Ảnh</th>
+                <th>Tên Sách</th>
+                <th>Đơn Giá</th>
+                <th>Số Lượng</th>
+                <th>Thành Tiền</th>
+                <th>Xóa</th>
+            </tr>
             </thead>
             <tbody id="cart-body" class="text-center">
-                <tr>
-                    <td colspan="6" id="empty-cart" style="color: gray;">🛒 Giỏ hàng của bạn hiện đang trống.</td>
-                </tr>
+            <tr>
+                <td colspan="6" id="empty-cart" style="color: gray;">🛒 Giỏ hàng của bạn hiện đang trống.</td>
+            </tr>
             </tbody>
         </table>
-
-        <div style="text-align: right; margin-top: 30px;">
-            <h4>Tổng cộng: <span id="cart-total" style="color: red;">0₫</span></h4>
-            <button class="btn btn-success mt-3"><i class="fa-solid fa-credit-card"></i> Thanh Toán</button>
-            <a href="./danhmucsanpham.html" class="btn btn-secondary mt-3"><i class="fa-solid fa-arrow-left"></i> Tiếp
-                tục mua</a>
-        </div>
     </div>
+    <div class="cart-footer">
+        <h4>Tổng cộng: <span id="cart-total" style="color: red;">0₫</span></h4>
+        <button class="btn btn-success mt-2"><i class="fa-solid fa-credit-card"></i> Thanh Toán</button>
+        <a href="./danhmucsanpham.html" class="btn btn-secondary mt-2">
+            <i class="fa-solid fa-arrow-left"></i> Tiếp tục mua
+        </a>
+    </div>
+
 
     <div class="footer">
         <div>
