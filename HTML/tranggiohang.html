@@ -28,8 +28,12 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            overflow-x: hidden; /* tránh bị tràn ngang */
         }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
 
 
     </style>
@@ -59,7 +63,7 @@
         </div>
     </div>
 
-    <div class="content" style="padding: 40px;">
+    <div class="table-responsive" style="padding: 40px;">
         <h1>Giỏ Hàng Của Bạn</h1>
         <table class="table table-bordered table-striped mt-4">
             <thead class="table-dark">
