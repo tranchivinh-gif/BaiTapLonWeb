@@ -18,16 +18,155 @@
       padding-bottom: 2px;
     }
 
-    .col-md-4 p {
-      margin-bottom: 1px;
+    #khuyenMaiCarousel {
+      max-width: 1100px;
+      margin: 20px auto 150px auto;
+      margin-left: 20px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
-    .col-md-4 ul {
-      margin-top: 1px;
+    #khuyenMaiCarousel img {
+      height: 480px;
+      width: 100%;
+      object-fit: cover;
     }
 
-    .row h2 {
-      margin-top: 20px;
+    #khuyenMaiCarousel .carousel-caption {
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 70%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 10px;
+      padding: 20px 30px;
+      color: #222;
+    }
+
+    #khuyenMaiCarousel .carousel-caption h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    #khuyenMaiCarousel .carousel-caption p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    #khuyenMaiCarousel .carousel-caption .btn {
+      font-size: 1rem;
+      padding: 8px 18px;
+    }
+
+    /* ==== Laptop (992px - 1199px) ==== */
+    @media (max-width: 1199px) and (min-width: 992px) {
+      #khuyenMaiCarousel img {
+        height: 420px;
+      }
+
+      #khuyenMaiCarousel .carousel-caption {
+        max-width: 75%;
+        padding: 18px 25px;
+      }
+
+      #khuyenMaiCarousel .carousel-caption h3 {
+        font-size: 1.6rem;
+      }
+
+      #khuyenMaiCarousel .carousel-caption p {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ==== Tablet ngang (768px - 991px) ==== */
+    @media (max-width: 991px) and (min-width: 768px) {
+      #khuyenMaiCarousel img {
+        height: 360px;
+      }
+
+      #khuyenMaiCarousel .carousel-caption {
+        max-width: 85%;
+        padding: 15px 20px;
+      }
+
+      #khuyenMaiCarousel .carousel-caption h3 {
+        font-size: 1.4rem;
+      }
+
+      #khuyenMaiCarousel .carousel-caption p {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ==== Điện thoại lớn (480px - 767px) ==== */
+    @media (max-width: 767px) and (min-width: 480px) {
+      #khuyenMaiCarousel img {
+        height: 300px;
+      }
+
+      #khuyenMaiCarousel .carousel-caption {
+        bottom: 20px;
+        max-width: 90%;
+        padding: 12px 16px;
+      }
+
+      #khuyenMaiCarousel .carousel-caption h3 {
+        font-size: 1.2rem;
+      }
+
+      #khuyenMaiCarousel .carousel-caption p {
+        font-size: 0.85rem;
+      }
+
+      #khuyenMaiCarousel .carousel-caption .btn {
+        font-size: 0.85rem;
+        padding: 6px 14px;
+      }
+    }
+
+    /* ==== Điện thoại nhỏ (<480px) ==== */
+    @media (max-width: 479px) {
+
+      .btn-outline-primary,
+      .btn-outline-success,
+      .btn-outline-warning {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+      }
+
+      #khuyenMaiCarousel img {
+        height: 240px;
+      }
+
+      #khuyenMaiCarousel .carousel-caption {
+        bottom: 10px;
+        max-width: 95%;
+        padding: 10px 12px;
+        font-size: 0.8rem;
+      }
+
+      #khuyenMaiCarousel .carousel-caption h3 {
+        font-size: 1rem;
+      }
+
+      #khuyenMaiCarousel .carousel-caption p {
+        font-size: 0.75rem;
+      }
+
+      #khuyenMaiCarousel .carousel-caption .btn {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+      }
+    }
+
+    /* ==== Nút điều hướng chung ==== */
+    #khuyenMaiCarousel .carousel-control-prev-icon,
+    #khuyenMaiCarousel .carousel-control-next-icon {
+      filter: invert(100%);
+      width: 40px;
+      height: 40px;
     }
   </style>
 </head>
@@ -56,53 +195,61 @@
     </div>
   </div>
 
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
-        <img src="../IMG/khuyen-mai1.jpg" class="khuyen-mai1" alt="">
-        <h2>MUA CÀNG TO - LÌ XÌ CÀNG LỚN</h2>
-        <hr>
-        <p>Giảm đến <strong>70%</strong> toàn bộ sản phẩm – Duy nhất hôm nay!</p>
-        <ul>
-          <li>🎁Ưu đãi đặc biệt dành cho những đơn hàng khủng!</li>
-          <li>📦Càng mua nhiều – càng nhận quà to.</li>
-          <li>🕒 Áp dụng toàn bộ sản phẩm sách trong tháng <strong>10/2025</strong>.</li>
-        </ul>
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal1">Xem
-          nhanh</button>
-      </div>
-      <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
-        <img src="../IMG/khuyen-mai2.png" class="khuyen-mai2" alt="">
-        <h2>🎁 KHUYẾN MÃI ĐẶC BIỆT: MUA 5 TẶNG 1 🎁</h2>
-        <hr>
-        <p>Chương trình áp dụng từ <strong>20/10 đến 20/11/2025</strong> – Duy nhất tại đây!</p>
-        <ul>
-          <li>💧 Nhận ngay 1 sản phẩm miễn phí khi mua 5 sản phẩm bất kỳ cùng loại.</li>
-          <li>🚚 Miễn phí giao hàng trong bán kính 3km.</li>
-          <li>🕒 Chương trình có giới hạn – nhanh tay kẻo hết!</li>
-        </ul>
+  <!-- Carousel -->
+  <div id="khuyenMaiCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal2">Xem
-          nhanh</button>
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <img src="../IMG/anh_khuyen_mai1.webp" class="d-block w-100" alt="Khuyến mãi 1">
+        <div class="carousel-caption bg-light text-dark p-4 rounded">
+          <h3>MUA CÀNG TO - LÌ XÌ CÀNG LỚN</h3>
+          <p>Nhận lì xì và quà tặng hấp dẫn khi mua sách trong dịp Tết.</p>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal1">
+            Xem nhanh
+          </button>
+        </div>
       </div>
 
-      <div class="col-md-4 p-3 d-flex flex-column border rounded shadow-sm">
-        <img src="../IMG/khuyen-mai3.jpg" class="khuyen-mai3" alt="" height="405">
-        <h2>HỌC NGOẠI NGỮ DỄ DÀNG HƠN</h2>
-        <hr>
-        <p>Bộ sưu tập sách học tiếng Anh, Nhật, Hàn, Trung... giúp bạn tự học tại nhà dễ dàng, tiết kiệm chi phí. Cơ hội
-          vàng chỉ có trong tháng 10 này – nhanh tay kẻo lỡ!</p>
-        <ul>
-          <li>📘 Giảm đến <strong>50%</strong> cho tất cả sách ngoại ngữ.</li>
-          <li>🎯 Tặng kèm bookmark hoặc sổ tay học từ vựng.</li>
-          <li>🚚 Freeship cho đơn từ 200.000đ.</li>
-        </ul>
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal3">Xem
-          nhanh</button>
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img src="../IMG/anh_khuyen_mai.png" class="d-block w-100" alt="Khuyến mãi 2">
+        <div class="carousel-caption bg-light text-dark p-4 rounded">
+          <h3>KHUYẾN MÃI MUA 5 TẶNG 1</h3>
+          <p>Mua 5 tặng 1 – cơ hội tiết kiệm cực lớn cho người yêu sách!</p>
+          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modal2">
+            Xem nhanh
+          </button>
+        </div>
       </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <img src="../IMG/khuyen-mai3.jpg" class="d-block w-100" alt="Khuyến mãi 3">
+        <div class="carousel-caption bg-light text-dark p-4 rounded">
+          <h3>HỌC NGOẠI NGỮ DỄ DÀNG HƠN</h3>
+          <p>Giảm đến 50% cho tất cả sách ngoại ngữ, tặng quà hấp dẫn.</p>
+          <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal3">
+            Xem nhanh
+          </button>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Nút điều hướng -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#khuyenMaiCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#khuyenMaiCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
   </div>
 
+
+  <!-- ==================== MODAL CHI TIẾT ==================== -->
+
+  <!-- Modal 1 -->
   <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -112,17 +259,14 @@
         </div>
         <div class="modal-body">
           <img src="../IMG/anh_khuyen_mai1.webp" class="img-fluid rounded mb-3" alt="">
-          <p>🔥Nhằm mục đích mang lại những món quà tri thức ngày Tết cùng bạn đọc, Book Store xin gửi đến các bạn
-            chương trình MUA CÀNG TO – LÌ XÌ CÀNG LỚN với rất nhiều ưu đãi:.</p>
+          <p>🔥Nhằm mục đích mang lại những món quà tri thức ngày Tết cùng bạn đọc...</p>
           <ul>
             <li>⚡ Đơn từ 100k-200k: Nhận ngay lì xì 10k + Móc khóa </li>
             <li>⚡ Đơn từ 200k-300k: Nhận ngay lì xì 20k + Móc khóa</li>
             <li>⚡ Đơn từ 300k-400k: Nhận ngay lì xì 30k + Sổ tay</li>
             <li>⚡ Đơn từ 400k-500k: Nhận ngay lì xì 40k + Sổ tay</li>
           </ul>
-          <p><b>Lưu ý: Lì xì sẽ được trừ trực tiếp vào đơn hàng của khách hàng.</b></p>
-          <p>💌 Hãy trao cho nhau thật nhiều "tri thức", cùng nhau đi tới ước mơ. Dành tặng cho bạn bè, người thân hay
-            chính mình những cuốn sách nhân ngày đầu năm!</p>
+          <p><b>Lưu ý: Lì xì sẽ được trừ trực tiếp vào đơn hàng.</b></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -131,6 +275,7 @@
     </div>
   </div>
 
+  <!-- Modal 2 -->
   <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -140,17 +285,13 @@
         </div>
         <div class="modal-body">
           <img src="../IMG/anh_khuyen_mai.png" class="img-fluid rounded mb-3" alt="">
-          <p>🎉 Khuyến mãi mua 5 tặng 1. Mua ngay 5 sách Quốc văn với đơn hàng nhỏ hơn 399k giảm 100% cho cuốn sách có
-            giá thấp nhấ</p>
+          <p>🎉 Khuyến mãi mua 5 tặng 1 – Giảm 100% cho cuốn sách thấp nhất!</p>
           <ul>
             <li>Mở bán top sách 50% ngày 29/09</li>
             <li>Đồng giá 9k, mã giảm 99k: 22/09 – 30/09</li>
             <li>Mã giảm đồ chơi 10k – 30k mỗi ngày</li>
           </ul>
-          <p>Số lượng ưu đãi có hạn và có thể kết thúc trước dự kiến.</p>
-          <p><b>Diễn ra từ 24/09 - 30/09.</b></p>
-          <p>Áp dụng khi mua online tại website.</p>
-
+          <p><b>Thời gian: 24/09 - 30/09.</b></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -159,6 +300,7 @@
     </div>
   </div>
 
+  <!-- Modal 3 -->
   <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal3Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -168,14 +310,14 @@
         </div>
         <div class="modal-body">
           <img src="../IMG/anh_khuyen_mai2.jpg" class="img-fluid rounded mb-3" alt="">
-          <p>📚 Giảm Lên Đến 50% Tất Cả Sách Ngoại Ngữ (Anh - Pháp - Nhật - Trung - Hàn)</p>
+          <p>📚 Giảm Lên Đến 50% Tất Cả Sách Ngoại Ngữ (Anh - Nhật - Hàn - Trung)</p>
           <ul>
-            <li>Top 100+ sách Ngoại ngữ cực hot chỉ còn NỬA GIÁ.</li>
-            <li>Giảm thêm 20k khi đặt sách qua APP Newshop. (Áp dụng cho đơn từ 150k).</li>
-            <li>Giảm tiếp 20k khi thanh toán qua ZaloPay. (Áp dụng cho đơn từ 60k).</li>
-            <li>Miễn phí vận chuyển cho đơn từ 250k.</li>
+            <li>Top 100+ sách hot chỉ còn nửa giá.</li>
+            <li>Giảm thêm 20k khi đặt qua APP.</li>
+            <li>Giảm 20k khi thanh toán qua ZaloPay.</li>
+            <li>Freeship đơn từ 250k.</li>
           </ul>
-          <p><b>Thời gian áp dụng: đến hết 25/11/2025</b></p>
+          <p><b>Áp dụng đến hết 25/11/2025.</b></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
