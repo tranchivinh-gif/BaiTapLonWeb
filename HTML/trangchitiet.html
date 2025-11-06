@@ -11,8 +11,11 @@
   <style>
     body {
       background-color: #f8f9fa;
+      margin: 0;
+      font-family: Arial, sans-serif;
     }
 
+    /* Container chính */
     .book-detail-container {
       max-width: 1100px;
       margin: 40px auto;
@@ -23,6 +26,7 @@
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
       padding: 20px;
+      align-items: flex-start;
     }
 
     .book-detail-container img {
@@ -30,21 +34,26 @@
       height: 480px;
       object-fit: cover;
       border-radius: 10px;
+      flex-shrink: 0;
     }
 
     .book-info {
       flex: 1;
       min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .book-info h2 {
       font-size: 26px;
       font-weight: bold;
       color: #333;
+      margin-bottom: 15px;
     }
 
     .book-info p {
-      margin: 8px 0;
+      margin: 6px 0;
       font-size: 16px;
     }
 
@@ -59,14 +68,19 @@
     .btn-back {
       border: none;
       border-radius: 6px;
-      padding: 10px 20px;
+      padding: 12px 20px;
       font-weight: 500;
       cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn-add {
       background-color: #ffc107;
       color: #000;
+      margin-bottom: 10px;
     }
 
     .btn-add:hover {
@@ -76,17 +90,9 @@
     .btn-back {
       background-color: #17a2b8;
       color: #fff;
-      text-decoration: none;
-      margin-left: 10px;
     }
 
-<<<<<<< HEAD
-    @media (max-width: 479px) {
-      .social-icons {
-        display: flex;
-        justify-content: center;
-=======
-    /* 🎯 Responsive cho điện thoại */
+    /* Responsive cho tablet và điện thoại */
     @media (max-width: 768px) {
       .book-detail-container {
         flex-direction: column;
@@ -96,8 +102,8 @@
 
       .book-detail-container img {
         width: 100%;
-        height: auto;
         max-width: 320px;
+        height: auto;
       }
 
       .book-info {
@@ -123,7 +129,7 @@
       }
     }
 
-    /* Responsive cho màn rất nhỏ (dưới 480px) */
+    /* Responsive cho màn hình rất nhỏ dưới 480px */
     @media (max-width: 480px) {
       .book-detail-container {
         margin: 20px 10px;
@@ -139,8 +145,42 @@
 
       .book-info .price {
         font-size: 18px;
->>>>>>> 589a6c3 (chinhxuaa)
       }
+
+      .social-icons {
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .btn-add,
+      .btn-back {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    /* Footer gọn hơn trên mobile */
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+    }
+
+    .footer div {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -183,7 +223,7 @@
       <p class="price" id="book-price"></p>
       <p><strong>Mô tả:</strong> <span id="book-desc">Chưa có mô tả.</span></p>
 
-      <div style="margin-top:20px;">
+      <div>
         <button class="btn-add" id="add-cart">🛒 Thêm vào giỏ hàng</button>
         <a href="./trangchu.html" class="btn-back">⬅ Quay lại</a>
       </div>
@@ -212,69 +252,58 @@
     </div>
     <div>
       <h3>Kết Nối Với Chúng Tôi</h3>
-      <div class="social-icons">
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <div class="social-icons d-flex">
+        <a href="#"><i class="fa-brands fa-facebook me-2"></i></a>
         <a href="#"><i class="fa-brands fa-instagram"></i></a>
       </div>
       <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn</p>
-      <p>
-        <a href="https://jigsaw.w3.org/css-validator/check/referer">
-          <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss"
-            alt="Valid CSS!">
-        </a>
-      </p>
     </div>
   </div>
 
   <script src="../JS/bootstrap.bundle.js"></script>
   <script>
-    // --- Danh sách mô tả chi tiết ---
     const descriptions = {
-    1: "Đừng lựa chọn an nhàn khi còn trẻ – Cuốn sách truyền cảm hứng giúp bạn định hướng cuộc sống và phát triển bản thân.",
-    2: "7 Thói quen hiệu quả – Hướng dẫn phát triển tư duy tích cực, quản lý thời gian và thành công bền vững.",
-    3: "Lịch sử Việt Nam – Cung cấp cái nhìn tổng quan từ thời dựng nước đến hiện đại.",
-    4: "Toán – Sách giáo khoa nền tảng giúp học sinh rèn luyện tư duy logic và kỹ năng giải toán.",
-    5: "Truyện Kiều – Kiệt tác văn học Việt Nam của Nguyễn Du, phản ánh thân phận con người trong xã hội phong kiến.",
-    6: "Văn – Sách giáo khoa bồi dưỡng khả năng cảm thụ và phân tích văn học.",
-    7: "Chí Phèo – Truyện ngắn của Nam Cao, phản ánh số phận bi thảm của người nông dân và giá trị nhân đạo."
-  };
+      1: "Đừng lựa chọn an nhàn khi còn trẻ – Cuốn sách truyền cảm hứng giúp bạn định hướng cuộc sống và phát triển bản thân.",
+      2: "7 Thói quen hiệu quả – Hướng dẫn phát triển tư duy tích cực, quản lý thời gian và thành công bền vững.",
+      3: "Lịch sử Việt Nam – Cung cấp cái nhìn tổng quan từ thời dựng nước đến hiện đại.",
+      4: "Toán – Sách giáo khoa nền tảng giúp học sinh rèn luyện tư duy logic và kỹ năng giải toán.",
+      5: "Truyện Kiều – Kiệt tác văn học Việt Nam của Nguyễn Du, phản ánh thân phận con người trong xã hội phong kiến.",
+      6: "Văn – Sách giáo khoa bồi dưỡng khả năng cảm thụ và phân tích văn học.",
+      7: "Chí Phèo – Truyện ngắn của Nam Cao, phản ánh số phận bi thảm của người nông dân và giá trị nhân đạo."
+    };
 
-  // --- Lấy thông tin sách được chọn từ trang trước ---
-  const book = JSON.parse(localStorage.getItem('selectedBook'));
+    const book = JSON.parse(localStorage.getItem('selectedBook'));
 
-  if (book) {
-    document.getElementById('book-image').src = book.img;
-    document.getElementById('book-name').textContent = book.name;
-    document.getElementById('book-category').textContent = book.category || 'Không xác định';
-    document.getElementById('book-release').textContent = book.releaseDate || 'Chưa có';
-    document.getElementById('book-purchases').textContent = book.purchases || 'Chưa có';
-    document.getElementById('book-price').textContent = book.price || 'Chưa có';
-    
-    // Hiển thị đúng mô tả theo ID sách
-    document.getElementById('book-desc').textContent = descriptions[book.id] || "Chưa có mô tả cho cuốn sách này.";
-  }
-
-  // --- Thêm vào giỏ hàng ---
-  document.getElementById('add-cart').addEventListener('click', () => {
-    if (!book) return;
-    const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
-    if (!userInfo || !userInfo.username) {
-      alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
-      window.location.href = "./trangdangnhap.html";
-      return;
+    if (book) {
+      document.getElementById('book-image').src = book.img;
+      document.getElementById('book-name').textContent = book.name;
+      document.getElementById('book-category').textContent = book.category || 'Không xác định';
+      document.getElementById('book-release').textContent = book.releaseDate || 'Chưa có';
+      document.getElementById('book-purchases').textContent = book.purchases || 'Chưa có';
+      document.getElementById('book-price').textContent = book.price || 'Chưa có';
+      document.getElementById('book-desc').textContent = descriptions[book.id] || "Chưa có mô tả cho cuốn sách này.";
     }
 
-    const username = userInfo.username;
-    const cartKey = `cart_${username}`;
-    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    document.getElementById('add-cart').addEventListener('click', () => {
+      if (!book) return;
+      const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
+      if (!userInfo || !userInfo.username) {
+        alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
+        window.location.href = "./trangdangnhap.html";
+        return;
+      }
 
-    const exist = cart.find(item => item.id === book.id);
-    if (exist) exist.qty++;
-    else cart.push({ id: book.id, name: book.name, price: book.price, img: book.img, qty: 1 });
+      const username = userInfo.username;
+      const cartKey = `cart_${username}`;
+      let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-    localStorage.setItem(cartKey, JSON.stringify(cart));
-    alert(`Đã thêm "${book.name}" vào giỏ hàng!`);
-  });
+      const exist = cart.find(item => item.id === book.id);
+      if (exist) exist.qty++;
+      else cart.push({ id: book.id, name: book.name, price: book.price, img: book.img, qty: 1 });
+
+      localStorage.setItem(cartKey, JSON.stringify(cart));
+      alert(`Đã thêm "${book.name}" vào giỏ hàng!`);
+    });
   </script>
 </body>
 
