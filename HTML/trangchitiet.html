@@ -77,78 +77,6 @@
       text-decoration: none;
       margin-left: 10px;
     }
-
-    h3.similar-title {
-      max-width: 1100px;
-      margin: 50px auto 25px;
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      text-align: center;
-    }
-
-    .book-scroll {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 25px;
-      justify-content: center;
-      max-width: 1100px;
-      margin: 0 auto 60px;
-    }
-
-    .book-item {
-      width: 220px;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .book-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .book-item img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .book-actions {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .book-actions .btn-add,
-    .book-actions .btn-detail {
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .book-actions .btn-add {
-      background-color: #ffc107;
-      color: #000;
-    }
-
-    .book-actions .btn-detail {
-      background-color: #17a2b8;
-      color: white;
-      text-decoration: none;
-    }
-
-    .book-actions .btn-add:hover,
-    .book-actions .btn-detail:hover {
-      opacity: 0.9;
-    }
   </style>
 </head>
 
@@ -181,7 +109,7 @@
   </div>
 
   <div class="book-detail-container">
-    <img id="book-image" src="" alt="Book image">
+    <img id="book-image" src="../IMG/anh_khuyen_mai.png" alt="Book image">
     <div class="book-info">
       <h2 id="book-name">Tên Sách</h2>
       <p><strong>Thể loại:</strong> <span id="book-category"></span></p>
@@ -196,9 +124,6 @@
       </div>
     </div>
   </div>
-
-  <h3 class="similar-title">📚 Sách tương tự</h3>
-  <div id="similar-books" class="book-scroll"></div>
 
   <div class="footer">
     <div>
@@ -227,11 +152,29 @@
         <a href="#"><i class="fa-brands fa-instagram"></i></a>
       </div>
       <p style="margin-top:10px; font-size:14px;">📞 Hotline: 1900 1234<br>✉️ Email: Tên_Nhà_Sách@bookstore.vn</p>
+      <p>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+          <img style="border:0;width:88px;height:31px"
+            src="https://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!">
+        </a>
+      </p>
     </div>
   </div>
 
   <script src="../JS/bootstrap.bundle.js"></script>
   <script>
+    // --- Danh sách mô tả chi tiết ---
+    const descriptions = {
+      1: "“Đừng lựa chọn khi còn trẻ” là cuốn sách truyền cảm hứng dành cho giới trẻ về cách định hướng cuộc đời, học cách chịu trách nhiệm với lựa chọn và vượt qua sự do dự trong hành trình trưởng thành.",
+      2: "“7 Thói quen hiệu quả” của Stephen R. Covey là tác phẩm nổi tiếng giúp người đọc phát triển bản thân, quản lý thời gian, và xây dựng tư duy tích cực để đạt thành công bền vững.",
+      3: "“Lịch sử Việt Nam” cung cấp cái nhìn tổng quan từ thời dựng nước đến hiện đại, giúp người đọc hiểu rõ nguồn cội, tinh thần dân tộc và các dấu mốc lịch sử quan trọng của đất nước.",
+      4: "“Toán” là sách giáo khoa cung cấp kiến thức nền tảng, giúp học sinh rèn luyện tư duy logic, kỹ năng giải bài tập, và yêu thích môn học qua các ví dụ thực tế.",
+      5: "“Truyện Kiều” của Nguyễn Du – kiệt tác văn học Việt Nam, kể về cuộc đời đầy bi kịch của Thúy Kiều, phản ánh sâu sắc thân phận con người và giá trị nhân đạo sâu sắc trong xã hội phong kiến.",
+      6: "“Văn” là sách giáo khoa bồi dưỡng khả năng cảm thụ văn học, giúp học sinh hiểu và phân tích các tác phẩm tiêu biểu trong chương trình học.",
+      7: "“Chí Phèo” của Nam Cao là truyện ngắn nổi tiếng phản ánh số phận bi thảm của người nông dân bị tha hóa, đồng thời thể hiện khát vọng được làm người và lòng nhân đạo sâu sắc của tác giả."
+    };
+
+    // --- Hiển thị thông tin chi tiết ---
     const book = JSON.parse(localStorage.getItem('selectedBook'));
     if (book) {
       document.getElementById('book-image').src = book.img;
@@ -240,15 +183,10 @@
       document.getElementById('book-release').textContent = book.releaseDate;
       document.getElementById('book-purchases').textContent = book.purchases;
       document.getElementById('book-price').textContent = book.price;
+      document.getElementById('book-desc').textContent = descriptions[book.id] || "Chưa có mô tả cho cuốn sách này.";
     }
 
-    const books = [
-      { id: 1, name: "Đắc Nhân Tâm", img: "../IMG/khuyen-mai.jpg", price: "99.000₫", releaseDate: "2024-04-12", purchases: 500, category: "Kỹ năng sống" },
-      { id: 2, name: "Tuổi Trẻ Đáng Giá Bao Nhiêu", img: "../IMG/khuyen-mai.jpg", price: "85.000₫", releaseDate: "2023-10-05", purchases: 620, category: "Kỹ năng sống" },
-      { id: 3, name: "Tư Duy Nhanh Và Chậm", img: "../IMG/khuyen-mai.jpg", price: "120.000₫", releaseDate: "2024-01-18", purchases: 700, category: "Tâm lý học" },
-      { id: 4, name: "Hạt Giống Tâm Hồn", img: "../IMG/khuyen-mai.jpg", price: "95.000₫", releaseDate: "2023-08-25", purchases: 850, category: "Truyền cảm hứng" }
-    ];
-
+    // --- Thêm vào giỏ hàng ---
     document.getElementById('add-cart').addEventListener('click', () => {
       if (!book) return;
       const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
@@ -269,62 +207,6 @@
       localStorage.setItem(cartKey, JSON.stringify(cart));
       alert(`Đã thêm "${book.name}" vào giỏ hàng!`);
     });
-
-    function renderSimilarBooks() {
-      const container = document.getElementById("similar-books");
-      if (!book) return;
-
-      let similar = books.filter(b => b.category === book.category && b.id !== book.id);
-
-      if (similar.length === 0) {
-        similar = books.filter(b => b.id !== book.id)
-          .sort(() => 0.5 - Math.random())
-          .slice(0, 4);
-      }
-
-      container.innerHTML = similar.map(b => `
-        <div class="book-item">
-          <img src="${b.img}" alt="${b.name}" onclick="viewBookDetail(${b.id})">
-          <p class="fw-bold mt-2">${b.name}</p>
-          <p class="text-danger">${b.price}</p>
-          <p>📅 ${b.releaseDate}</p>
-          <p>🔥 ${b.purchases} lượt mua</p>
-          <div class="book-actions">
-            <button class="btn-add" onclick="addToCart(${b.id})"><i class="fa-solid fa-cart-plus"></i></button>
-            <a href="./trangchitiet.html" class="btn-detail" onclick="viewBookDetail(${b.id})">Xem</a>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    renderSimilarBooks();
-
-    function viewBookDetail(id) {
-      const selected = books.find(b => b.id === id);
-      localStorage.setItem('selectedBook', JSON.stringify(selected));
-    }
-
-    function addToCart(id) {
-      const selected = books.find(b => b.id === id);
-      const userInfo = JSON.parse(localStorage.getItem('dangNhap'));
-      if (!userInfo || !userInfo.username) {
-        alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
-        window.location.href = "./trangdangnhap.html";
-        return;
-      }
-
-      const username = userInfo.username;
-      const cartKey = `cart_${username}`;
-      let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
-      const exist = cart.find(item => item.id === selected.id);
-      if (exist) exist.qty++;
-      else cart.push({ id: selected.id, name: selected.name, price: selected.price, img: selected.img, qty: 1 });
-
-      localStorage.setItem(cartKey, JSON.stringify(cart));
-      alert(`Đã thêm "${selected.name}" vào giỏ hàng!`);
-    }
   </script>
 </body>
-
 </html>
