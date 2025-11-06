@@ -530,4 +530,16 @@ footer p {
     .footer ul li a {
         font-size: 13px;
     }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 479px) {
+    .social-icons {
+        display: flex;
+        justify-content: center;
+    }
 }

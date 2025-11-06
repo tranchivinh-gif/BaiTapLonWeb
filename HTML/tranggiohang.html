@@ -15,6 +15,7 @@
             opacity: 1;
             display: block;
         }
+
         .header {
             width: 100%;
             display: flex;
@@ -24,18 +25,27 @@
             padding: 10px 15px;
             box-sizing: border-box;
         }
-        body, html {
+
+        body,
+        html {
             margin: 0;
             padding: 0;
             width: 100%;
+
         }
+
         .table-responsive {
             width: 100%;
             overflow-x: auto;
         }
 
 
-
+        @media (max-width: 479px) {
+            .social-icons {
+                display: flex;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 
@@ -115,7 +125,7 @@
 
         <div>
             <h3>Kết Nối Với Chúng Tôi</h3>
-            <div class="social-icons justify-content-center d-flex">
+            <div class="social-icons ">
                 <a href="#"><i class="fa-brands fa-facebook"></i></a>
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
             </div>

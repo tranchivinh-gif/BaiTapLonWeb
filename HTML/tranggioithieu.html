@@ -55,14 +55,29 @@
             margin-bottom: 15px;
             border: 4px solid #66a6ff;
         }
-    </style>
-    
 
+        .error-msg {
+            color: red;
+            font-size: 14px;
+            display: none;
+            margin-left: 5px;
+        }
+
+        .form-check {
+            margin-right: 20px;
+        }
+
+        @media (max-width: 479px) {
+            .social-icons {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header>
-
         <div class="header">
             <div class="logo">
                 <a href="./tranggioithieu.html">
@@ -94,13 +109,10 @@
 
         <div class="text-h1">
             <h1><b>Nhóm 2 - Giới Thiệu Thành Viên</b></h1>
+            <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#formDangKy">
+                <i class="fa-solid fa-user-plus"></i> Đăng ký thành viên
+            </button>
         </div>
-        <!-- Thêm nút đăng ký thành viên -->
-        <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#formDangKy">
-    <i class="fa-solid fa-user-plus"></i> Đăng ký thành viên
-</button>
-
-
     </header>
 
     <div class="container">
@@ -127,7 +139,7 @@
             </div>
         </div>
 
-        <div class="hangduoi">
+        <div class="hangduoi" id="hangDuoi">
             <div class="thanhvien" data-bs-toggle="modal" data-bs-target="#tv4">
                 <img src="../IMG/avatar-nu.jpg" alt="Thanh viên 4">
                 <h3>Phạm Nguyễn Xuân Thanh</h3>
@@ -144,139 +156,55 @@
         </div>
     </div>
 
-    <div class="modal fade" id="tv1" tabindex="-1" aria-labelledby="tv1Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="tv1Label">Trần Chí Vĩnh - Trưởng nhóm</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="../IMG/avatar-nam.jpg" alt="anh_dai_dien_nam" class="rounded-circle mb-3" width="120"
-                        height="120">
-                    <p><strong>MSSV:</strong> 23662901</p>
-                    <p><strong>Vai trò:</strong> Trưởng nhóm</p>
-                    <p><strong>Mô tả:</strong> Quản lý tiến độ nhóm, phụ trách giao diện trang đăng nhập và trang chủ.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="tv2" tabindex="-1" aria-labelledby="tv2Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="tv2Label">Nguyễn Tấn Hoàng Vũ</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="../IMG/avatar-nam.jpg" alt="anh_dai_dien_nam" class="rounded-circle mb-3" width="120"
-                        height="120">
-                    <p><strong>MSSV:</strong> 23657941</p>
-                    <p><strong>Vai trò:</strong> Thành viên</p>
-                    <p><strong>Mô tả:</strong> Phụ trách giao diện trang chi tiết và trang sách mới. </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="tv3" tabindex="-1" aria-labelledby="tv3Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-dark">
-                    <h5 class="modal-title" id="tv3Label">Trần Như Ý</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="../IMG/avatar-nu.jpg" alt="anh_dai_dien_nu" class="rounded-circle mb-3" width="120"
-                        height="120">
-                    <p><strong>MSSV:</strong> 23655891</p>
-                    <p><strong>Vai trò:</strong> Thành viên</p>
-                    <p><strong>Mô tả:</strong> Phụ trách giao diện trang danh mục sản phẩm và giỏ hàng. </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="tv4" tabindex="-1" aria-labelledby="tv4Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="tv4Label">Phạm Nguyễn Xuân Thanh</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="../IMG/avatar-nu.jpg" alt="anh_dai_dien_nu" class="rounded-circle mb-3" width="120"
-                        height="120">
-                    <p><strong>MSSV:</strong> 23659911</p>
-                    <p><strong>Vai trò:</strong> Thành viên</p>
-                    <p><strong>Mô tả:</strong> Phụ trách giao diện trang giới thiệu và khuyến mãi</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="tv5" tabindex="-1" aria-labelledby="tv5Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="tv5Label">Phùng Võ Việt Tường Vi</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="../IMG/avatar-nu.jpg" alt="anh_dai_dien_nu" class="rounded-circle mb-3" width="120"
-                        height="120">
-                    <p><strong>MSSV:</strong> 23674171</p>
-                    <p><strong>Vai trò:</strong> Thành viên</p>
-                    <p><strong>Mô tả:</strong> Phụ trách giao diện trang bán hàng và sitemap</p>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Modal Đăng ký thành viên -->
-<div class="modal fade" id="formDangKy" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Đăng ký thành viên mới</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <form id="formThanhVien">
-          <div class="mb-3">
-            <label class="form-label">Họ và tên</label>
-            <input type="text" id="ten" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">MSSV</label>
-            <input type="text" id="mssv" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Vai trò</label>
-            <input type="text" id="vaitro" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Mô tả</label>
-            <textarea id="mota" class="form-control" rows="2"></textarea>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Ảnh đại diện</label>
-            <input type="file" id="anh" class="form-control" accept="image/*">
-          </div>
-          <div class="text-end">
-            <button type="submit" class="btn btn-success">Thêm thành viên</button>
-          </div>
-        </form>
-      </div>
+    <div class="modal fade" id="formDangKy" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Đăng ký thành viên mới</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formThanhVien">
+                        <div class="mb-3">
+                            <label class="form-label">Họ và tên</label>
+                            <input type="text" id="ten" class="form-control" required>
+                            <span class="error-msg" id="tenError">(*) Họ tên không hợp lệ</span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">MSSV</label>
+                            <input type="text" id="mssv" class="form-control" required>
+                            <span class="error-msg" id="mssvError">(*) MSSV không hợp lệ hoặc trùng</span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label d-block">Vai trò</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="vaitro" id="nhomtruong"
+                                    value="Nhóm trưởng" disabled>
+                                <label class="form-check-label" for="nhomtruong">Nhóm trưởng</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="vaitro" id="thanhvien"
+                                    value="Thành viên" checked>
+                                <label class="form-check-label" for="thanhvien">Thành viên</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mô tả</label>
+                            <textarea id="mota" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ảnh đại diện</label>
+                            <input type="file" id="anh" class="form-control" accept="image/*">
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">Thêm thành viên</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
 
     <footer>
         <div class="footer">
@@ -302,7 +230,7 @@
             </div>
             <div>
                 <h3>Kết Nối Với Chúng Tôi</h3>
-                <div class="social-icons justify-content-center d-flex">
+                <div class="social-icons">
                     <a href="#"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 </div>
@@ -320,68 +248,104 @@
 
     <script src="../JS/bootstrap.bundle.js"></script>
     <script>
-  const form = document.getElementById("formThanhVien");
-  const hangDuoi = document.querySelector(".hangduoi");
+        const form = document.getElementById("formThanhVien");
+        const hangDuoi = document.getElementById("hangDuoi");
+        const tenInput = document.getElementById("ten");
+        const mssvInput = document.getElementById("mssv");
+        const tenError = document.getElementById("tenError");
+        const mssvError = document.getElementById("mssvError");
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+        // Danh sách MSSV hiện có
+        const existingMSSV = new Set(["23662901", "23657941", "23655891", "23659911", "23674171"]);
 
-    const ten = document.getElementById("ten").value.trim();
-    const mssv = document.getElementById("mssv").value.trim();
-    const vaitro = document.getElementById("vaitro").value.trim();
-    const mota = document.getElementById("mota").value.trim();
-    const anhFile = document.getElementById("anh").files[0];
+        // Kiểm tra họ tên khi blur
+        tenInput.addEventListener("blur", () => {
+            const regexTen = /^([A-ZÀ-Ỹ][a-zà-ỹ]*)(\s[A-ZÀ-Ỹ][a-zà-ỹ]*)*$/;
+            tenError.style.display = regexTen.test(tenInput.value.trim()) ? "none" : "inline";
+        });
 
-    // Nếu không có ảnh thì dùng mặc định
-    let anhSrc = "../IMG/avatar-nam.jpg";
-    if (anhFile) {
-      anhSrc = URL.createObjectURL(anhFile);
-    }
+        // Kiểm tra MSSV khi blur
+        mssvInput.addEventListener("blur", () => {
+            const regexMSSV = /^2\d{7}$/;
+            const val = mssvInput.value.trim();
+            if (!regexMSSV.test(val) || existingMSSV.has(val)) {
+                mssvError.style.display = "inline";
+            } else {
+                mssvError.style.display = "none";
+            }
+        });
 
-    // Tạo phần tử thành viên mới
-    const thanhVien = document.createElement("div");
-    thanhVien.classList.add("thanhvien");
-    const modalId = "modal_" + mssv;
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-    thanhVien.innerHTML = `
-      <img src="${anhSrc}" alt="ảnh thành viên mới">
-      <h3>${ten}</h3>
-      <p>${vaitro}</p>
-      <p>Mssv: ${mssv}</p>
-    `;
-    thanhVien.setAttribute("data-bs-toggle", "modal");
-    thanhVien.setAttribute("data-bs-target", "#" + modalId);
+            const ten = tenInput.value.trim();
+            const mssv = mssvInput.value.trim();
+            const vaitro = document.querySelector('input[name="vaitro"]:checked').value;
+            const mota = document.getElementById("mota").value.trim();
+            const anhFile = document.getElementById("anh").files[0];
 
-    // Thêm modal chi tiết của thành viên mới
-    const modalHTML = `
-      <div class="modal fade" id="${modalId}" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header bg-success text-white">
-              <h5 class="modal-title">${ten}</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body text-center">
-              <img src="${anhSrc}" class="rounded-circle mb-3" width="120" height="120">
-              <p><strong>MSSV:</strong> ${mssv}</p>
-              <p><strong>Vai trò:</strong> ${vaitro}</p>
-              <p><strong>Mô tả:</strong> ${mota || "Không có mô tả"}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    document.body.insertAdjacentHTML("beforeend", modalHTML);
+            const regexTen = /^([A-ZÀ-Ỹ][a-zà-ỹ]*)(\s[A-ZÀ-Ỹ][a-zà-ỹ]*)*$/;
+            const regexMSSV = /^2\d{7}$/;
 
-    // Thêm thành viên vào màn hình
-    hangDuoi.appendChild(thanhVien);
+            if (!regexTen.test(ten)) {
+                tenError.style.display = "inline";
+                return;
+            } else tenError.style.display = "none";
 
-    // Đóng modal và reset form
-    const modal = bootstrap.Modal.getInstance(document.getElementById("formDangKy"));
-    modal.hide();
-    form.reset();
-  });
-</script>
+            if (!regexMSSV.test(mssv) || existingMSSV.has(mssv)) {
+                mssvError.style.display = "inline";
+                return;
+            } else mssvError.style.display = "none";
+
+            let anhSrc = "../IMG/avatar-nam.jpg";
+            if (anhFile) {
+                anhSrc = URL.createObjectURL(anhFile);
+            }
+
+            // Thêm MSSV mới vào danh sách
+            existingMSSV.add(mssv);
+
+            // Tạo thành viên mới
+            const thanhVien = document.createElement("div");
+            thanhVien.classList.add("thanhvien");
+            const modalId = "modal_" + mssv;
+
+            thanhVien.innerHTML = `
+                <img src="${anhSrc}" alt="ảnh thành viên mới">
+                <h3>${ten}</h3>
+                <p>${vaitro}</p>
+                <p>Mssv: ${mssv}</p>
+            `;
+            thanhVien.setAttribute("data-bs-toggle", "modal");
+            thanhVien.setAttribute("data-bs-target", "#" + modalId);
+
+            const modalHTML = `
+                <div class="modal fade" id="${modalId}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-success text-white">
+                                <h5 class="modal-title">${ten}</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img src="${anhSrc}" class="rounded-circle mb-3" width="120" height="120">
+                                <p><strong>MSSV:</strong> ${mssv}</p>
+                                <p><strong>Vai trò:</strong> ${vaitro}</p>
+                                <p><strong>Mô tả:</strong> ${mota || "Không có mô tả"}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML("beforeend", modalHTML);
+
+            hangDuoi.appendChild(thanhVien);
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById("formDangKy"));
+            modal.hide();
+            form.reset();
+        });
+    </script>
 </body>
 
 </html>

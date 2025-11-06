@@ -13,6 +13,12 @@
       display: flex;
     }
 
+    #modal2 .modal-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     .col {
       border: 1px solid rgb(222, 202, 202);
       padding-bottom: 2px;
@@ -167,6 +173,13 @@
       filter: invert(100%);
       width: 40px;
       height: 40px;
+    }
+
+    @media (max-width: 479px) {
+      .social-icons {
+        display: flex;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -350,7 +363,7 @@
 
     <div>
       <h3>Kết Nối Với Chúng Tôi</h3>
-      <div class="social-icons justify-content-center d-flex">
+      <div class="social-icons">
         <a href="#"><i class="fa-brands fa-facebook"></i></a>
         <a href="#"><i class="fa-brands fa-instagram"></i></a>
       </div>
