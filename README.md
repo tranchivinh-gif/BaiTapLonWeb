@@ -1,5 +1,6 @@
 # BaiTapLonWeb
-đây là bài tập lớn môn lập trình web
+đây là bài tập lớn môn lập trình web, đề tài là:
+# Xây dựng website bán sách 
 
 ## Thành viên nhóm:
 1. Trần Chí Vĩnh - 23662901 - Trưởng nhóm
